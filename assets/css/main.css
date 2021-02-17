@@ -2563,6 +2563,7 @@ input, select, textarea {
 /* Tiles */
 
 	.tiles {
+		margin-block-end: ;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -2598,6 +2599,11 @@ input, select, textarea {
 			}
 
 				.tiles article > .image img {
+					position: relative;
+				left: 2em;
+				top: 2em;
+				margin: -4em 0 4em -4em;
+				width: auto;
 					display: block;
 					width: 100%;
 				}
