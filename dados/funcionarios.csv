@@ -1,0 +1,37 @@
+ID,estado_civil,grau_instrucao,numero_filhos,salario_hora,idade,reg_procedencia
+1,casado,ensino fundamental,NA,4,30,interior
+2,solteiro,ensino fundamental,1,4.56,40,capital
+3,casado,ensino fundamental,2,5.25,50,capital
+4,solteiro,ensino medio,NA,5.73,25,outra
+5,solteiro,ensino fundamental,NA,6.26,70,outra
+6,casado,ensino fundamental,0,6.66,20,interior
+7,solteiro,ensino fundamental,NA,6.86,30,interior
+8,solteiro,ensino fundamental,NA,7.39,40,capital
+9,casado,ensino medio,1,7.59,43,capital
+10,solteiro,ensino medio,NA,7.44,60,outra
+11,casado,ensino medio,2,8.12,60,interior
+12,solteiro,ensino fundamental,NA,8.46,41,capital
+13,solteiro,ensino medio,NA,8.74,55,outra
+14,casado,ensino fundamental,3,8.95,28,outra
+15,casado,ensino medio,0,9.13,52,interior
+16,solteiro,ensino medio,NA,9.35,82,outra
+17,casado,ensino medio,1,9.77,37,capital
+18,casado,ensino fundamental,2,9.8,47,outra
+19,solteiro,superior,NA,10.53,28,interior
+20,solteiro,ensino medio,NA,10.76,34,interior
+21,casado,ensino medio,1,11.06,49,outra
+22,solteiro,ensino medio,NA,11.59,42,capital
+23,solteiro,ensino fundamental,NA,12,32,outra
+24,casado,superior,0,12.79,51,outra
+25,casado,ensino medio,2,13.23,53,interior
+26,casado,ensino medio,2,13.6,40,outra
+27,solteiro,ensino fundamental,NA,13.85,37,outra
+28,casado,ensino medio,0,14.69,38,interior
+29,casado,ensino medio,5,14.71,36,interior
+30,casado,ensino medio,2,15.99,50,capital
+31,solteiro,superior,NA,16.22,35,outra
+32,casado,ensino medio,1,16.61,34,interior
+33,casado,superior,3,17.26,37,capital
+34,solteiro,superior,NA,18.75,47,capital
+35,casado,ensino medio,2,19.4,41,capital
+36,casado,superior,3,23.3,32,interior
