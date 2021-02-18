@@ -6,7 +6,7 @@ Economista, pós graduado em direito processual do trabalho e cientista de dados
 
 # Site Desenvolvido:
 
-	https://rodolffoterra.github.io/index.html
+	https://rodolffoterra.github.io
 
 
 # Credits:
