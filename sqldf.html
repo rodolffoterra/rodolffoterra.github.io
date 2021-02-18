@@ -1,0 +1,1310 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Rodolfo Terra | CiÊncia de Dados</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+					<!-- Main -->
+				<main>
+				<div class="principal">
+					<div class="container">
+							<h1>Package SQLDF</h1>
+					<h3 class="text">Linguagem R</h3>
+					</div>
+				</div>
+				</main>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">Aula Anterior - Vetor</a></li>
+							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">Próxima Aula - Matrix</a></li>
+							<li><a target="_black" href="https://www.rodolfoterra.com/">Site</a></li>
+
+							<!-- Logo -->
+							<a target="_black" href="https://www.rodolfoterra.com/" class="logo">
+								<span class="bottum-rigth"><img src="images/logo.png" alt="" />
+								</a>
+						</ul>
+					</nav>
+
+				
+
+							<!-- Text -->
+								<section>
+								</br>
+								<div class='text'>
+								<h2>SQL</h2>
+									<P><b>Structured query Language</b> ou Linguagem de Consulta Estruturada ou SQL, é uma linguagem de pesquisa 
+										declarativa padrão para banco de dados ralacionados. Muitas das caracteróisticas originais do SQL foram 
+										inspiradas na álgebra relacional.</P>
+									<P>O Artigo aqui tem como o principal objetivo demonstrar as principais estruturas dentro da linguagem SQL. 
+										Porém além de ensinarmos as principais estruturas, iremos trabalhar com a linguagem R. Se você não tiver 
+										o conehcimento de linguagem R, a cada semana será postado um artigo novo, com conhecimentos básicos de 
+										modelagem de dados, como carregar um arquivo, como salvar arquivo, como realizar uma análise exploratória, 
+										pré processamento de dados, construção de modelos preditivos e muito mais.</P>
+									<P>Cada semana temos um tema diferente, totalmente gratuito, e aceitamos também opniões de novos temas.</P>
+									<hr />
+									<p>As bibliotecas são conjuntos de funções já desenvolvida que irá facilitar o nosso trabalho com algum 
+										determinado assunto. Este artigo irá trabalhar expecificamente com o pacote sqldf, um fremework que nos 
+										permite utilizar a semantica do SQL, dentro do RStudio. Se você nunca utiliou esta biblioteca primeiramente 
+										você deve realizar a seguinte comando:
+										<code>install.packages(“sqldf”)</code></p>
+									<p>Este comendo é realizado apenas uma vez, após ter instalado em sua máquina você nas próximas vezes só 
+										precisar carrega-lo.</p>
+
+
+										<pre><code>library(sqldf)</code></pre>
+										<hr />
+
+										<h2>Carregando o conjunto de dados </h2>
+
+										<p>Iremos carregar um conjunto de dados para conseguirmos trabalhar com SQL. A Função utilizada abaixo é uma função base do RStudio.
+											Estes Conjuntos de dados, encontra-se no repositório no github.</p>
+
+										<pre><code>tb_func<-read.csv('https://raw.githubusercontent.com/rodolffoterra/Project_Marijuana_Legalization_TS/main/dados/df_lojas.csv')</code></pre>
+
+
+										<h2>DQL Instructions</h2>
+
+										<p>Linguagem de consulta de Dados (<b>Data Query Language</b>) faz parte do agrupamento básico de sublinguagens SQL. Essas sub-linguagem 
+											são categorizadas principalmente em quatro categorias.</p>
+
+										<p>As instruções DQL são usadas para realizar consultas nos dados nos objetos de esquema. O objetivo dos comandos DQL 
+										   é obter a relação do esquema com base na consulta passada a ele.</p>
+
+										<h3>Select</h3>
+										<p>Cada tabela é dividida em entidades menores chamadas campos. Os campos da tabela tb_func consistem em ID, estado_civil,
+											 grau_instrucao, numero_filhos, salario_hora e idade. Um campo é uma coluna em uma tabela projetada para
+											 manter informações específicas sobre cada registro na tabela.</p>
+
+										<p>Um registro, também chamado de linha, é cada entrada individual que existe em uma tabela. Por exemplo, existem 10
+											registros na tabela Clientes acima. Um registro é uma entidade horizontal em uma tabela.</p>
+											
+										<p>Uma coluna é uma entidade vertical em uma tabela que contém todas as informações associadas a um campo específico 
+											em uma tabela.
+											
+											Primeiramente iremos conhecer o nosso conjunto de dados.</p>
+
+											<pre><code>sqldf("SELECT * FROM tb_func")</code></pre>
+
+											<div class="table-wrapper text">
+												<table class="alt">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>estado_civil</th>
+															<th>grau_intrucao</th>
+															<th>numero_filhos</th>
+															<th>salario_hora</th>
+															<th>idade</th>
+															<th>reg_procedencia</th>
+
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>1</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>4.00</td>
+															<td>30</td>
+															<td>interior</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>1</td>
+															<td>4.56</td>
+															<td>40</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>2</td>
+															<td>5.25</td>
+															<td>50</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>solteiro</td>
+															<td>ensino medio</td>
+															<td>NA</td>
+															<td>5.73</td>
+															<td>25</td>
+															<td>outra</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>6.26</td>
+															<td>70</td>
+															<td>outra</td>
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>0</td>
+															<td>6.66</td>
+															<td>20</td>
+															<td>interior</td>
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>6.86</td>
+															<td>30</td>
+															<td>interior</td>
+														</tr>
+														<tr>
+															<td>8</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>7.39</td>
+															<td>40</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>9</td>
+															<td>casado</td>
+															<td>ensino medio</td>
+															<td>1</td>
+															<td>7.59</td>
+															<td>4.3</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>10</td>
+															<td>solteiro</td>
+															<td>ensino medio</td>
+															<td>NA</td>
+															<td>7.44</td>
+															<td>60</td>
+															<td>outra</td>
+														</tr>
+													</tbody>
+												</table>
+
+											<hr />
+										
+										<p>Podemos também observar a quantidade de linhas que possuimos em nosso conjunto de dados trocando o <b>*</b> por <b>count(*)</b></p>
+										<pre><code>sqldf("SELECT count(*) FROM tb_func")
+										</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; count </br> ## &nbsp;&nbsp; 10</TD>
+											</TR>
+											
+										</TABLE>
+
+
+
+										<p>Iremos visualizar apenas a coluna <b>salario_hora</b>.</p>
+										<pre><code>sqldf("SELECT salario_hora FROM tb_func")</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  salario_hora </br>
+												 ## &nbsp;&nbsp; 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.00</br>
+												 ## &nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.56</br>
+												 ## &nbsp;&nbsp; 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.25</br>
+												 ## &nbsp;&nbsp; 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.73</br>
+												 ## &nbsp;&nbsp; 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.26</br>
+												 ## &nbsp;&nbsp; 6 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.66</br>
+												 ## &nbsp;&nbsp; 7 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.86</br>
+												 ## &nbsp;&nbsp; 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.39</br>
+												 ## &nbsp;&nbsp; 9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.59</br>
+												 ## &nbsp;&nbsp; 10 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            7.44</td>
+											</tr>
+										</TABLE>
+
+
+										<h2>Distinct</h2>
+										<p> Para eu saber todos os valores individuais de uma única coluna baste utilizar a função <b>distinct</b>.</p>
+										<pre><code>sqldf("SELECT DISTINCT reg_procedencia from  tb_func")</code></pre>
+
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  reg_procedencia </br>
+												 ## &nbsp;&nbsp; 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interior</br>
+												 ## &nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capital</br>
+												 ## &nbsp;&nbsp; 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outra</br>
+											</tr>
+										</TABLE>
+											
+
+	
+
+											<h2>Order by</h2>
+											<p>Agora iremos visualizar todas as colunas porém com a coluna salario_hora em ordem decrescente.</p>
+											<pre><code>sqldf("SELECT * FROM tb_func ORDER BY salario_hora DESC")</code></pre>
+
+
+											<div class="table-wrapper text">
+												<table class="alt">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>estado_civil</th>
+															<th>grau_intrucao</th>
+															<th>numero_filhos</th>
+															<th>salario_hora</th>
+															<th>idade</th>
+															<th>reg_procedencia</th>
+
+														</tr>
+													</thead>
+													<tbody>
+														
+														<tr>
+															<td>9</td>
+															<td>casado</td>
+															<td>ensino medio</td>
+															<td>1</td>
+															<td>7.59</td>
+															<td>4.3</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>10</td>
+															<td>solteiro</td>
+															<td>ensino medio</td>
+															<td>NA</td>
+															<td>7.44</td>
+															<td>60</td>
+															<td>outra</td>
+														</tr>
+														<tr>
+															<td>8</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>7.39</td>
+															<td>40</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>6.86</td>
+															<td>30</td>
+															<td>interior</td>
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>0</td>
+															<td>6.66</td>
+															<td>20</td>
+															<td>interior</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>6.26</td>
+															<td>70</td>
+															<td>outra</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>solteiro</td>
+															<td>ensino medio</td>
+															<td>NA</td>
+															<td>5.73</td>
+															<td>25</td>
+															<td>outra</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>2</td>
+															<td>5.25</td>
+															<td>50</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>1</td>
+															<td>4.56</td>
+															<td>40</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>NA</td>
+															<td>4.00</td>
+															<td>30</td>
+															<td>interior</td>
+														</tr>	
+													</tbody>
+												</table>
+
+											<hr />
+
+										<h2>Select com condicional (WHERE)</h2>
+
+										<p>Utilizaremos a função <b>SELECT</b> porém uzando alguma condição para saber a quantidade de pessoas 
+											com idade igual a 40 anos, em nosso conjunto de dados:</p>
+											<pre><code>sqldf("select count(*) FROM  tb_func WHERE idade = 40")</code></pre>
+											<TABLE >
+												<TR>
+												<TD BGCOLOR=white>## &nbsp;&nbsp; count </br> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</TD>
+												</TR>
+											</TABLE>
+										<p>Para saber a quantidade de pessoas com idade diferente bas eu utilizar o seguinte sinal: <b>!=</b></p>
+
+										<pre><code>sqldf("select count(*) FROM  tb_func WHERE idade != 40")</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; count </br> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8</TD>
+											</TR>
+										</TABLE>
+
+
+										<p>Podemos usar o sinal e maior (>) e o sinal de menor (<), com condição de idade.
+
+											Quantidade de pessoas maiores que 40 anos</p>
+
+										<pre><code>sqldf("select count(*) FROM  tb_func WHERE idade > 40")</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; count </br> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4</TD>
+											</TR>
+										</TABLE>
+
+
+										<p>Quantidade de pessoas menores ou igual a 40 anos</p>
+
+										<pre><code>sqldf("select count(*) FROM  tb_func WHERE idade <= 40")</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; count </br> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6</TD>
+											</TR>
+										</TABLE>
+										<p>Agora utilizaremos duas condições em conjunto: eu quero que me retorne as pessoas com idade menor
+											 que 30 anos e que sejam casadas.</p>
+										
+											 <hr />
+
+
+										<h2>And</h2>
+										<pre><code>sqldf("SELECT * FROM  tb_func WHERE idade < 30 AND estado_civil = 'casado'")</code></pre>
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>estado_civil</th>
+													<th>grau_intrucao</th>
+													<th>numero_filhos</th>
+													<th>salario_hora</th>
+													<th>idade</th>
+													<th>reg_procedencia</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>6</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>0</td>
+													<td>6.66</td>
+													<td>20</td>
+													<td>interior</td>
+												</tr>	
+											</tbody>
+										</table>
+
+										<p>Somente a coluna salario_hora, de pessoas com idade maior que 30 anos e que não são casados.</p>
+										<pre><code>sqldf("SELECT (salario_hora) FROM tb_func WHERE idade > 40 AND estado_civil != 'casado'")</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  salario_hora </br>
+												 ## &nbsp;&nbsp; 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.26</br>
+												 ## &nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.44</td>
+											</tr>
+										</TABLE>
+
+
+										<h2>Or</h2>	
+										<p>Quando utilizamos a condição <b>OR</b>, queremos ou 1 condição ou outra condição.											
+										Como por exemplo, abaixo, queremos todas as colunas ou pessoas que tenham acima
+										de 50 anos, ou pessoas são são casadas. Tanto uma condição ou a outra serve. Não 
+										existindo a necessidade de ser as 02 condições juntas.</p>
+										<pre><code>sqldf("SELECT * FROM tb_func WHERE idade > 50 OR estado_civil = 'solteiro'")</code></pre>
+
+
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>estado_civil</th>
+													<th>grau_intrucao</th>
+													<th>numero_filhos</th>
+													<th>salario_hora</th>
+													<th>idade</th>
+													<th>reg_procedencia</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>1</td>
+													<td>4.56</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>solteiro</td>
+													<td>ensino medio</td>
+													<td>NA</td>
+													<td>5.73</td>
+													<td>25</td>
+													<td>outra</td>
+												</tr>
+												<tr>
+													<td>5</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>NA</td>
+													<td>6.26</td>
+													<td>70</td>
+													<td>outra</td>
+												</tr>
+												<tr>
+													<td>7</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>NA</td>
+													<td>6.86</td>
+													<td>30</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>8</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>NA</td>
+													<td>7.39</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+												<tr>
+													<td>10</td>
+													<td>solteiro</td>
+													<td>ensino medio</td>
+													<td>NA</td>
+													<td>7.44</td>
+													<td>60</td>
+													<td>outra</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<hr />
+
+
+										<h2>Between</h2>	
+										<p>Podemos utilizar a condicional <b>between</b>, sendo que ela incluio a condição na contagem. 
+											Pessoas maiores ou iguais a 30 anos e menores ou iguais a 35 anos</p>
+										<pre><code>sqldf('SELECT COUNT(*) FROM tb_func WHERE idade BETWEEN 30 AND 35')</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; count </br> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2</TD>
+											</TR>
+										</TABLE>
+
+										<p>Se a condição between não estiver clara, podemos utilizar a função and.</p>
+										<pre><code>sqldf('SELECT COUNT(*) FROM tb_func WHERE idade BETWEEN 30 AND 35')</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; count </br> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2</TD>
+											</TR>
+										</TABLE>
+
+
+										<h2>Like</h2>	
+										<p>Para encontrar uma determinada palavra eu posso utilizar a função <b>Like</b>.
+											Querendo enontrar a palavra <b>medio</b> na coluna grau_instrucao.</p>
+										<pre><code>sqldf("SELECT * from tb_func WHERE grau_instrucao LIKE '%medio%' "))</code></pre>
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>estado_civil</th>
+													<th>grau_intrucao</th>
+													<th>numero_filhos</th>
+													<th>salario_hora</th>
+													<th>idade</th>
+													<th>reg_procedencia</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>4</td>
+													<td>solteiro</td>
+													<td>ensino medio</td>
+													<td>NA</td>
+													<td>5.73</td>
+													<td>25</td>
+													<td>outra</td>
+												</tr>
+												<tr>
+													<td>9</td>
+													<td>casado</td>
+													<td>ensino medio</td>
+													<td>1</td>
+													<td>7.59</td>
+													<td>4.3</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>10</td>
+													<td>solteiro</td>
+													<td>ensino medio</td>
+													<td>NA</td>
+													<td>7.44</td>
+													<td>60</td>
+													<td>outra</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<hr />
+
+
+										<h2>IN</h2>	
+										<p>Podemos também encontrar um conjunto de idade por exemplo, usando a função <b>IN</b>, 
+											querendo que apenas retorne pessoas com idade de 20, 30, e 40 anos.</p>
+										<pre><code>sqldf("SELECT * from tb_func WHERE idade IN (20,30,40,50) ")</code></pre>
+										<TABLE >
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>estado_civil</th>
+													<th>grau_intrucao</th>
+													<th>numero_filhos</th>
+													<th>salario_hora</th>
+													<th>idade</th>
+													<th>reg_procedencia</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>NA</td>
+													<td>4.00</td>
+													<td>30</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>1</td>
+													<td>4.56</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>2</td>
+													<td>5.25</td>
+													<td>50</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>6</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>0</td>
+													<td>6.66</td>
+													<td>20</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>7</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>NA</td>
+													<td>6.86</td>
+													<td>30</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>8</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>NA</td>
+													<td>7.39</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+											</tbody>
+										</TABLE>
+
+										<hr />
+
+
+										<h2>NULL</h2>	
+										<p>Podemos identificar os registros na coluna numeor_filho que não possui registro, 
+											valores missing, usando <b>IS NULL</b>.</p>
+										<pre><code>sqldf("SELECT * from 'tb_func' WHERE numero_filhos IS null")</code></pre>
+									<table>
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>estado_civil</th>
+												<th>grau_intrucao</th>
+												<th>numero_filhos</th>
+												<th>salario_hora</th>
+												<th>idade</th>
+												<th>reg_procedencia</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>casado</td>
+												<td>ensino fundamental</td>
+												<td>NA</td>
+												<td>4.00</td>
+												<td>30</td>
+												<td>interior</td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td>solteiro</td>
+												<td>ensino medio</td>
+												<td>NA</td>
+												<td>5.73</td>
+												<td>25</td>
+												<td>outra</td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td>solteiro</td>
+												<td>ensino fundamental</td>
+												<td>NA</td>
+												<td>6.26</td>
+												<td>70</td>
+												<td>outra</td>
+											</tr>
+											<tr>
+												<td>7</td>
+												<td>solteiro</td>
+												<td>ensino fundamental</td>
+												<td>NA</td>
+												<td>6.86</td>
+												<td>30</td>
+												<td>interior</td>
+											</tr>
+											<tr>
+												<td>8</td>
+												<td>solteiro</td>
+												<td>ensino fundamental</td>
+												<td>NA</td>
+												<td>7.39</td>
+												<td>40</td>
+												<td>capital</td>
+											</tr>
+											<tr>
+											<tr>
+												<td>10</td>
+												<td>solteiro</td>
+												<td>ensino medio</td>
+												<td>NA</td>
+												<td>7.44</td>
+												<td>60</td>
+												<td>outra</td>
+											</tr>
+										</tbody>
+									</table>
+
+										<p>Ou apenas as linhas que possuem registro, com <b>IS NOT NULL</b>.</p>
+										<pre><code>sqldf("SELECT * from 'tb_func' WHERE numero_filhos IS NOT null")</code></pre>
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>estado_civil</th>
+													<th>grau_intrucao</th>
+													<th>numero_filhos</th>
+													<th>salario_hora</th>
+													<th>idade</th>
+													<th>reg_procedencia</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>1</td>
+													<td>4.56</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>2</td>
+													<td>5.25</td>
+													<td>50</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>6</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>0</td>
+													<td>6.66</td>
+													<td>20</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>9</td>
+													<td>casado</td>
+													<td>ensino medio</td>
+													<td>1</td>
+													<td>7.59</td>
+													<td>4.3</td>
+													<td>capital</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<hr />
+
+
+									<H2>UPDATE</H2>
+									<p>Sabemos que possuem 06 registro com valores nulos em nosso conjunto de dados, então, 
+										trocarei os valores <b><em>null</em></b>, por uma quantidade de filhos <b>errada</b>, colocaremos o número 10.</p>
+										<pre><code>tb_func <- sqldf(c("update tb_func set numero_filhos = 10 where numero_filhos IS null",</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"select * from main.tb_func"))</code></pre>
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>estado_civil</th>
+													<th>grau_intrucao</th>
+													<th>numero_filhos</th>
+													<th>salario_hora</th>
+													<th>idade</th>
+													<th>reg_procedencia</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>10</td>
+													<td>4.00</td>
+													<td>30</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>1</td>
+													<td>4.56</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>2</td>
+													<td>5.25</td>
+													<td>50</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>solteiro</td>
+													<td>ensino medio</td>
+													<td>10</td>
+													<td>5.73</td>
+													<td>25</td>
+													<td>outra</td>
+												</tr>
+												<tr>
+													<td>5</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>10</td>
+													<td>6.26</td>
+													<td>70</td>
+													<td>outra</td>
+												</tr>
+												<tr>
+													<td>6</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>0</td>
+													<td>6.66</td>
+													<td>20</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>7</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>10</td>
+													<td>6.86</td>
+													<td>30</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>8</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>10</td>
+													<td>7.39</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>9</td>
+													<td>casado</td>
+													<td>ensino medio</td>
+													<td>1</td>
+													<td>7.59</td>
+													<td>4.3</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>10</td>
+													<td>solteiro</td>
+													<td>ensino medio</td>
+													<td>10</td>
+													<td>7.44</td>
+													<td>60</td>
+													<td>outra</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<hr />
+
+									<h2>Delete</h2>
+
+									<p> Anteriormente colocamos no lugar nos valores <em>null</em> na coluna numero_filhos, o valor <b>10</b>, 
+										agora iremos deleter todos os registros que tenham o valor 10 da coluna numero_filhos</p>
+										<pre><code>tb_func <- sqldf(c("DELETE from 'tb_func' WHERE numero_filhos IS 10",</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"select * from main.tb_func"))</code></pre>
+
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>estado_civil</th>
+													<th>grau_intrucao</th>
+													<th>numero_filhos</th>
+													<th>salario_hora</th>
+													<th>idade</th>
+													<th>reg_procedencia</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2</td>
+													<td>solteiro</td>
+													<td>ensino fundamental</td>
+													<td>1</td>
+													<td>4.56</td>
+													<td>40</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>2</td>
+													<td>5.25</td>
+													<td>50</td>
+													<td>capital</td>
+												</tr>
+												<tr>
+													<td>6</td>
+													<td>casado</td>
+													<td>ensino fundamental</td>
+													<td>0</td>
+													<td>6.66</td>
+													<td>20</td>
+													<td>interior</td>
+												</tr>
+												<tr>
+													<td>9</td>
+													<td>casado</td>
+													<td>ensino medio</td>
+													<td>1</td>
+													<td>7.59</td>
+													<td>4.3</td>
+													<td>capital</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<hr />
+
+
+										<h2>Insert</h2>
+										<p>Quando quizermos acrescentar registro em nossa tabela utilizaremso a função <b>insert</b>.</p>
+
+										<pre><code>tb_func <- sqldf(c(" INSERT INTO tb_func (</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID, estado_civil, grau_instrucao, numero_filhos, salario_hora, idade, reg_procedencia)</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values (11, 'casado', 'ensino medio', 3, 4.5, 30, 'capital')",</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"select * from main.tb_func"))</code></pre>
+										<p>Podemos observar que tais informações da query acima, foram incluida na quinta linha, uma vez que o nosso conjunto de dados 
+											foram deletados todos os valores <em>null</em>, restando apenas 04 registos.</p>
+
+											<div class="table-wrapper text">
+												<table class="alt">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>estado_civil</th>
+															<th>grau_intrucao</th>
+															<th>numero_filhos</th>
+															<th>salario_hora</th>
+															<th>idade</th>
+															<th>reg_procedencia</th>
+
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>2</td>
+															<td>solteiro</td>
+															<td>ensino fundamental</td>
+															<td>1</td>
+															<td>4.56</td>
+															<td>40</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>2</td>
+															<td>5.25</td>
+															<td>50</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>casado</td>
+															<td>ensino fundamental</td>
+															<td>0</td>
+															<td>6.66</td>
+															<td>20</td>
+															<td>interior</td>
+														</tr>
+														<tr>
+															<td>9</td>
+															<td>casado</td>
+															<td>ensino medio</td>
+															<td>1</td>
+															<td>7.59</td>
+															<td>4.3</td>
+															<td>capital</td>
+														</tr>
+														<tr>
+															<td>10</td>
+															<td>solteiro</td>
+															<td>ensino medio</td>
+															<td>NA</td>
+															<td>7.44</td>
+															<td>60</td>
+															<td>outra</td>
+														</tr>
+														
+														<tr>
+															<td>11</td>
+															<td>casado</td>
+															<td>ensino medio</td>
+															<td>3</td>
+															<td>4.5</td>
+															<td>30</td>
+															<td>capital</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<hr />
+
+
+										<h2>Valor Mínimo, máximo e média</h2>
+										<p>Agora pegaremos a coluna salario_hora, e criaremos uma query que teão o valor mínimo que chamaremos de Mim,
+											 o valor máximo que chamaremos de Max, o valor médio que chamaremos de Média, a sumatória de todos os valores,
+											que chamaremos de Soma e a quantidade de registro que chamaremos de Count.</p>
+											<pre><code>sqldf("select MIN(salario_hora) Mim, </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MAX(salario_hora) Max, </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVG(salario_hora) Media, </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUM(salario_hora) Soma, </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count(*) Count from  tb_func ")
+											</code></pre>
+											<TABLE >
+												<TR>
+												<TD BGCOLOR=white>## &nbsp;&nbsp; Min &nbsp;&nbsp;&nbsp;&nbsp; Max &nbsp;&nbsp;&nbsp;&nbsp; Media &nbsp;&nbsp;&nbsp;&nbsp; Soma &nbsp;&nbsp;&nbsp;&nbsp; Count
+
+												</br> ## &nbsp;&nbsp;&nbsp; 4.5 &nbsp;&nbsp;&nbsp;&nbsp; 7.59 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.712 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28.56 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</TD>
+												</TR>
+											</TABLE>
+
+									<h2>Group By</h2>
+									<p> Esta função é de estrema importância, pois abaixo iremos encontrar o salário_hora média por região</p>
+
+									<pre><code>sqldf("SELECT round(AVG(salario_hora),2) Média, reg_procedencia regiao </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM tb_func </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY reg_procedencia")</code></pre>
+									<TABLE >
+										<TR>
+										<TD BGCOLOR=white>## &nbsp;&nbsp; Media &nbsp;&nbsp;&nbsp;&nbsp; Regiao 
+										</br> ## &nbsp;&nbsp;&nbsp;&nbsp; 5.48 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capital
+										</br> ## &nbsp;&nbsp;&nbsp;&nbsp; 6.66 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interior
+									
+									</TD>
+										</TR>
+									</TABLE>
+
+
+									<p>Agora utilizaremos 02 colunas para a média de salário hora, reg_procedencia e grau_instrucao</p>
+							
+									<pre><code>sqldf("SELECT round(AVG(salario_hora),2) Media, reg_procedencia Regiao, grau_instrucao Ensino</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM tb_func </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GROUP BY reg_procedencia, grau_instrucao")</code></pre>
+									
+									<TABLE >
+										<TR>
+										<TD BGCOLOR=white>## &nbsp;&nbsp; Media &nbsp;&nbsp;&nbsp;&nbsp; Regiao &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ensino
+										</br> ## &nbsp;&nbsp;&nbsp;&nbsp; 4.91 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capital &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ensino fundamental
+										</br> ## &nbsp;&nbsp;&nbsp;&nbsp; 4.05 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capital &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ensino medio
+										</br> ## &nbsp;&nbsp;&nbsp;&nbsp; 6.66 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interior &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ensino fundamental
+									
+									</TD>
+										</TR>
+									</TABLE>
+
+								</div>
+
+									<hr />
+
+							<h2>Exercício</h2>
+
+							<p>Quem tiver suas dúvida, sugestões ou quiser enviar a sua resposta, fica a vontade para o seguinte: <a href="mailto:consultoriaterra@hotmail.com">E-mail.</a></p>
+							<p><b>1. </b>Crie uma instrução SQL que retorna a média de idade, número de filhos e grau de 
+							instrução dos funcionários cujo salário_hora estiver acima da média de todos os funcionários.
+							Retorne os dados somente de funcionários da capital e estado civil casado, 
+							com ordem decrescente da média de idade. </p>
+
+							<p><b>2. </b>Retorne todos os registro dos funcionários com 2 filhos.</p>
+
+							<br><b>3. </b>Retorno a média de salário hora or estado </br>
+						O comando do novo conjunto de dados no RStudio segue abaixo:</p>
+						<pre><code>tb_endereco <- data.frame("id_end" = c(1001,1002,1003,1004,1005),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rua" = c('Jaguar', 'Mercedes Benz','BMW','Ferrari','McLaren'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"numero" = c(40, 140, 20, 32, 45),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bairro"= c('Tijuca','Centro','Tijuca','Centro','Centro'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cep" = c('24239-900','12098-900',"23232-900",'99872-900','43982-900'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"estado" = c('Rio de Janeiro','Minas Gerais','Rio de Janeiro','Minas Gerais','Minas Gerais'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pais" =c('Brasil', 'Brasil', 'Brasil', 'Brasil', 'Brasil'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id_func" = c(2, 6, 3, 11, 17))
+  </code></pre>
+  <hr />
+
+
+							<!-- Image -->
+							<div class="text">
+							<h3>Outros Artigos</h3>
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">
+										<h2>Vetores</h2>
+										<div class="content">
+											<p>Um vetor em R é uma estrutura básica dentro da linguagem, que permite armazenar uma quantidade numérica ou string (letras ou caracteres), em um único objeto. O vetor possui apenas 01 única dimensão.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">
+										<h2>Matrix</h2>
+										<div class="content">
+											<p>Matrizes é caracterizado como uma coleção de vetores, sendo todos do mesmo tipo (numérico ou caracteres) armazenados entre linhas e colunas.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Data Frame</h2>
+										<div class="content">
+											<p> 05 / 03/ 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic05.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Análise Exploratória</h2>
+										<div class="content">
+											<p>12 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic06.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Regressão Linear</h2>
+										<div class="content">
+											<p>19 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/pic07.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Clusterização</h2>
+										<div class="content">
+											<p>26 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>															
+							</section></br>
+
+							<hr />
+									<h3>Projeto - Python &amp;Lingaugem R</h3>
+									<p><span class="image left"><img src="https://raw.githubusercontent.com/rodolffoterra/Projct_Marijuana_Legalization_TS/main/imagnes/layout.png" alt="" />
+									</span>Vamos realizar uma análise de dados com base em séries temporais e análises geoespaciais, além de outras técnicas exploratórias 
+									mais gerais, para examinar se essas previsões se tornaram realidade em Los Angeles desde que a legalização entrou em vigor. Nosso foco 
+									principal será nos dados disponíveis sobre detenções por crimes relacionados à maconha e na taxa geral de crimes nas proximidades de 
+									dispensários. Vamos focar principalmente nem: Permição o cultivo de maconha perto de escolas e parques;
+									A legalização Prejudica ou não as comunidades pobres com problemas de dependência por meio do influxo de novos pontos de vendas de maconha;
+								    E se com legalização existiu um aumento de criminalidade  nas áreas próximas aos pontos de vendas.
+									Os dados usados neste projeto estão disponíveis publicamente e são oferecidos pelo portal de dados abertos do governo de Los Angeles.</br>
+									Você é favor ou contra à legalização da Maconha? Acompanhe o projeto passo a passo, leia atentamente cada comentário e então emita sua 
+									opinião com base em dados. </p>
+									<p  class="bottum-rigth" ><a target="_black" href="https://github.com/rodolffoterra/Project_Marijuana_Legalization_TS" class="button primary small">Projeto <i class="fab fa-python"></i></a></p>
+								</br>
+								
+									<p><span class="image right"><img src="images/pic14.jpg" alt="" />
+									</span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in 
+									faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent 
+									tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis 
+									volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis
+									 eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing 
+									 accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in 
+									 faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. 
+									 Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis
+									  eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing 
+									  accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+									  <p  class="bottum-left" ><a target="_black" href="https://rpubs.com/RodolfoTerra/bicicleta" class="button primary small">Projeto <i class="far fa-registered"></i></a></p>
+								</br>
+								</section>
+							</div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner text">
+						
+						<section>
+							<h2>Desenvolvimento</h2>
+							<ul class="icons">
+								<li><a target="_blank" href="https://github.com/rodolffoterra" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+								<li><a target="_blank" href="http://www.rodolfoterra.com" class="icon solid style2 fa-home"><span class="label">Site</span></a></li>
+								<li><a target="_blank" href="https://rpubs.com/RodolfoTerra" class="far fa-registered"><span class="label"> Rpub's</span></a></li>
+																	
+							</ul>
+							
+						</section>
+						<section>
+							<h2>Redes Sociais</h2>
+							<ul class="icons">
+							<li><a target="_blank" href="https://www.linkedin.com/in/rodolffoterra/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/rodolffo.terra/" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="mailto:consultoriaterra@hotmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="mailto:+5515981194753" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+							</ul>
+						</section>
+						<ul class="desenvolv">
+							&copy; Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> Rodlfo Terra | Cientista de Dados</a></li>
+						</ul>
+					</div>
+				</footer>
+
+		</div>
+
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>
