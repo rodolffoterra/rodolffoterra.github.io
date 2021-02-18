@@ -2372,8 +2372,8 @@ input, select, textarea {
 /* Table */
 
 	.table-wrapper {
-		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
+		bgcp: white;
 	}
 
 	table {
@@ -2536,7 +2536,8 @@ input, select, textarea {
 			input[type="button"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: #f2849e;
+				text-align: right;
+				background-color: #0c0377;
 			}
 
 			input[type="submit"].primary:active,
@@ -3325,6 +3326,59 @@ input, select, textarea {
 			color: #9b9696f3;
 
 		}
+
+		.bottum-rigth {
+			margin-top: -20px;
+			text-align: right;
+		}
+		.bottum-left {
+			margin-top: -20px;
+			text-align: left;
+		}
+
+		.principal{
+			font-size:16px;
+			background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100%),  url('/images/pic16.webp');
+		
+			height:400px;
+			background-size:cover;
+		 
+		
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+		}
+
+		header .container{
+			display:flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			
+		}
+
+		.container{
+			margin-left: 43%;
+			color: #f6f6f6;
+		}
+
+		.container .text{
+			margin-left: 10%;
+			margin-top: 0%;
+			color: #f6f6f6;
+		}
+		
+		.principal .container{
+			width: 70%;
+		}
+
+		.text{
+			margin-left: 50px;
+			margin-right: 50px;
+			text-align: justify;
+		}
+		
 
 /* Wrapper */
 
