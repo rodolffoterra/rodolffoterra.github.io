@@ -1,0 +1,671 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+<!-- Hotjar Tracking Code for https://rodolffoterra.github.io/sqldf.html -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2255362,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<script type='text/javascript'>
+	window.smartlook||(function(d) {
+	  var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+	  var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+	  c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+	  })(document);
+	  smartlook('init', 'e174065ea1c92508fe441a2a29be0219950dacb0');
+  </script>
+  
+		<title>Rodolfo Terra | Ciência de Dados</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+					<!-- Main -->
+				<main>
+				<div class="principal">
+					<div class="container">
+							<h1>Data &nbsp;&nbsp;&nbsp; Frame</h1>
+					<h3 class="text">Linguagem R</h3>
+					</div>
+				</div>
+				</main>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">Aula Anterior - Matrix</a></li>
+							<li><a target="_black" href="index.html">Próxima Aula - Análise Exploratória</a></li>
+
+							<li><a target="_black" href="https://www.rodolfoterra.com/">Site</a></li>
+
+							<!-- Logo -->
+							<a target="_black" href="https://www.rodolfoterra.com/" class="logo">
+								<span class="bottum-rigth"><img src="images/logo.png" alt="" />
+								</a>
+						</ul>
+					</nav>
+
+				
+
+							<!-- Text -->
+								<section>
+								</br>
+								<div class='text'>
+								<h2>Data Frame</h2>
+									<P>Em síntese, <b>data frames</b> são tabelas de dados. Em seu formato, são bem parecidos com as matrizes,
+										 no entanto, possuem algumas diferenças significativas. Podemos idealizar os data frames como sendo 
+										 matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um 
+										 objeto bem mais versátil do que as matrizes e os vetores.</P>
+									<P>Primeiramente iremos criar um Data frame, cvom as seguintes variáveis 
+										(nomes das colunas): - Nome do tipo character; - idade do tipo numérico;
+										 - itens do tipo numérico; - código do tipo inteiro;</P>
+									
+									<pre><code># Criando vetores vazios</br>nomes <- character()</br>idades <- numeric()</br>itens <- numeric()</br>codigos <- integer()</br></br>df <- data.frame(c(nomes, idades, itens, codigos))</br></br>class(df)</code></pre>
+									<TABLE >
+										<TR>
+										<TD BGCOLOR=white>## &nbsp;&nbsp; [1]  &nbsp;&nbsp; "data.frame"</TD>
+										</TR>
+												
+									</TABLE>
+
+									<p>Agora iremos construir alguns vetores, com as informações e colocar 
+										no data Frame.</p>
+
+									<pre><code># Criando Vetores</br>pais = c(<span style="color: #ff0000;">"Portugal", "Inglaterra", "Irlanda", "Egito", "Brasil","Brasil"</span>)</br>nome = c(<span style="color: #ff0000;">"Bruno", "Tiago", "Amanda", "Bianca", "Marta","Rodolfo"</span>)</br>altura = c(<span style="color: #0f9494;">1.88, 1.76, 1.53, 1.69, 1.68,1.73</span>)</br>codigo = c(<span style="color: #0f9494;">5001, 2183, 4702, 7965, 8890, 8895</span>)</br></br># Criando um dataframe de diversos vetores</br>df = data.frame(pais, nome, altura, codigo)</br></br>df
+									</code></pre>
+
+
+
+
+
+
+									<div class="table-wrapper text">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th></th>
+													<th>pais</th>
+													<th>nome</th>
+													<th>altura</th>
+													<th>codigo</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>Portugal</td>
+													<td>Bruno</td>
+													<td>1.88</td>
+													<td>5001</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>Inglaterra</td>
+													<td>Tiago</td>
+													<td>1.76</td>
+													<td>2183</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>Irlanda</td>
+													<td>Amanda</td>
+													<td>1.53</td>
+													<td>4702</td>
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>Egito</td>
+													<td>Bianca</td>
+													<td>1.69</td>
+													<td>7965</td>
+												</tr>
+												<tr>
+													<td>5</td>
+													<td>Brasil</td>
+													<td>Marta</td>
+													<td>1.68</td>
+													<td>8890</td>
+												</tr>
+												<tr>
+													<td>6</td>
+													<td>Brasil</td>
+													<td>Luiz</td>
+													<td>1.73</td>
+													<td>8895</td>
+												</tr>
+												
+											</tbody>
+										</table>
+
+									<hr />
+										
+								<p>Agora podemos acrescentar mais uma coluna em nosso conjunto de dados, utilizando a fundção <code>cbind()</code>que chamaremos de olho.
+
+								</b></p>
+								<pre><code># Adicionando um novo vetor a um dataframe existente</br>olhos = c(<span style="color: #ff0000;">"verde", "azul", "azul", "castanho", "castanho","castanho"</span>)</br>df = cbind(df, olhos)</br>df</code></pre>										
+								<div class="table-wrapper text">
+									<table class="alt">
+										<thead>
+											<tr>
+												<th></th>
+												<th>pais</th>
+												<th>nome</th>
+												<th>altura</th>
+												<th>codigo</th>
+												<th>olhos</th>
+												</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>Portugal</td>
+												<td>Bruno</td>
+												<td>1.88</td>
+												<td>5001</td>
+												<td>verde</td>
+												</tr>
+													<tr>
+														<td>2</td>
+														<td>Inglaterra</td>
+														<td>Tiago</td>
+														<td>1.76</td>
+														<td>2183</td>
+														<td>azul</td>
+													</tr>
+													<tr>
+														<td>3</td>
+														<td>Irlanda</td>
+														<td>Amanda</td>
+														<td>1.53</td>
+														<td>4702</td>
+														<td>azul</td>
+													</tr>
+													<tr>
+														<td>4</td>
+														<td>Egito</td>
+														<td>Bianca</td>
+														<td>1.69</td>
+														<td>7965</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>Brasil</td>
+														<td>Marta</td>
+														<td>1.68</td>
+														<td>8890</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>6</td>
+														<td>Brasil</td>
+														<td>Luiz</td>
+														<td>1.73</td>
+														<td>8895</td>
+														<td>castanho</td>
+													</tr>
+													
+												</tbody>
+											</table>
+
+										<hr />
+								<p>Podemos também acrescentar observações, ao invés de colunas, com a função<code>rbind().</code></p>
+								<pre><code>pessoa_07 <- c("(<span style="color: #ff0000;">Inglaterra",'Marcos','1.81', "5002",'azul'</span>)</br>df = rbind(df, pessoa_07)</br>df</code></pre>
+								<div class="table-wrapper text">
+									<table class="alt">
+										<thead>
+											<tr>
+												<th></th>
+												<th>pais</th>
+												<th>nome</th>
+												<th>altura</th>
+												<th>codigo</th>
+												<th>olhos</th>
+												</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>Portugal</td>
+												<td>Bruno</td>
+												<td>1.88</td>
+												<td>5001</td>
+												<td>verde</td>
+												</tr>
+													<tr>
+														<td>2</td>
+														<td>Inglaterra</td>
+														<td>Tiago</td>
+														<td>1.76</td>
+														<td>2183</td>
+														<td>azul</td>
+													</tr>
+													<tr>
+														<td>3</td>
+														<td>Irlanda</td>
+														<td>Amanda</td>
+														<td>1.53</td>
+														<td>4702</td>
+														<td>azul</td>
+													</tr>
+													<tr>
+														<td>4</td>
+														<td>Egito</td>
+														<td>Bianca</td>
+														<td>1.69</td>
+														<td>7965</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>Brasil</td>
+														<td>Marta</td>
+														<td>1.68</td>
+														<td>8890</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>6</td>
+														<td>Brasil</td>
+														<td>Luiz</td>
+														<td>1.73</td>
+														<td>8895</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>7</td>
+														<td>Inglaterra</td>
+														<td>Marcos</td>
+														<td>1.81</td>
+														<td>5002</td>
+														<td>azul</td>
+													</tr>
+													
+												</tbody>
+											</table>
+
+											<p>Para obter algumas informações básica:</p>
+											<pre><code>str(df)</code></pre>
+											<TABLE >
+												<TR>
+												<TD BGCOLOR=white>## &nbsp;&nbsp; 'data.frame': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 obs. &nbsp;of &nbsp;&nbsp;&nbsp; 5 &nbsp;variables:</br>
+													## &nbsp;&nbsp; $ pais  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "Portugal" &nbsp;&nbsp; "Inglaterra" &nbsp;&nbsp; "Irlanda" &nbsp;&nbsp; "Egito"&nbsp;&nbsp; ...</br>
+													## &nbsp;&nbsp; $ nome  &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "Bruno" &nbsp;&nbsp; "Tiago" &nbsp;&nbsp; "Amanda" &nbsp;&nbsp; "Bianca"&nbsp;&nbsp; ...</br> 
+													## &nbsp;&nbsp; $ altura  &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "1.88" &nbsp;&nbsp; "1.76" &nbsp;&nbsp; "1.53" &nbsp;&nbsp; "1.69"&nbsp;&nbsp; ... </br>
+													## &nbsp;&nbsp; $ codigo  &nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "5001" &nbsp;&nbsp; "2183" &nbsp;&nbsp; "4702" &nbsp;&nbsp; "7965"&nbsp;&nbsp; ... </br>
+													## &nbsp;&nbsp; $ olhos  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "verde" &nbsp;&nbsp; "azul" &nbsp;&nbsp; "azul" &nbsp;&nbsp; "castanho"&nbsp;&nbsp; ... 
+													<pre><code># Quantidade de linhas e colunas</br>dim(df)</code></pre>
+													<TABLE >
+														<TR>
+														<TD BGCOLOR=white>## &nbsp;&nbsp; [1]  &nbsp;&nbsp; 7&nbsp;&nbsp; 5</TD>
+														</TR>
+																
+													</TABLE>
+
+
+													<pre><code># Comprimento</br>length(df)</code></pre>
+													<TABLE >
+														<TR>
+														<TD BGCOLOR=white>## &nbsp;&nbsp; [1]  &nbsp;&nbsp; 5</TD>
+														</TR>
+																
+													</TABLE>
+
+
+													<pre><code># Número de linhas</br>nrow(df)</code></pre>
+													<TABLE >
+														<TR>
+														<TD BGCOLOR=white>## &nbsp;&nbsp; [1]  &nbsp;&nbsp; 7</TD>
+														</TR>
+																
+													</TABLE>
+
+													<pre><code># Número de colunas</br>ncol(df)</code></pre>
+													<TABLE >
+														<TR>
+														<TD BGCOLOR=white>## &nbsp;&nbsp; [1]  &nbsp;&nbsp; 5</TD>
+														</TR>
+																
+													</TABLE>
+
+													<p>É possível observar apenas as primeiras observações, usando a função <code>head()</code></p>
+													<pre><code>head(df)</code></pre>
+													<div class="table-wrapper text">
+														<table class="alt">
+															<thead>
+																<tr>
+																	<th></th>
+																	<th>pais</th>
+																	<th>nome</th>
+																	<th>altura</th>
+																	<th>codigo</th>
+																	<th>olhos</th>
+																	</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>1</td>
+																	<td>Portugal</td>
+																	<td>Bruno</td>
+																	<td>1.88</td>
+																	<td>5001</td>
+																	<td>verde</td>
+																	</tr>
+																		<tr>
+																			<td>2</td>
+																			<td>Inglaterra</td>
+																			<td>Tiago</td>
+																			<td>1.76</td>
+																			<td>2183</td>
+																			<td>azul</td>
+																		</tr>
+																		<tr>
+																			<td>3</td>
+																			<td>Irlanda</td>
+																			<td>Amanda</td>
+																			<td>1.53</td>
+																			<td>4702</td>
+																			<td>azul</td>
+																		</tr>
+																		<tr>
+																			<td>4</td>
+																			<td>Egito</td>
+																			<td>Bianca</td>
+																			<td>1.69</td>
+																			<td>7965</td>
+																			<td>castanho</td>
+																		</tr>
+																		<tr>
+																			<td>5</td>
+																			<td>Brasil</td>
+																			<td>Marta</td>
+																			<td>1.68</td>
+																			<td>8890</td>
+																			<td>castanho</td>
+																		</tr>
+																		
+																	</tbody>
+																</table>
+
+
+														<p>Ou com a função <code>tail()</code> podemos observar as últimas observações:</p>
+														<pre><code>tail(df)</code></pre>
+
+																<div class="table-wrapper text">
+																	<table class="alt">
+																		<thead>
+																			<tr>
+																				<th></th>
+																				<th>pais</th>
+																				<th>nome</th>
+																				<th>altura</th>
+																				<th>codigo</th>
+																				<th>olhos</th>
+																				</tr>
+																		</thead>
+																		<tbody>
+																			
+																					<tr>
+																						<td>3</td>
+																						<td>Irlanda</td>
+																						<td>Amanda</td>
+																						<td>1.53</td>
+																						<td>4702</td>
+																						<td>azul</td>
+																					</tr>
+																					<tr>
+																						<td>4</td>
+																						<td>Egito</td>
+																						<td>Bianca</td>
+																						<td>1.69</td>
+																						<td>7965</td>
+																						<td>castanho</td>
+																					</tr>
+																					<tr>
+																						<td>5</td>
+																						<td>Brasil</td>
+																						<td>Marta</td>
+																						<td>1.68</td>
+																						<td>8890</td>
+																						<td>castanho</td>
+																					</tr>
+																					<tr>
+																						<td>6</td>
+																						<td>Brasil</td>
+																						<td>Luiz</td>
+																						<td>1.73</td>
+																						<td>8895</td>
+																						<td>castanho</td>
+																					</tr>
+																					<tr>
+																						<td>7</td>
+																						<td>Inglaterra</td>
+																						<td>Marcos</td>
+																						<td>1.81</td>
+																						<td>5002</td>
+																						<td>azul</td>
+																					</tr>
+																					
+																				</tbody>
+																			</table>
+
+													
+													
+
+ 
+
+
+
+
+												</TD>
+												</TR>
+														
+											</TABLE>
+
+										<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr />
+
+
+							<!-- Image -->
+							<div class="text">
+							<h3>Outros Artigos</h3>
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic01.jpg" alt="" />
+									</span>
+									<a target="blank" href="sqldf.html">
+										<h2>SQLDF</h2>
+										<div class="content">
+											<p>Aprenda a trabalhar com duas ferramentas ao mesmo tempo, podemos trabalhar com SQL dentro do RStudio.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">
+										<h2>Vetores</h2>
+										<div class="content">
+											<p>Um vetor em R é uma estrutura básica dentro da linguagem, que permite armazenar uma quantidade numérica ou string (letras ou caracteres), em um único objeto. O vetor possui apenas 01 única dimensão.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">
+										<h2>Matrix</h2>
+										<div class="content">
+											<p>Matrizes é caracterizado como uma coleção de vetores, sendo todos do mesmo tipo (numérico ou caracteres) armazenados entre linhas e colunas.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic05.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Análise Exploratória</h2>
+										<div class="content">
+											<p>12 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic06.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Regressão Linear</h2>
+										<div class="content">
+											<p>19 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/pic07.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Clusterização</h2>
+										<div class="content">
+											<p>26 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>															
+							</section></br>
+
+							<hr />
+									<h3>Projeto Lingaugem R</h3>
+									<p><span class="image left"><img src="images/pic15.jpg" alt="" />
+									</span>Por melhor negociador que você acredite ser, você já foi persuadido por pelo menos um 
+									dos 4 tipos de negociador mais conhecidos. Seja no seu trabalho, em lojas de roupas e calçados 
+									ou quando seu filho insiste em ter algo que você sabe que ele não precisa.</br>
+									A negociação está presente em nossas vidas constantemente, seja na profissional, seja na pessoal.
+								Esta aplicação desenvolvida em Shiny, linguagem R, mostrará qual dos perfil você melhor se 
+								identificarao responder um pequeno enquete.</p>
+									<p  class="bottum-rigth" ><a target="_black" href="https://rodolfoterra.shinyapps.io/perfil_comportamental/" class="button primary small">Projeto <i class="far fa-registered"></i></a></p>
+								</br>
+								</section>
+							</div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner text">
+						
+						<section>
+							<h2>Desenvolvimento</h2>
+							<ul class="icons">
+								<li><a target="_blank" href="https://github.com/rodolffoterra" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+								<li><a target="_blank" href="http://www.rodolfoterra.com" class="icon solid style2 fa-home"><span class="label">Site</span></a></li>
+								<li><a target="_blank" href="https://rpubs.com/RodolfoTerra" class="far fa-registered"><span class="label"> Rpub's</span></a></li>
+																	
+							</ul>
+							
+						</section>
+						<section>
+							<h2>Redes Sociais</h2>
+							<ul class="icons">
+							<li><a target="_blank" href="https://www.linkedin.com/in/rodolffoterra/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/rodolffo.terra/" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="mailto:consultoriaterra@hotmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="mailto:+5515981194753" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+							</ul>
+						</section>
+						<ul class="desenvolv">
+							&copy; Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> Rodlfo Terra | Ciência de Dados</a></li>
+						</ul>
+					</div>
+					<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+				</footer>
+
+		</div>
+
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>
