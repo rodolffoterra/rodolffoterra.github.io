@@ -174,6 +174,7 @@
 												
 											</tbody>
 										</table>
+									</div>
 
 									<hr />
 										
@@ -245,6 +246,7 @@
 													
 												</tbody>
 											</table>
+										</div>
 
 										<hr />
 								<p>Podemos também acrescentar observações, ao invés de colunas, com a função<code>rbind().</code></p>
@@ -321,12 +323,13 @@
 													
 												</tbody>
 											</table>
+											</div>
 
 											<p>Para obter algumas informações básica:</p>
 											<pre><code>str(df)</code></pre>
 											<TABLE >
 												<TR>
-												<TD BGCOLOR=white>## &nbsp;&nbsp; 'data.frame': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 obs. &nbsp;of &nbsp;&nbsp;&nbsp; 5 &nbsp;variables:</br>
+												< BGCOLOR=white>## &nbsp;&nbsp; 'data.frame': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 obs. &nbsp;of &nbsp;&nbsp;&nbsp; 5 &nbsp;variables:</br>
 													## &nbsp;&nbsp; $ pais  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "Portugal" &nbsp;&nbsp; "Inglaterra" &nbsp;&nbsp; "Irlanda" &nbsp;&nbsp; "Egito"&nbsp;&nbsp; ...</br>
 													## &nbsp;&nbsp; $ nome  &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "Bruno" &nbsp;&nbsp; "Tiago" &nbsp;&nbsp; "Amanda" &nbsp;&nbsp; "Bianca"&nbsp;&nbsp; ...</br> 
 													## &nbsp;&nbsp; $ altura  &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; chr &nbsp;&nbsp; "1.88" &nbsp;&nbsp; "1.76" &nbsp;&nbsp; "1.53" &nbsp;&nbsp; "1.69"&nbsp;&nbsp; ... </br>
@@ -380,7 +383,7 @@
 																	<th>olhos</th>
 																	</tr>
 															</thead>
-															<tbody>
+															
 																<tr>
 																	<td>1</td>
 																	<td>Portugal</td>
@@ -423,7 +426,9 @@
 																		</tr>
 																		
 																	</tbody>
-																</table>
+																</table>																
+															</div>
+																								
 
 
 														<p>Ou com a função <code>tail()</code> podemos observar as últimas observações:</p>
@@ -487,20 +492,473 @@
 																				</tbody>
 																			</table>
 
+											</div>
+
+										<hr />
+
+										<p>Para observarmos apenas uma única coluna, utilizaremos o símbolo <code>df$`nome da coluna`</code>, por exemplo para saber apenas os países.</p>
+										<pre><code>df$pais</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; [1]  &nbsp;&nbsp; "Portugal" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Inglaterra" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Irlanda" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Egito" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Brasil"</br>## &nbsp;&nbsp; [6]  &nbsp;&nbsp; "Brasil" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Inglaterra"</TD>
+											</TR>
 													
+										</TABLE>
+
+
+										<p> Com a função <code>levels()</code> podemos observar as variáveis úncias da coluna, para isto precisamos converter a variável para o tipo <b>factor</b>.</p>
+										<pre><code>levels(as.factor(df$pais))</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; "Brasil" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Egito" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Inglaterra" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Irlanda" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Portugal"</TD>
+											</TR>
 													
+										</TABLE>
 
- 
+										<p>Podemos também observar a quantidade de cada varível, da coluna pais, com a função <code>table()</code></p>
+										<pre><code>table(df$pais)</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>##</br>## &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Brasil &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Egito &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inglaterra &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Irlanda &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Portugal</br>## &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</TD>
+											</TR>
+													
+										</TABLE>
 
+										<hr />
 
+										<h2>Fatiamento</h2>
 
+										<p>Se quisermos apenas uma única observação, podemos trabalhar com fatiamento do dataframe, chamando primeiramente o número da linha que queremos e o número da variável. Quero retornar o nome Amanda, que se encontra na terceira linha e na segunda coluna. </p>
+										<pre><code>df[<span style="color: #0f9494;">3</span>,<span style="color: #0f9494;">2</span>]</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; "Amanda"</TD>
+											</TR>
+													
+										</TABLE>
 
-												</TD>
+										<p>Vamos ver novamente o nosso conjuntod e dados.</p>
+										<pre><code>df</code></pre>
+								<div class="table-wrapper text">
+									<table class="alt">
+										<thead>
+											<tr>
+												<td></td>
+												<td>pais</td>
+												<td><b>nome [,2]</b></td>
+												<td>altura</td>
+												<td>codigo</td>
+												<td>olhos</td>
+												</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>Portugal</td>
+												<td>Bruno</td>
+												<td>1.88</td>
+												<td>5001</td>
+												<td>verde</td>
+												</tr>
+													<tr>
+														<td>2</td>
+														<td>Inglaterra</td>
+														<td>Tiago</td>
+														<td>1.76</td>
+														<td>2183</td>
+														<td>azul</td>
+													</tr>
+													<tr>
+														<td><b>3 [3, ]</b></td>
+														<td>Irlanda</td>
+														<td><b>Amanda [3,2]</b></td>
+														<td>1.53</td>
+														<td>4702</td>
+														<td>azul</td>
+													</tr>
+													<tr>
+														<td>4</td>
+														<td>Egito</td>
+														<td>Bianca</td>
+														<td>1.69</td>
+														<td>7965</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>Brasil</td>
+														<td>Marta</td>
+														<td>1.68</td>
+														<td>8890</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>6</td>
+														<td>Brasil</td>
+														<td>Luiz</td>
+														<td>1.73</td>
+														<td>8895</td>
+														<td>castanho</td>
+													</tr>
+													<tr>
+														<td>7</td>
+														<td>Inglaterra</td>
+														<td>Marcos</td>
+														<td>1.81</td>
+														<td>5002</td>
+														<td>azul</td>
+													</tr>
+													
+												</tbody>
+											</table> 
+										</div>
+
+											<p>É possível retornar toda a coluna altura, na forma de fatiamento, deixando o exspaço das linhas em branco.</p>
+											<pre><code>df[<span style="color: #0f9494;">3</span>,]</code></pre>
+											<TABLE >
+												<TR>
+												<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; "1.88" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1.76" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1.53" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1.69" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1.68" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1.73" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "1.81"</TD>
 												</TR>
 														
 											</TABLE>
 
-										<hr />
+											<p>Posso também realizar um filtro e retornar um subset quer atenda a um critério específico. Me retorne apenas as colunas: "altura", “codigo” e “olhos” de pessoas que possuem altura menor que 1.7.</p>
+											<pre><code>df[altura < <span style="color: #0f9494;">1.7</span>, c(<span style="color: #ff0000;">"altura"</span>, <span style="color: #ff0000;">"codigo"</span>,<span style="color: #ff0000;">"olhos"</span>)]</code></pre>
+
+											<TABLE >
+												<TR>
+												<TD BGCOLOR=white>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; altura &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; codigo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; olhos</br>## &nbsp;&nbsp;&nbsp;&nbsp; 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.53 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4702 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; azul</br>## &nbsp;&nbsp;&nbsp;&nbsp; 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.69 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7965 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; castanho</br>## &nbsp;&nbsp;&nbsp;&nbsp; 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.68 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8890 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; castanho
+												</TD>
+												</TR>
+														
+											</TABLE>
+											
+											<hr />
+
+											<h2>Nomenclatura</h2>
+
+											<p>Podemos modificar os nomes das colunas do nosso conjunto de dados, para isto, iremos primeiramente visualizar os nomes das colunas:</p>
+
+											<pre><code>names(df$pais)</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; "pais" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "nome" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "altura" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "codigo" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "olhos"</TD>
+											</TR>
+													
+										</TABLE>
+
+										<p>Para que eu altero os nomes das colunas e os nomes das variáveis, utilizaremos as seguintes funções:</p>
+										<pre><code>colnames(df) <- c(<span style="color: #ff0000;">'Var 1', 'Var 2', 'Var 3', 'Var 4', 'Var 5'</span>)</br>rownames(df) <- c(<span style="color: #ff0000;">'Obs 1', 'Obs 2', 'Obs 3', 'Obs 4', 'Obs 5','Obs 6', 'Obs 7'</span>)</br>df</code></pre>
+										<div class="table-wrapper text">
+											<table class="alt">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Var 1</th>
+														<th>Var 2</th>
+														<th>Var 3</th>
+														<th>Var 4</th>
+														<th>Var 5</th>
+														</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Obs 1</td>
+														<td>Portugal</td>
+														<td>Bruno</td>
+														<td>1.88</td>
+														<td>5001</td>
+														<td>verde</td>
+														</tr>
+															<tr>
+																<td>Obs 2</td>
+																<td>Inglaterra</td>
+																<td>Tiago</td>
+																<td>1.76</td>
+																<td>2183</td>
+																<td>azul</td>
+															</tr>
+															<tr>
+																<td>Obs 3</td>
+																<td>Irlanda</td>
+																<td>Amanda</td>
+																<td>1.53</td>
+																<td>4702</td>
+																<td>azul</td>
+															</tr>
+															<tr>
+																<td>Obs 4</td>
+																<td>Egito</td>
+																<td>Bianca</td>
+																<td>1.69</td>
+																<td>7965</td>
+																<td>castanho</td>
+															</tr>
+															<tr>
+																<td>Obs 5</td>
+																<td>Brasil</td>
+																<td>Marta</td>
+																<td>1.68</td>
+																<td>8890</td>
+																<td>castanho</td>
+															</tr>
+															<tr>
+																<td>Obs 6</td>
+																<td>Brasil</td>
+																<td>Luiz</td>
+																<td>1.73</td>
+																<td>8895</td>
+																<td>castanho</td>
+															</tr>
+															<tr>
+																<td>Obs 7</td>
+																<td>Inglaterra</td>
+																<td>Marcos</td>
+																<td>1.81</td>
+																<td>5002</td>
+																<td>azul</td>
+															</tr>
+															
+														</tbody>
+													</table> 
+												</div>
+
+												<p>Corrigindo os nomes das colunas</p>
+												<pre><code>colnames(df) <- c(<span style="color: #ff0000;">'País', 'Nome', 'Altura', 'Código', 'Cor dos Olhos'</span>)</code></pre>
+
+												<h2> Carregando Conjunto de Dados</h2>
+
+												<p>Iremos utilizar a função <code>read.csv()</code>.Abaixo demonstraremos como carregar um conjunto de dados,
+													lembrando que é preciso determinar alguns parâmetros, file que é o path, ou seja o caminho a onde está 
+													em compuatador, header indicar se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo.
+													csv temos que demonstrar qual é o separador, que nocaso é a vírgula.</br>
+													Abaixo temos 02 exemplo, o primeiro, <a href="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/pacientes.csv">
+														baixar</a> o arquivo, e salva em seu computador. Ou Caso preferir pode
+													utilizar a segunda opção que pega o arquivo direto do repositório do GitHub.</p>
+												<pre><code># Primeira Opção<br>pacientes <- read.csv(file = <span style="color: #ff0000;">'C:/Users/Downloads/pacientes.csv'</span>, header = TRUE, sep = <span style="color: #ff0000;">","</span>)<br>paciente</code></pre>
+												<p>Ou</p>
+												<pre><code># Segunda Opção<br>pacientes <- read.csv(file = <span style="color: #ff0000;">'https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/pacientes.csv'</span>, header = TRUE, sep = <span style="color: #ff0000;">","</span>)<br>pacientes</code></pre>
+
+												<div class="table-wrapper text">
+													<table class="alt">
+													<thead>
+													<tr>
+													<th>X</th>
+													<th>Idade</th>
+													<th>Admdate</th>
+													<th>Diabete</th>
+													<th>Status</th>
+												</thead>
+												<tbody>
+
+													</tr>
+													<tr>
+													<td>1</td>
+													<td>43</td>
+													<td>15/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Ruim</td>
+													</tr>
+													<tr>
+													<td>2</td>
+													<td>23</td>
+													<td>16/10/2015</td>
+													<td>Tipo 2</td>
+													<td>Bom</td>
+													</tr>
+													<tr>
+													<td>3</td>
+													<td>56</td>
+													<td>23/10/2015</td>
+													<td>Tipo 2</td>
+													<td>Bom</td>
+													</tr>
+													<tr>
+													<td>4</td>
+													<td>34</td>
+													<td>24/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Ruim</td>
+													</tr>
+													<tr>
+													<td>5</td>
+													<td>'38</td>
+													<td>31/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Medio</td>
+													</tr>
+													<tr>
+													<td>6</td>
+													<td>37</td>
+													<td>28/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Bom</td>
+													</tr>
+													<tr>
+													<td>7</td>
+													<td>41</td>
+													<td>27/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Ruim</td>
+													</tr>
+													</tbody>
+													</table>
+												</div>
+
+												<p> Podemos observar um resumo estatístico basico, das variáveis numéricas</p>
+												<pre><code>summary(pacientes)</code></pre>
+
+												<table>
+													<tbody>
+													<tr>
+													<td bgcolor="white">## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Idade &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Admdate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Diabete &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Status<br>## &nbsp;&nbsp; Min. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :1.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Min. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 23.00 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Length:7 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Length:7 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Length:7 <br> ## &nbsp;&nbsp; 1st Qu.&nbsp;&nbsp;:2.5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1st Qu.&nbsp;&nbsp;: 35.50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class &nbsp; :character &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class &nbsp; :character &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class &nbsp; :character <br> ## &nbsp;&nbsp; Median :4.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Median : 38.00 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mode &nbsp; :character &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mode &nbsp; :character &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mode &nbsp; :character <br> ## &nbsp;&nbsp; Mean &nbsp;&nbsp;&nbsp;&nbsp;:4.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mean &nbsp;&nbsp;&nbsp;&nbsp;: 38.86</br>  ## &nbsp;&nbsp; 3rd Qu. :5.5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3rd Qu. : 42.00  </br>  ## &nbsp;&nbsp; Max &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :7.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Max &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 56.00
+													</td>
+													</tr>
+													</tbody>
+												</table>
+
+												<p>Para concluir este pequeno arquivo em relação a Data Frame, iremos combinar os dois dataframe criados, df e pacientes.</p>
+
+												<pre><code>dataset_final <- cbind(df, pacientes)<br>dataset_final</code></pre>
+
+												<div class="table-wrapper text">
+													<table class="alt">
+													<thead>
+													<tr>
+														<th>&nbsp;</th>
+														<th>Pa&iacute;s</th>
+														<th>Nome</th>
+														<th>Altura</th>
+														<th>C&oacute;digo</th>
+														<th>Cor dos Olhos</th>
+														<th>X</th>
+														<th>Idade</th>
+														<th>Admdate</th>
+														<th>Diabete</th>
+														<th>Status</th>
+													</thead>
+													<body>
+													</tr>
+													<tr>
+													<td>Obs 1</td>
+													<td>Portugal</td>
+													<td>Bruno</td>
+													<td>1.88</td>
+													<td>5001</td>
+													<td>verde</td>
+													<td>1</td>
+													<td>43</td>
+													<td>15/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Ruim</td>
+													</tr>
+													<tr>
+													<td>Obs 2</td>
+													<td>Inglaterra</td>
+													<td>Tiago</td>
+													<td>1.76</td>
+													<td>2183</td>
+													<td>azul</td>
+													<td>2</td>
+													<td>23</td>
+													<td>16/10/2015</td>
+													<td>Tipo 2</td>
+													<td>Bom</td>
+													</tr>
+													<tr>
+													<td>Obs 3</td>
+													<td>Irlanda</td>
+													<td>Amanbda</td>
+													<td>1.53</td>
+													<td>4702</td>
+													<td>azul</td>
+													<td>3</td>
+													<td>56</td>
+													<td>23/10/2015</td>
+													<td>Tipo 2</td>
+													<td>Bom</td>
+													</tr>
+													<tr>
+													<td>Obs 4</td>
+													<td>Egito</td>
+													<td>Bianca</td>
+													<td>1.69</td>
+													<td>7965</td>
+													<td>castanho</td>
+													<td>4</td>
+													<td>34</td>
+													<td>24/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Ruim</td>
+													</tr>
+													<tr>
+													<td>Obs 5</td>
+													<td>Brasil</td>
+													<td>Marta</td>
+													<td>1.68</td>
+													<td>8890</td>
+													<td>castanho</td>
+													<td>5</td>
+													<td>38</td>
+													<td>31/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Medio</td>
+													</tr>
+													<tr>
+													<td>Obs 6</td>
+													<td>Brasil</td>
+													<td>Rodolfo</td>
+													<td>1.73</td>
+													<td>8895</td>
+													<td>castanho</td>
+													<td>6</td>
+													<td>37</td>
+													<td>28/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Bom</td>
+													</tr>
+													<tr>
+													<td>Obs 7&nbsp;</td>
+													<td>Inglaterra</td>
+													<td>Marcos</td>
+													<td>1.81</td>
+													<td>5002</td>
+													<td>azul</td>
+													<td>7</td>
+													<td>41</td>
+													<td>27/10/2015</td>
+													<td>Tipo 1</td>
+													<td>Ruim</td>
+													</tr>
+													</tbody>
+													</table>
+												
+													<hr />
+
+											<h2>Análise Exploratória</h2>
+
+											<p>Abaixo começaremos a ver apenas dois gráficos, introdutório, do que veremos na
+												 prtóxima semana Análise Exploratória dos dados. Veremos um gráfico de 
+												 histograma, e um boxplot. No publicação, iremos explicar estes dois gráficos e 
+												 muitas outras ferramentas. Existe muito mais a se mencionar em relação a Data 
+												 Frame. Aqui foi apenas uma pequena introdução sobre o tema. Dívidas ou 
+												 interesses, favor enviar um e-mail para que eu possa acrescenter no material ou
+												  trazer assuntos que melhor agradem vocês.<br>
+												E agora para encerrae podemos observar um gráfico histograma da Idade dos 
+												pascientes.</p>
+											<pre><code>hist(pacientes$Idade, main= <span style="color: #ff0000;">"Histograma de pasciente por idade"</span>, xlab = <span style="color: #ff0000;">"Idade"</span>, ylab = <span style="color: #ff0000;">"Frequência"</span>)
+											</code></pre>
+											<p><img src="images/Rhist_dataframe.png" alt=""  width="1200" height="600"/></p>
+											<p> E podemos observar um box plot em relação a idade por cor dos olhos.</p>
+											<pre><code>plot(dataset_final$Idade ~ as.factor(dataset_final$`Cor dos Olhos`),<br>      xlab = <span style="color: #ff0000;">'Cor dos Olhos'</span>, ylab = <span style="color: #ff0000;">'Idade'</span>, main = <span style="color: #ff0000;">'Idade por Cor dos Olhos'</span>)
+											</code></pre>
+											<p><img src="images/Rboxplot_dataframe.png" alt=""  width="1200" height="800"/></p>
+
+
+
+
+												
+
 
 
 
