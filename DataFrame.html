@@ -91,9 +91,9 @@
 								<h2>Data Frame</h2>
 									<P>Em síntese, <b>data frames</b> são tabelas de dados. Em seu formato, são bem parecidos com as matrizes,
 										 no entanto, possuem algumas diferenças significativas. Podemos idealizar os data frames como sendo 
-										 matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um 
+										 matrizes de duas dimensões em que cada coluna armazena um tipo de dado diferente. Logo, estamos lidando com um 
 										 objeto bem mais versátil do que as matrizes e os vetores.</P>
-									<P>Primeiramente iremos criar um Data frame, cvom as seguintes variáveis 
+									<P>Primeiramente iremos criar um Data frame, com as seguintes variáveis 
 										(nomes das colunas): - Nome do tipo character; - idade do tipo numérico;
 										 - itens do tipo numérico; - código do tipo inteiro;</P>
 									
@@ -178,7 +178,7 @@
 
 									<hr />
 										
-								<p>Agora podemos acrescentar mais uma coluna em nosso conjunto de dados, utilizando a fundção <code>cbind()</code>que chamaremos de olho.
+								<p>Agora podemos acrescentar mais uma coluna em nosso conjunto de dados, utilizando a função <code>cbind()</code>que chamaremos de olho.
 
 								</b></p>
 								<pre><code># Adicionando um novo vetor a um dataframe existente</br>olhos = c(<span style="color: #ff0000;">"verde", "azul", "azul", "castanho", "castanho","castanho"</span>)</br>df = cbind(df, olhos)</br>df</code></pre>										
@@ -537,7 +537,7 @@
 													
 										</TABLE>
 
-										<p>Vamos ver novamente o nosso conjuntod e dados.</p>
+										<p>Vamos ver novamente o nosso conjunto e dados.</p>
 										<pre><code>df</code></pre>
 								<div class="table-wrapper text">
 									<table class="alt">
@@ -613,7 +613,7 @@
 											</table> 
 										</div>
 
-											<p>É possível retornar toda a coluna altura, na forma de fatiamento, deixando o exspaço das linhas em branco.</p>
+											<p>É possível retornar toda a coluna altura, na forma de fatiamento, deixando o espaço das linhas em branco.</p>
 											<pre><code>df[<span style="color: #0f9494;">3</span>,]</code></pre>
 											<TABLE >
 												<TR>
@@ -622,7 +622,7 @@
 														
 											</TABLE>
 
-											<p>Posso também realizar um filtro e retornar um subset quer atenda a um critério específico. Me retorne apenas as colunas: "altura", “codigo” e “olhos” de pessoas que possuem altura menor que 1.7.</p>
+											<p>É possível também realizar um filtro e retornar um subset que atenda a um critério específico. Me retorne apenas as colunas: "altura", “codigo” e “olhos” de pessoas que possuem altura menor que 1.7.</p>
 											<pre><code>df[altura < <span style="color: #0f9494;">1.7</span>, c(<span style="color: #ff0000;">"altura"</span>, <span style="color: #ff0000;">"codigo"</span>,<span style="color: #ff0000;">"olhos"</span>)]</code></pre>
 
 											<TABLE >
@@ -729,9 +729,9 @@
 												<h2> Carregando Conjunto de Dados</h2>
 
 												<p>Iremos utilizar a função <code>read.csv()</code>.Abaixo demonstraremos como carregar um conjunto de dados,
-													lembrando que é preciso determinar alguns parâmetros, file que é o path, ou seja o caminho a onde está 
-													em compuatador, header indicar se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo.
-													csv temos que demonstrar qual é o separador, que nocaso é a vírgula.</br>
+													lembrando que é preciso determinar alguns parâmetros, file ou <b>path</b>, caminho do diretório do arquivo 
+													em seu computador, header indicar se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo.
+													csv temos que demonstrar qual é o separador, nesse dataset é a vírgula.</br>
 													Abaixo temos 02 exemplo, o primeiro, <a href="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/pacientes.csv">
 														baixar</a> o arquivo, e salva em seu computador. Ou Caso preferir pode
 													utilizar a segunda opção que pega o arquivo direto do repositório do GitHub.</p>
