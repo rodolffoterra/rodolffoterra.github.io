@@ -3352,7 +3352,7 @@ input, select, textarea {
 
 		.home{
 			font-size:16px;
-			background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100%),  url('/images/pic17.webp');
+			background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100%),  url('/images/pic18.jpg');
 		
 			height:400px;
 			background-size:cover;
@@ -3391,6 +3391,12 @@ input, select, textarea {
 			margin-left: 50px;
 			margin-right: 50px;
 			text-align: justify;
+		}
+
+
+		.img_logo{
+			margin-right: 10%;
+			margin-top: 0%;
 		}
 		
 
