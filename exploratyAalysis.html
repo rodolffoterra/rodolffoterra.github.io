@@ -1,0 +1,522 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+<!-- Hotjar Tracking Code for https://rodolffoterra.github.io/sqldf.html -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2255362,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<script type='text/javascript'>
+	window.smartlook||(function(d) {
+	  var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+	  var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+	  c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+	  })(document);
+	  smartlook('init', 'e174065ea1c92508fe441a2a29be0219950dacb0');
+  </script>
+  
+		<title>Rodolfo Terra | Ciência de Dados</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+					<!-- Main -->
+				<main>
+				<div class="principal">
+					<div class="container">
+							<h1>&nbsp;&nbsp;&nbsp; Análise &nbsp;&nbsp;Exploratória</h1>
+					<h3 class="text">Linguagem R</h3>
+					</div>
+				</div>
+				</main>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a target="_black" href="DataFrame.html">Artigo Anterior - Data Frame</a></li>
+							<li><a target="_black" href="index.html">Próximo Artigo - Regressão Linear</a></li>
+
+							<li><a target="_black" href="https://www.rodolfoterra.com/">Site</a></li>
+
+							<!-- Logo -->
+							<a target="_black" href="https://www.rodolfoterra.com/" class="logo">
+								<span class="bottum-rigth"><img src="images/logo.png" alt="" />
+								</a>
+						</ul>
+					</nav>
+
+				
+
+							<!-- Text -->
+								<section>
+								</br>
+								<div class='text'>
+									<hr />
+
+								<h2>Análise Exploratória</h2>
+								<hr />
+
+									<P>Em estatística, a<b> análise exploratória de dados (AED)</b> é uma abordagem
+									à análise de conjuntos de dados de modo a resumir suas
+									características principais, frequentemente com métodos visuais.
+									Um modelo estatístico pode ou não ser usado, mas primariamente a AED tem
+									como objetivo observar o que os dados podem nos dizer além da modelagem 
+									formal ou do processo de teste de hipóteses. A análise exploratória de 
+									dados foi promovida pelo estatístico norte-americano John Tukey, 
+									que incentivava os estatísticos a explorar os dados e possivelmente 
+									formular hipóteses que poderiam levar a novas coletas de dados e 
+									experimentos. A AED é diferente da <b>análise inicial de dados (AID)</b>, 
+									que se concentra mais estreitamente em verificar os pressupostos exigidos
+									para ajuste de modelos e teste de hipóteses, além de manusear valores 
+									faltantes e fazer transformações de variáveis conforme necessário. A 
+									análise exploratória de dados abrange a AID.</p>
+									<p>A análise exploratória de dados emprega grande variedade de técnicas 
+									gráficas e quantitativas, visando maximizar a obtenção de informações
+									ocultas na sua estrutura, descobrir variáveis importantes em suas 
+									tendências, detectar comportamentos anômalos do fenômeno, testar se
+									são válidas as hipóteses assumidas, escolher modelos e determinar o
+									número ótimo de variáveis.</p>
+									<hr />
+
+									<h2> Carregando Conjunto de Dados</h2>
+									<hr />
+
+
+									<p>Esse estudo estará utilização dados coletados e tratados pelo <b>Kaggles</b>, o qual
+										disponibilizou esse dataset neste link. Com base nas informações dispostas nesse 
+										dataset, realizarei Insights acerca dos tripulantes e das circunstâncias que envolveram 
+										a tragédia. Vale lembrar que tal conjunto de dados não abriga informações de todos os 
+										passIdadeiros, mas sim de apenas 891.</p>
+
+									<p>Iremos utilizar a função <code>read.csv()</code>.Abaixo demonstraremos como carregar um conjunto de dados,
+										lembrando que é preciso determinar alguns parâmetros, file ou <b>path</b>, caminho do diretório do arquivo 
+										em seu computador, header indicar se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo.
+										csv temos que demonstrar qual é o separador, nesse dataset é a vírgula.</br>
+										Abaixo temos 02 exemplo, o primeiro, <a target="blank" href="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/data_titanic.csv">
+											baixar</a> o arquivo, e salva em seu computador. Ou Caso preferir pode
+										utilizar a segunda opção que pega o arquivo direto do repositório do GitHub.</p>
+									<pre><code># Primeira Opção<br>df <- read.csv(file = <span style="color: #ff0000;">'C:/Users/Downloads/data_titanitc.csv'</span>)</code></pre>
+									<p>Ou</p>
+									<pre><code># Segunda Opção<br>df <- read.csv(file = <span style="color: #ff0000;">'https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/dados/data_titanic.csv'</span>)<br>head(df)</code></pre>
+
+									<div class="table-wrapper text">
+														<table class="alt">
+															<thead>
+																<tr>
+																	<th>PassengerId</th>
+																	<th>Survived</th>
+																	<th>Pclass</th>
+																	<th>Name</th>
+																	<th>Sex</th>
+																	<th>Age</th>
+																	<th>SibSp</th>
+																	<th>Parch</th>
+																	<th>Ticket</th>
+																	<th>Fare</th>
+																	<th>Cabin</th>
+																	<th>Embarket</th>
+
+
+																	</tr>
+															</thead>
+															
+																<tr>
+																	<td>1</td>
+																	<td>0</td>
+																	<td>3</td>
+																	<td>Braund, Mr. Owen Harris</td>
+																	<td>male</td>
+																	<td>22</td>
+																	<td>1</td>
+																	<td>0</td>
+																	<td>A/5 21171</td>
+																	<td>7.2500</td>
+																	<td></td>
+																	<td>s</td>
+
+																	</tr>
+																<tr>
+																	<td>2</td>
+																	<td>1</td>
+																	<td>1</td>
+																	<td>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</td>
+																	<td>female</td>
+																	<td>38</td>
+																	<td>1</td>
+																	<td>0</td>
+																	<td>pc 17599</td>
+																	<td>71.2833</td>
+																	<td>c85</td>
+																	<td>c</td>
+																	<tr>
+																		<td>3</td>
+																		<td>1</td>
+																		<td>3</td>
+																		<td>Heikkinen, Miss. Laina</td>
+																		<td>female</td>
+																		<td>26</td>
+																		<td>0</td>
+																		<td>0</td>
+																		<td>STON/O2. 310128</td>
+																		<td>7.9250</td>
+																		<td></td>
+																		<td>s</td>
+	
+																		</tr>
+																		<tr>
+																			<td>4</td>
+																			<td>1</td>
+																			<td>1</td>
+																			<td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+																			<td>female</td>
+																			<td>35</td>
+																			<td>1</td>
+																			<td>0</td>
+																			<td>113803</td>
+																			<td>53.1000</td>
+																			<td>c123</td>
+																			<td>s</td>
+		
+																			</tr>
+																			<tr>
+																				<td>5</td>
+																				<td>0</td>
+																				<td>3</td>
+																				<td>Allen, Mr. William Henry</td>
+																				<td>male</td>
+																				<td>35</td>
+																				<td>0</td>
+																				<td>0</td>
+																				<td>373450</td>
+																				<td>8.0500</td>
+																				<td></td>
+																				<td>s</td>
+			
+																				</tr>		
+																	</tbody>
+																</table>																
+															
+															</div>
+															<hr />
+
+									<h2>Análise Inicial dos Dados</h2>
+									<hr />
+
+
+									<p>Acima você pode conferir as primeiras e últimas linhas do dataset. As informações podem 
+									causar certa confusão no primeiro momento, portanto, vamos esclarecer alguns pontos sobre
+									eles, a começar pela remoção de colunas que não usaremos, como a “PassengerId”, “Ticket”
+									e “Cabin”, que contém informações sobre o código de identidade do passIdadeiro, o número
+									da sua cabine e do seu bilhete, respectivamente. Acredito que essas informações não são
+									pertinentes ao estudo que faremos e sua permanência poderia causar perda de foco.</p>
+									
+									<pre><code>df <- df[,-c(1,9,11)]</code></pre>
+									<p>Caso a função acima possa parecer estranho, leia o material anterior: <a href="DataFrame.html">Data Frame</a>.</p>
+									<p> Com as colunas removidas em nosso conjutno de dados, iremos renomear as colunas 
+										remanescentes.</p>
+
+									<pre><code>colnames(df) <- c(<span style="color: #ff0000;">"Sobrevivente", "Classe","Nome","Sexo","Idade","Irmãos/Cônjuge","Pais/Crianças","Tarifa","Embarque"</span>)
+									</code></pre>
+
+									<p>Com as colunas devidamente renomeadas para um melhor entendimento, é hora de explicarmos o que cada um desses dados significa. Acompanhe abaixo cada coluna com seu respectivo significado:
+
+										<li><b>Sobreviveu.:</b> Informa se o passageiro sobreviveu ao desastre. 0 = Não; 1 = Sim</li>
+										<li><b>Classe.:</b> Classe na qual o passageiro viajou. 1 = Primeira Classe; 2 = Segunda Classe; 3 = Terceira Classe</li>
+										<li><b>Nome.:</b> Nome do passageiro</li>
+										<li><b>Sexo.:</b> Sexo do passageiro</li>
+										<li><b>Idade.:</b> Idade do passageiro</li>
+										<li><b>Irmãos/Cônjuge.:</b> Informa a quantidade de irmãos e cônjuges que o paciente possuía na embarcação</li>
+										<li><b>Pais/Crianças.:</b> Quantidade de crianças e idosos (pais) relativos ao passIdadeiro</li>
+										<li><b>Tarifa.:</b> Valor da passageiro</li>
+										<li><b>Embarque.:</b> Local onde o passageiro embarcou</li></p>
+									<hr/>
+									
+									<p> A função abaixo mostra a quantidade de linhas (Observações), quantidade de colunas (variáveis) o nome, o type que foi 
+										classificado pelo r STudio cada variável e a composição das variáveis. </p>
+										<pre><code>str(df)</code></pre>
+										<p><img src="images/str_titanic.jpg" alt=""  width=100% /></p>
+
+										<pre><code>glimpse(df)</code></pre>
+										<p><img src="images/glimpse_titanic.jpg" alt=""  width=100% /></p>
+
+										<p>Já a função <code>skim(df)</code> mostra com maiores detalhes cada variáveis, começamos a ter uma ideia de como 
+										cada informação está organizada em nosso conjunto de dados.</p>
+
+										<pre><code>skimr::skim(df)</code></pre>
+										<p><img src="images/skim_01_titanic.jpg" alt=""  width=100% /></p>
+										<p><img src="images/skim_02_titanic.jpg" alt=""  width=100% /></p>
+
+										<p> Abaixo estamos querendo saber quais variáveis foram classificados como numéricas pelo próprio RStudio</p>
+										<pre><code>colunas_numericas <- sapply(df, is.numeric)<br>colunas_numericas</code></pre>
+										<p><img src="images/sapply_titanic.jpg" alt=""  width=100% /></p>
+
+										<h3>Valores Missing</h3>
+
+										Agora iremos visualizar de em nosso conjunto de dados existe valores faltantes, usaremos um gráfico da biblioteca
+										<b>Amelia</b>.  
+										<pre><code>missmap(df,<br>        main = <span style="color: #ff0000;">"Titanic - Mapa de Dados Missing"</span>,<br>        col = c(<span style="color: #ff0000;">"black", "grey"</span>),<br>        legend = <span style="color: #63264e;">FALSE</span>)</code></pre>
+										<p><img src="images/amelia_titanic.jpg" alt=""  width=65% /></p>
+
+										<p>Podemos saber a quantidade de número missing por variável.</p>
+										<pre><code>sapply(df, <span style="color: #63264e;">function</span>(x) sum(is.na(x)))</code></pre>
+										<p><img src="images/sapply_01_titanic.jpg" alt=""  width=95% /></p>
+
+										<P>Observar que a coluna idade possui muitos valores missing. Precisamos remover incluir 
+										valores no lugares desses espaços vazios. Para isto decidimos realizar a seguinte técnica.
+										O grafico abaixo mostra um boxplot da faixa etária por classe.</P>
+
+										<pre><code>df$Classe <- factor(df$Classe, labels = c(<span style="color: #ff0000;">"1ª Classe", "2ª Classe", "3ª Classe"</span>))<br><br>ggplot(df, aes(Classe, Idade)) +<br>   geom_boxplot(aes(group = Classe, fill = Classe), alpha = 0.4, show.legend = FALSE) +<br>   scale_y_continuous(breaks = seq(min(0), max(80), by = 10)) +<br>   theme_classic() +<br>   labs(title = <span style="color: #ff0000;">"Quantidade de Pessoas por Classe"</span>,<br>   y = <span style="color: #ff0000;">"Idade"</span>,<br>   x = <span style="color: #ff0000;">"Classe"</span>)</code></pre>
+
+										<p><img src="images/boxplot1_titanic.jpg" alt=""  width=70% /></p>
+
+										<p>Podemos fazer um <b>Group_by</b> para visualizar o valor média por classe. Se você 
+										nuncaouviu falar em agrupamento, <a href="sqldf.html">o artigo SQLDF</a>, explica com 
+										maiores detalhes</p> 
+										<pre><code>df[complete.cases(df$Idade),] %>%<br>   group_by(Classe) %>%<br>   summarise(media = mean(Idade))</code></pre>
+										<p><img src="images/groupby_titanic.jpg" alt=""  width=100% /></p>
+										<p> Podemos observar acima que a média da 1ª Classe é 38 anos, da 2ª Classe é 30 anos e da terceira Classe é 25 anos.</p>
+										<p><img src="images/function_titanic.jpg" alt=""  width=100% /></p>
+										<p><img src="images/amelia1_titanic.jpg" alt=""  width=65% /></p>
+
+										<pre><code>sapply(df, <span style="color: #63264e;">function</span>(x) sum(is.na(x)))</code></pre>
+										<p><img src="images/sapply_02_titanic.jpg" alt=""  width=95% /></p>
+										<p>Removemos os valores missing de idade. Na coluna "Embarque"
+										temos 02 observações com nenhuma informação. Nesse caso, colocaremos nessa duas 
+										observações que está vazia, o valor “S”, pois representa 72 % do nosso conjunto de 
+									    dados.</p>
+										<pre><code>table <- rbind(table(df$Embarque),<br>   paste0(round(prop.table(table(df$Embarque))*100, digit = 2),<span style="color: #ff0000;">"%"</span>))<br><br>rownames(table) <- c(<sp style="color: #ff0000;">"Total","Percentual"</sp	an>)<br><br>table</code></pre>
+										<p><img src="images/per_titanic.jpg" alt=""  width=95% /></p>
+										<p>O Titanic parou em três locais diferentes para que seus passegeiros pudessem embarcar: 
+										Cherbourg, Queenstown e Southampton, representados pelas letras C, Q e S no dataset,
+										respectivamente.</p>
+										<pre><code>df[c(62,830),9] <- <span style="color: #ff0000;">"S"</span><br><br>df$Embarque <- factor(df$Embarque, labels = c(<span style="color: #ff0000;">Cherbourg", "Queenstown","Southampton"</span>))</code></pre>
+										<p>Na coluna Sovrevivente, colocaremos Naufragados no lugar de 0 e Sobrevivente no lugar de 1.<br>
+										E na coluna Sexo no lugar, colocaremos Feminino e masculino para iniciarmos a análise exploratória de dados</p>
+										<pre><code>df$Sobrevivente <- factor(df$Sobrevivente, labels = c(<span style="color: #ff0000;">"Naufragados","Sobrevivente"</span>))<br><br>df$Sexo <- factor(df$Sexo,  labels = c(<span style="color: #ff0000;">"Feminino", "Masculine"</span>))</code></pre>
+										<hr />
+
+										<h2> Análise Exploratória dos Dados</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+												
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr />
+
+
+							<!-- Image -->
+							<div class="text">
+							<h3>Outros Artigos</h3>
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic01.jpg" alt="" />
+									</span>
+									<a target="blank" href="sqldf.html">
+										<h2>SQLDF</h2>
+										<div class="content">
+											<p>Aprenda a trabalhar com duas ferramentas ao mesmo tempo, podemos trabalhar com SQL dentro do RStudio.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">
+										<h2>Vetores</h2>
+										<div class="content">
+											<p>Um vetor em R é uma estrutura básica dentro da linguagem, que permite armazenar uma quantidade numérica ou string (letras ou caracteres), em um único objeto. O vetor possui apenas 01 única dimensão.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">
+										<h2>Matrix</h2>
+										<div class="content">
+											<p>Matrizes é caracterizado como uma coleção de vetores, sendo todos do mesmo tipo (numérico ou caracteres) armazenados entre linhas e colunas.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<a href="DataFrame.html">
+										<h2>Data Frame</h2>
+										<div class="content">
+											<p>Um data frame é semelhante a uma matriz mas as suas colunas têm 
+												nomes e podem conter dados de tipo diferente. Um data frame pode
+												er visto como uma tabela de uma base de dados, em que cada linha 
+												corresponde a um registo (linha) da tabela.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic06.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Regressão Linear</h2>
+										<div class="content">
+											<p>19 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/pic07.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Clusterização</h2>
+										<div class="content">
+											<p>26 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>															
+							</section></br>
+
+							<hr />
+									<h3>Projeto: Análise Exploratória </h3>
+									<p><span class="image right"><img src="images/pic14.jpg" alt="" />
+									</span>Nesse projete iremos analisar uma série temporal de uma empresa de locação de 
+									bicicleta dos Estados. Unidos. O conjunto de dados é obtido na plataforma Kaggle. Nesse 
+									conjunto de dados, iremos realizar uma análise exploratória em relação da demanda de locação
+									 de bicicleta dos dias da semana, dia úteis, com dias de finais de semanas e feriados, qual a 
+									 correlação de locação de bicicleta com a temperatura e humidade do ar, se a velocidade do
+									  vento interfere em relação a damanda de locação. Toda este projeto foi desenvolvido em 
+									  linguagem R.</p>
+									<p  class="bottum-rigth" ><a target="_black" href="https://rpubs.com/RodolfoTerra/bicicleta" class="button primary small">Projeto <i class="far fa-registered"></i></a></p>
+								<br><br>
+								</section>
+							</div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner text">
+						
+						<section>
+							<h2>Desenvolvimento</h2>
+							<ul class="icons">
+								<li><a target="_blank" href="https://github.com/rodolffoterra" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+								<li><a target="_blank" href="http://www.rodolfoterra.com" class="icon solid style2 fa-home"><span class="label">Site</span></a></li>
+								<li><a target="_blank" href="https://rpubs.com/RodolfoTerra" class="far fa-registered"><span class="label"> Rpub's</span></a></li>
+																	
+							</ul>
+							
+						</section>
+						<section>
+							<h2>Redes Sociais</h2>
+							<ul class="icons">
+							<li><a target="_blank" href="https://www.linkedin.com/in/rodolffoterra/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/rodolffo.terra/" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="mailto:consultoriaterra@hotmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="mailto:+5515981194753" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+							</ul>
+						</section>
+						<ul class="desenvolv">
+							&copy; Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> &nbsp;Rodolfo Terra | Ciência de Dados</a></li>
+						</ul>
+					</div>
+					<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+				</footer>
+
+		</div>
+
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -70,8 +70,7 @@
 						<h2>Menu</h2>
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">Aula Anterior - Vetor</a></li>
-							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">Próxima Aula - Matrix</a></li>
+							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">Próximo Artigo - Vetor</a></li>
 							<li><a target="_black" href="https://www.rodolfoterra.com/">Site</a></li>
 
 							<!-- Logo -->
@@ -87,7 +86,11 @@
 								<section>
 								</br>
 								<div class='text'>
+									<hr />
+
 								<h2>SQL</h2>
+								<hr />
+
 									<P><b>Structured query Language</b> ou Linguagem de Consulta Estruturada ou SQL, é uma linguagem de pesquisa 
 										declarativa padrão para banco de dados relacionados. Muitas das características originais do SQL foram 
 										inspiradas na álgebra relacional.</P>
@@ -111,22 +114,30 @@
 										<hr />
 
 										<h2>Carregando o conjunto de dados </h2>
+										<hr />
+
 
 										<p>Iremos carregar um conjunto de dados para conseguirmos trabalhar com SQL. A Função utilizada abaixo é uma função base do RStudio.
 											Estes Conjuntos de dados, encontra-se no repositório no github.</p>
 
 										<pre><code>tb_func<-read.csv('https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/dados/funcionarios.csv')</code></pre>
 
+										<hr />
 
 										<h2>DQL Instructions</h2>
+										<hr />
+
 
 										<p>Linguagem de consulta de Dados (<b>Data Query Language</b>) faz parte do agrupamento básico de sub-linguagens SQL. Essas sub-linguagem 
 											são categorizadas principalmente em quatro categorias.</p>
 
 										<p>As instruções DQL são usadas para realizar consultas dos dados. O objetivo dos comandos DQL 
 										   é obter a relação do esquema com base na consulta passada a ele.</p>
+										   <hr />
 
 										<h3>Select</h3>
+										<hr />
+
 										<p>Cada tabela é dividida em entidades menores chamadas campos. Os campos da tabela tb_func consistem em ID, estado_civil,
 											 grau_instrucao, numero_filhos, salario_hora e idade. Um campo é uma coluna em uma tabela projetada para
 											 manter informações específicas sobre cada registro na tabela.</p>
@@ -281,8 +292,11 @@
 											</tr>
 										</TABLE>
 
+										<hr />
 
 										<h2>Distinct</h2>
+										<hr />
+
 										<p> Para eu saber todos os valores individuais de uma única coluna baste utilizar a função <b>distinct</b>.</p>
 										<pre><code>sqldf("SELECT DISTINCT reg_procedencia from  tb_func")</code></pre>
 
@@ -297,8 +311,11 @@
 											
 
 	
+										<hr />
 
 											<h2>Order by</h2>
+											<hr />
+
 											<p>Agora iremos visualizar todas as colunas porém com a coluna salario_hora em ordem decrescente.</p>
 											<pre><code>sqldf("SELECT * FROM tb_func ORDER BY salario_hora DESC")</code></pre>
 
@@ -413,8 +430,10 @@
 												</table>
 
 											<hr />
+											<hr />
 
 										<h2>Select com condicional (WHERE)</h2>
+										<hr />
 
 										<p>Utilizaremos a função <b>SELECT</b> porém uzando alguma condição para saber a quantidade de pessoas 
 											com idade igual a 40 anos, em nosso conjunto de dados:</p>
@@ -459,8 +478,11 @@
 										
 											 <hr />
 
+											 <hr />
 
 										<h2>And</h2>
+										<hr />
+
 										<pre><code>sqldf("SELECT * FROM  tb_func WHERE idade < 30 AND estado_civil = 'casado'")</code></pre>
 										<table class="alt">
 											<thead>
@@ -498,8 +520,11 @@
 											</tr>
 										</TABLE>
 
+										<hr />
 
 										<h2>Or</h2>	
+										<hr />
+
 										<p>Quando utilizamos a condição <b>OR</b>, queremos ou 1 condição ou outra condição.											
 										Como por exemplo, abaixo, queremos todas as colunas ou pessoas que tenham acima
 										de 50 anos, ou pessoas são são casadas. Tanto uma condição ou a outra serve. Não 
@@ -583,6 +608,8 @@
 
 
 										<h2>Between</h2>	
+										<hr />
+
 										<p>Podemos utilizar a condicional <b>between</b>, sendo que ela incluio a condição na contagem. 
 											Pessoas maiores ou iguais a 30 anos e menores ou iguais a 35 anos</p>
 										<pre><code>sqldf('SELECT COUNT(*) FROM tb_func WHERE idade BETWEEN 30 AND 35')</code></pre>
@@ -600,8 +627,11 @@
 											</TR>
 										</TABLE>
 
+										<hr />
 
 										<h2>Like</h2>	
+										<hr />
+
 										<p>Para encontrar uma determinada palavra eu posso utilizar a função <b>Like</b>.
 											Querendo enontrar a palavra <b>medio</b> na coluna grau_instrucao.</p>
 										<pre><code>sqldf("SELECT * from tb_func WHERE grau_instrucao LIKE '%medio%' "))</code></pre>
@@ -653,6 +683,8 @@
 
 
 										<h2>IN</h2>	
+										<hr />
+
 										<p>Podemos também encontrar um conjunto de idade por exemplo, usando a função <b>IN</b>, 
 											querendo que apenas retorne pessoas com idade de 20, 30, e 40 anos.</p>
 										<pre><code>sqldf("SELECT * from tb_func WHERE idade IN (20,30,40,50) ")</code></pre>
@@ -730,7 +762,9 @@
 										<hr />
 
 
-										<h2>NULL</h2>	
+										<h2>NULL</h2>
+										<hr />
+	
 										<p>Podemos identificar os registros na coluna numeor_filho que não possui registro, 
 											valores missing, usando <b>IS NULL</b>.</p>
 										<pre><code>sqldf("SELECT * from 'tb_func' WHERE numero_filhos IS null")</code></pre>
@@ -865,6 +899,8 @@
 
 
 									<H2>UPDATE</H2>
+									<hr />
+
 									<p>Sabemos que possuem 06 registro com valores nulos em nosso conjunto de dados, então, 
 										trocarei os valores <b><em>null</em></b>, por uma quantidade de filhos <b>errada</b>, colocaremos o número 10.</p>
 										<pre><code>tb_func <- sqldf(c("update tb_func set numero_filhos = 10 where numero_filhos IS null",</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"select * from main.tb_func"))</code></pre>
@@ -978,6 +1014,8 @@
 										<hr />
 
 									<h2>Delete</h2>
+									<hr />
+
 
 									<p> Anteriormente colocamos no lugar nos valores <em>null</em> na coluna numero_filhos, o valor <b>10</b>, 
 										agora iremos deleter todos os registros que tenham o valor 10 da coluna numero_filhos</p>
@@ -1040,6 +1078,8 @@
 
 
 										<h2>Insert</h2>
+										<hr />
+
 										<p>Quando quizermos acrescentar registro em nossa tabela utilizaremso a função <b>insert</b>.</p>
 
 										<pre><code>tb_func <- sqldf(c(" INSERT INTO tb_func (</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID, estado_civil, grau_instrucao, numero_filhos, salario_hora, idade, reg_procedencia)</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values (11, 'casado', 'ensino medio', 3, 4.5, 30, 'capital')",</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"select * from main.tb_func"))</code></pre>
@@ -1123,6 +1163,8 @@
 
 
 										<h2>Valor Mínimo, máximo e média</h2>
+										<hr />
+
 										<p>Agora pegaremos a coluna salario_hora, e criaremos uma query que teão o valor mínimo que chamaremos de Mim,
 											 o valor máximo que chamaremos de Max, o valor médio que chamaremos de Média, a sumatória de todos os valores,
 											que chamaremos de Soma e a quantidade de registro que chamaremos de Count.</p>
@@ -1135,8 +1177,11 @@
 												</br> ## &nbsp;&nbsp;&nbsp; 4.5 &nbsp;&nbsp;&nbsp;&nbsp; 7.59 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.712 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28.56 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</TD>
 												</TR>
 											</TABLE>
+											<hr />
 
 									<h2>Group By</h2>
+									<hr />
+
 									<p> Esta função é de estrema importância, pois abaixo iremos encontrar o salário_hora média por região</p>
 
 									<pre><code>sqldf("SELECT round(AVG(salario_hora),2) Média, reg_procedencia regiao </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM tb_func </br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY reg_procedencia")</code></pre>
@@ -1171,6 +1216,8 @@
 									<hr />
 
 							<h2>Exercício</h2>
+							<hr />
+
 
 							<p>Quem tiver suas dúvida, sugestões ou quiser enviar a sua resposta, fica a vontade para o seguinte: <a href="mailto:consultoriaterra@hotmail.com">E-mail.</a></p>
 							<p><b>1. </b>Crie uma instrução SQL que retorna a média de idade, número de filhos e grau de 
@@ -1184,12 +1231,15 @@
 						O comando do novo conjunto de dados no RStudio segue abaixo:</p>
 						<pre><code>tb_endereco <- data.frame("id_end" = c(1001,1002,1003,1004,1005),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rua" = c('Jaguar', 'Mercedes Benz','BMW','Ferrari','McLaren'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"numero" = c(40, 140, 20, 32, 45),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bairro"= c('Tijuca','Centro','Tijuca','Centro','Centro'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cep" = c('24239-900','12098-900',"23232-900",'99872-900','43982-900'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"estado" = c('Rio de Janeiro','Minas Gerais','Rio de Janeiro','Minas Gerais','Minas Gerais'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pais" =c('Brasil', 'Brasil', 'Brasil', 'Brasil', 'Brasil'),</br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id_func" = c(2, 6, 3, 11, 17))
   </code></pre>
-  <hr />
 
 
 							<!-- Image -->
 							<div class="text">
+								<hr />
+
 							<h3>Outros Artigos</h3>
+							<hr />
+
 							<section class="tiles">
 								<article class="style1">
 									<span class="image">
@@ -1261,6 +1311,8 @@
 
 							<hr />
 									<h3>Projeto - Python &amp;Lingaugem R</h3>
+									<hr />
+
 									<p><span class="image left"><img src="https://raw.githubusercontent.com/rodolffoterra/Projct_Marijuana_Legalization_TS/main/imagnes/layout.png" alt="" />
 									</span>Vamos realizar uma análise de dados com base em séries temporais e análises geoespaciais, além de outras técnicas exploratórias 
 									mais gerais, para examinar se essas previsões se tornaram realidade em Los Angeles desde que a legalização entrou em vigor. Nosso foco 
@@ -1274,14 +1326,7 @@
 									<p  class="bottum-rigth" ><a target="_black" href="https://github.com/rodolffoterra/Project_Marijuana_Legalization_TS" class="button primary small">Projeto <i class="fab fa-python"></i></a></p>
 								</br>
 								
-									<p><span class="image right"><img src="images/pic14.jpg" alt="" />
-									</span>Nesse projete iremos analisar uma série temporal de uma empresa de locação de bicicleta dos Estados. Unidos. 
-								O conjunto de dados é obtido na plataforma Kaggle. Nesse conjunto de dados, iremos realizar uma análise exploratória em 
-								relação da demanda de locação de bicicleta dos dias da semana, dia úteis, com dias de finais de semanas e feriados, qual 
-								a correlação de locação de bicicleta com a temperatura e humidade do ar, se a velocidade do vento interfere em relação a 
-								damanda de locação. Toda este projeto foi desenvolvido em linguagem R. </p>
-									  <p  class="bottum-left" ><a target="_black" href="https://rpubs.com/RodolfoTerra/bicicleta" class="button primary small">Projeto <i class="far fa-registered"></i></a></p>
-								</br>
+									
 								</section>
 							</div>
 						</div>
@@ -1311,7 +1356,7 @@
 							</ul>
 						</section>
 						<ul class="desenvolv">
-							&copy; Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> Rodlfo Terra | Cientista de Dados</a></li>
+							&copy; Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> &nbsp;Rodolfo Terra | Cientista de Dados</a></li>
 						</ul>
 					</div>
 
