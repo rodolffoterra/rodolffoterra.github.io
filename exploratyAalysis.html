@@ -136,7 +136,6 @@
 									<p>Ou</p>
 									<pre><code># Segunda Opção<br>df <- read.csv(file = <span style="color: #ff0000;">'https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/dados/data_titanic.csv'</span>)<br>head(df)</code></pre>
 
-									<div class="table-wrapper text">
 														<table class="alt">
 															<thead>
 																<tr>
@@ -233,7 +232,6 @@
 																	</tbody>
 																</table>																
 															
-															</div>
 															<hr />
 
 									<h2>Análise Inicial dos Dados</h2>
@@ -333,62 +331,99 @@
 										<hr />
 
 										<h2> Análise Exploratória dos Dados</h2>
+										<hr />
+
+										Abaixo eremos mostrar um Dashboard  das variáveis categóricas e numéricas. 
+										Sege também a cração da função. O gráficos com as as retas azuis e vermelha, iremos 
+										estudar com maiores detalhes no próximo artigo. Iremos construir apenas alguns gráficos 
+										para começarmos a nos familializar com a imencidão de possibilidades.    
+										<pre><code>my_fn <- <span style="color: #63264e;">function</span>(data, mapping, ...){<br>  p <- ggplot(data = data, mapping = mapping) +<br>  geom_point(size = 2.48, colour = <span style="color: #ff0000;">"#A9A9A9"</span>) +<br>  geom_smooth(method=loess, fill = <span style="color: #ff0000;">"red"</span>, color=<span style="color: #ff0000;">"red"</span>, ...)+<br>  geom_smooth(method=lm, fill = <span style="color: #ff0000;">"blue"</span>, color = <span style="color: #ff0000;">"blue"</span>, ...)<br>  p<br>}<br><br># Gráfico ggpairs<br>ggpairs(df[,c(1,2,4:9)], lower = list(continuous = my_fn)) +<br>  labs(title = <span style="color: #ff0000;">"Correlação entre as variáveis"</span>)</code></pre>
+										<p><img src="images/ggally_titanic.jpg" alt=""  width=100% /></p>
+
+										<p>Abaixo um gráfico de barra da quantidade de pessoas que sobreviveram ao naufrágio, e os que não sobreviveram.</p>
+										<pre><code>ggplot(df, aes(Sobrevivente)) +<br>  geom_bar(aes(fill = factor(Sobrevivente)), alpha = 0.5) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Quantidade de Sobreviventes x Naufragados"</span>,<br>      y = <span style="color: #ff0000;">"Contagem"</span>,<br>      fill = <span style="color: #ff0000;">"Sobrevivente"</span>)</code></pre>
+										<p><img src="images/graf1_titanic.jpg" alt=""  width=60% /></p>
+
+										<p>Gráfico de barra da quantidade de pessoas por gênero.</p>
+										<pre><code>ggplot(df, aes(Sexo)) +<br>  geom_bar(aes(fill = factor(Sexo)), alphe = 0.5) +<br>  theme_classic() +<br>  labs(title = "Quantidade de pessoas por Gênero",<br>      y = <span style="color: #ff0000;">"Contagem"</span>,<br>      x = <span style="color: #ff0000;">"Gênero"</span>,<br>      fill = <span style="color: #ff0000;">""</span>)</code></pre>
+										<p><img src="images/graf2_titanic.jpg" alt=""  width=60% /></p>
+
+										<p>Vamos usar a função <code>prop.table()</code> para visualizar a proporção de homens e mulheres.</p>
+										<pre><code>prop.table(model_table) * 100</code></pre>
+										<table>
+											<tbody>
+											<tr>
+											<td bgcolor="white">##<br>## &nbsp;&nbsp; Feminino &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Masculino <br>## &nbsp;&nbsp;&nbsp;&nbsp; 35.2413 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 64.7587
+											</td>
+											</tr>
+											</tbody>
+										</table>
+										<p>Usaremos a função <code>table()</code> para visualizar a quantidade distinta de cada <b>levels</b>.</p>
+
+										<pre><code>table(df$Sexo)</code></pre>
+										<table>
+											<tbody>
+											<tr>
+											<td bgcolor="white">##<br>## &nbsp;&nbsp; Feminino &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Masculino <br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 314 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 577
+											</td>
+											</tr>
+											</tbody>
+										</table>
 
 
 
+										<p>Gráfico de barra da quantidade de pessoas por classe social.</p>
+										<pre><code>ggplot(df, aes(Classe)) +<br>  geom_bar(aes(fill = Classe), alpha = 0.5, show.legend = FALSE) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Quantidade de Pessoas por Classe"</span>,<br>      y = <span style="color: #ff0000;">"Contagem"</span>,<br>      x = <span style="color: #ff0000;">"Classe"</span>,<br>      fill = <span style="color: #ff0000;">"Classe"</span>)</code></pre>
 
+										<p><img src="images/graf3_titanic.jpg" alt=""  width=60% /></p>
 
+										<p>E abaixo um Gráfico de barra da quantidade de pessoas por sexo e por Embargação.</p>
+										<pre><code>ggplot(df) +<br>  geom_bar(aes(y = Embarque, fill = Sexo, alphe = 0.5)) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Quantidade de pessoas por Embarcação e Gênero"</span>,<br>      y = <span style="color: #ff0000;">""</span>,<br>      x = <span style="color: #ff0000;">"Quantidade"</span>,<br>      fill = <span style="color: #ff0000;">"Sexo"</span>) +<br>  theme(axis.text.y = element_text(angle = 45, hjust = 1))</code></pre>
+										<p><img src="images/graf4_titanic.jpg" alt=""  width=60% /></p>
 
+										<p> Criaremos um blox plot para ver qual a faixa etária dos sobreviventes e se a idade 
+										média das mulheres sobreviventes é maior do que a dos homens sobrevivente. Podemos observar que a média
+										pelo gráfico das mulheres sobrevivente é muito próxima da idade dos homens sobreviventes. Para termos certeza
+										se a média de idade dos gênero são iguais ou próxima teremos que realizar o teste de hipótese que será abordados 
+										nos próximos artigo. </p>
+										<pre><code>subset(df,df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%<br>  ggplot(aes(Idade, Sexo)) +<br>  geom_boxplot(aes(fill = as.factor(Sexo)), alpha = 0.4, show.legend = FALSE) +<br>  theme_classic() +<br>  labs(title =  <span style="color: #ff0000;">"BoxPlot dos Sobreviventes por Sexo x Idade"</span>,<br>      y = <span style="color: #ff0000;">"Sobrevivente"</span>,<br>      x = <span style="color: #ff0000;">"Idade"</span>) +<br>  theme(axis.text.y = element_text(angle = 45, hjust = 1)) </code></pre>
+										<p><img src="images/box_idade_titanic.png" alt=""  width=80% /></p>
+										<p> Já sabendo a média da faixa etária dos sobreviventes podemos fazer um outro gráfico, histograma, para conseguirmos
+											visualiar quais as proporções por idade dos sobrevivente e a diferença entre mulher e home. </p>
+										<pre><code>tmp_male <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Masculino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>b <- hist(tmp_male, 20, plot=FALSE)<br>tmp_female <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Feminino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>a <- hist(tmp_female, breaks = b$breaks, plot=FALSE)<br><br>df_density <- data.frame(Age=c(a$mids,b$mids),Density=c(a$density,b$density),Sex=c(rep(<span style="color: #ff0000;">"Feminino"</span>,length(a$mids)),rep(<span style="color: #ff0000;">"Maculino"</span>,length(b$mids))))<br><br>highchart() %>%<br>  hc_xAxis(categories = df_density$Age) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">"Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(255, 192, 203, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(68, 170, 255, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#44AAFF"</span>) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#FFC0Cb"</span>) %>%<br>  hc_tooltip(pointFormat = "<span style=\"color:{series.color}\">{series.name}</span><br>			 {point.y:.3f}",<br>			 shared = FALSE) %>%<br>  hc_yAxis(title=list(text=<span style="color: #ff0000;">'Densidade'</span>)) %>%<br>  hc_xAxis(title=list(text=<span style="color: #ff0000;">'Idade'</span>))  %>%<br>  hc_title(text=<span style="color: #ff0000;">'Gráfico dos Sobreviventes por Idade'</span>)</code></pre>	
+										<p><img src="images/hist_idade_titanic.png" alt=""  width=100% /></p>
+										<pre><code>CrossTable(x = df$Sexo, y = df$Sobrevivente)</code></pre>
+										<p><img src="images/crossTable_titanic.png" alt=""  width=100% /></p>
+										<p> A função acima <code>CrossTable()</code> demonstra numericamente a relação entre o Sexo, e os sobreviventes 
+										e naufragados, <b>tabela cruzada </b>. O nosso conjunto de dados, possui 891. sendo 314 mulheres, ou 35.20% e 577 homens ou 64.80%. A table
+										também mostre a quantidade de mulheres sobreviventes, 233 (74,2% do grupo de mulheres) e 81 mulheres naufragadas (25.80% do grupo de mulheres).
+										O mesmo análise temos na categoria dos homens, sendo 109 homens sobreviventes (18.90% do grupo de homens) e 468 homens 
+										naufgragados (81.10% do grupo de homens. 
+										Abaixo temos também a quantidade de naufragados, 549 pessoas (61.60%) e de sobreviventes 342 pessoas (38.40%).Abaixo vamos mostrar mais um gráfico
+									em relação ao sexo, e sobrevivente e naufragados</p>
+									<pre><code>female_rate <- nrow(df[df$Sexo == <span style="color: #ff0000;">"Feminino"</span> & df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>,]) / nrow(df[df$Sexo == <span style="color: #ff0000;">"Feminino"</span>,]) * 100<br>male_rate <- nrow(df[df$Sexo != <span style="color: #ff0000;">"Feminino"</span> & df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>,]) / nrow(df[df$Sexo != <span style="color: #ff0000;">"Feminino"</span>,]) * 100<br><br>ggplot(df, aes(Sexo)) +<br>  geom_bar(aes(fill = Sexo, alpha = Sobrevivente), color=<span style="color: #ff0000;">"grey"</span>, show.legend = FALSE) +<br>  labs(x = <span style="color: #ff0000;">"Gênero"</span>,<br>      y = <span style="color: #ff0000;">"Quantidade"</span>,<br>      title=<span style="color: #ff0000;">"Sobrevivente por Gênero"</span>) +<br>  theme_bw(base_size = 18) +<br>  scale_fill_manual(name=<span style="color: #ff0000;">""</span>, values=c(<span style="color: #ff0000;">"E57373"</span>, <span style="color: #ff0000;">"#42A5F5"</span>)) +<br>  annotate(<span style="color: #ff0000;">"text"</span>, label=paste(round(female_rate,digits=3), <span style="color: #ff0000;">"%"</span>), x = 1, y = 250) +<br>  annotate(<span style="color: #ff0000;">"text"</span>, label=paste(round(male_rate,digits=3), <span style="color: #ff0000;">"%"</span>), x = 2, y = 125)</code></pre>
+									<p><img src="images/graf5_titanic.jpg" alt=""  width=70% /></p>
 
+									<p>Agora mostramos um gráfico separado por embarga, por títularidade do nome e é sobrevivente ou não.</p>
+									<pre><code>df$Nome <- gsub(<span style="color: #ff0000;">'(.*, )|(\\..*)'</span>,<span style="color: #ff0000;">''</span>, df$Nome)<br>df$Nome[df$Nome == 'Mlle']<- <span style="color: #ff0000;">'Miss'</span><br>df$Nome[df$Nome == 'Ms']<- <span style="color: #ff0000;">'Miss'</span><br>df$Nome[df$Nome == 'Mme']<- <span style="color: #ff0000;">Mrs'</span><br>df$Nome[df$Nome == 'Lady']<- <span style="color: #ff0000;">'Miss'</span><br>df$Nome[df$Nome == 'Dona']<- <span style="color: #ff0000;">'Miss'</span><br>officer<- c(<span style="color: #ff0000;">'Capt','Col','Don','Dr','Jonkheer','Major','Rev','Sir','the Countess'</span>)<br>df$Nome[df$Nome %in% officer]<-<span style="color: #ff0000;">'Officer'</span><br><br>df$Nome<- as.factor(df$Nome)<br><br>ggplot(data = df,aes(x=Nome,fill=df$Sobrevivente)) +<br>  geom_bar(start = "identify") +<br>  labs(y = <span style="color: #ff0000;">"Quantidade"</span>,<br>      fill = <span style="color: #ff0000;">"Sobrevivente"</span>,<br>      title = <span style="color: #ff0000;">"Titularidade do Nome"</span>) +<br>  scale_y_continuous(breaks = seq(min(0), max(400), by = 50)) +<br>   facet_wrap(~Embarque) +<br>  theme_test()</code></pre>
 
+									<p><img src="images/graf6_titanic.jpg" alt=""  width=70% /></p>
 
+									<P>Para finalizarmos o nosso artigo deixaremos um gráfico abaixo, para que vocÊ possa refletir, pois será 
+										assunto para a próxima aula, regressão linear. No próximo artigo terá uma análise detalhada em relação
+									a composição desse gráfico</P>
+									<pre><code>ggplot(df, aes(x = df$`Irmãos/Cônjuge`, y = df$`Pais/Crianças`))+<br>  geom_point() +<br>  geom_smooth(method=loess, fill = <span style="color: #ff0000;">"red"</span>, color=<span style="color: #ff0000;">"red"</span>)+<br>  geom_smooth(method=lm, fill = <span style="color: #ff0000;">"blue"</span>, color = <span style="color: #ff0000;">"blue")</span> +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Correção entre Irmãos / Cônjuge com Pais / Crianaças"</span>,<br>      y = <span style="color: #ff0000;">"Pais/Crianaças"</span>,<br>      x = <span style="color: #ff0000;">"Irmãos/Cônjuge"</span>)</code></pre>
+									<p><img src="images/graf7_titanic.jpg" alt=""  width=70% /></p>
 
-
-
-
-												
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <hr />
 
 
 							<!-- Image -->
-							<div class="text">
+							<div class="project">
+								<hr />
+
 							<h3>Outros Artigos</h3>
+							<hr />
+
 							<section class="tiles">
 								<article class="style1">
 									<span class="image">
@@ -461,9 +496,13 @@
 								</article>															
 							</section></br>
 
+						</div>
+
 							<hr />
 									<h3>Projeto: Análise Exploratória </h3>
-									<p><span class="image right"><img src="images/pic14.jpg" alt="" />
+									<hr />
+
+									<p><span class="image right"><img src="images/pic14.png" alt="" />
 									</span>Nesse projete iremos analisar uma série temporal de uma empresa de locação de 
 									bicicleta dos Estados. Unidos. O conjunto de dados é obtido na plataforma Kaggle. Nesse 
 									conjunto de dados, iremos realizar uma análise exploratória em relação da demanda de locação
@@ -472,9 +511,8 @@
 									  vento interfere em relação a damanda de locação. Toda este projeto foi desenvolvido em 
 									  linguagem R.</p>
 									<p  class="bottum-rigth" ><a target="_black" href="https://rpubs.com/RodolfoTerra/bicicleta" class="button primary small">Projeto <i class="far fa-registered"></i></a></p>
-								<br><br>
+								<br>
 								</section>
-							</div>
 						</div>
 					</div>
 
