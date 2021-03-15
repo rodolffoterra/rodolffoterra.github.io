@@ -3378,7 +3378,7 @@ input, select, textarea {
 		}
 
 		.container .text{
-			margin-left: 10%;
+			margin-left: 30%;
 			margin-top: 0%;
 			color: #f6f6f6;
 		}
@@ -3388,8 +3388,14 @@ input, select, textarea {
 		}
 
 		.text{
-			margin-left: 50px;
-			margin-right: 50px;
+			margin-left: 15%;
+			margin-right: 15%;
+			text-align: justify;
+		}
+
+		.project{
+			margin-left: 5%;
+			margin-right: 5%;
 			text-align: justify;
 		}
 
