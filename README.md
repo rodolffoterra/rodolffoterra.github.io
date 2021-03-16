@@ -7,6 +7,62 @@ Economista, pós graduado em direito processual do trabalho e cientista de dados
 # Site Desenvolvido:
 
 	https://rodolffoterra.github.io
+	
+
+<img src="https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/images/page_home.jpg" width="90%">
+
+	
+	
+# Objetivo do projeto:
+
+Desenvolvir material gratuito de linguagem R e linguagem Python, com o foco em ciência de Dados. O Trabalho é afim de aumentar o mercado Open Source, afim que nossas pessoas possam se interessar pelo meu da tecnologia em inicialmente utilizar recursos financeiros. O Propósito é desenvolver o skill de fazer com que as pessoas também busquem o conhecimento, não por intermédio de cursos, mas pelo desenolvimento. 
+
+# Objetivo de médio prazo
+
+Tornar-se um site de grupo de pessoas desenvolvedoras e permitir que novos interessados também possa escrever artigos, até mesmo em outras linguagem de programação, como javo, java script, C++ Ruby, Julia, entre outras.
+Tenho como objetivo por intermédio do público criar fórum de duscussão em relação ao temas assim de descobrirmos **novos talentos** para a área de tecnologia.
+
+# Possibilidade:
+O site hoje é completamente gratuito, e está em desenvolvimento de material para entregar conhecimento da melhor qualidade possível. Temos também como propósito futuramente ambiar o site para se transformar em uma plataforma de ensino de cursos livre para Data Science. Terão materiais pagas, mas o propósito do projeto não é o fim lucrativo, pegando como auxílio algumas outras plataformas, caso a pessoa tenha interesse em realizar o cursos poderá entrar com um pedido de **auílio financeiro** mediante de uma análise de conselho, poderá receber bolsas até 100%. O propósito do projeto é o aprendizado de forma gratuita. 
+
+# Objetivo a longo prazo
+Tentarei sempre buscar empresas parceiras na área de tecnologia, afim de construir um ciclo de interesses. Entender as necessidades das novas startup e além de desenvolver cursos voltado para a necessidade do mercado, fornecer profissionais com um conhecimento sobre a ferramenta. 
+Além de fornecermos conhecimento gratuito para os público interessado, ajudamos a desenvolver tecnologia em nosso países e realizaremos a trabalhar de seleção de profissionais qualificados para aquela determidade tecnologia. 
+
+
+# Periodicidade do Site
+
+Novo artigo publica semanalmente, de preferencia nas sexta feiras, pois temos o intendimento que durante o final de semana a pessoa conseguirá estudar este novo material. Um material liberado na segunda feira ou no meio da semana, com a rotina semanal, possívelmente o final de semana geralmente data em que a pessoa possui um tempo mais ocioso poderá esquecer de adquirir novos conhecimento devido ao cansaço da semana.
+
+# Material já publicado
+
+
+<img src="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/images/pic01.jpg" width="10%"> 1ª Artigo: SQLDF - 12 / 02 / 2021 
+
+<img src="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/images/pic02.jpg" width="10%"> 2ª Artigo: Vetores - 19 / 02 / 2021
+
+<img src="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/images/pic03.jpg" width="10%"> 3ª Artigo - Matrix - 26 / 02 / 2021
+
+<img src="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/images/pic04.jpg" width="10%"> 4ª Artigo - Data Frame - 05 / 03 / 2021
+
+<img src="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/images/pic05.jpg" width="10%"> 5ª Artigo - Análise Exploratória - 12 / 03 / 2021
+
+* 6ª Artigo - Regressão Linear - 19 / 03 / 2021
+
+* 7ª Artigo - Clusterização - 26 / 03 / 2021
+
+* 8ª Artigo - Teste de Hipótese - 09 / 04 / 2021
+
+* Outro....
+
+
+
+
+
+
+
+
+
 
 
 # Credits:
