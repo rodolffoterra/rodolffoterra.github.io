@@ -9,7 +9,7 @@ Economista, pós graduado em direito processual do trabalho e cientista de dados
 	https://rodolffoterra.github.io
 	
 
-<img src="https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/images/page_home.jpg" width="90%">
+<img src="https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/images/page_home.jpg.png" width="90%">
 
 	
 	
