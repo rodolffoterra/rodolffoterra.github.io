@@ -96,7 +96,7 @@
 									<P>Em estatística, a<b> análise exploratória de dados (AED)</b> é uma abordagem
 									à análise de conjuntos de dados de modo a resumir suas
 									características principais, frequentemente com métodos visuais.
-									Um modelo estatístico pode ou não ser usado, mas primariamente a AED tem
+									Um modelo estatístico pode ou não ser usado, mas primeiramente a AED tem
 									como objetivo observar o que os dados podem nos dizer além da modelagem 
 									formal ou do processo de teste de hipóteses. A análise exploratória de 
 									dados foi promovida pelo estatístico norte-americano John Tukey, 
@@ -123,7 +123,7 @@
 										disponibilizou esse dataset neste link. Com base nas informações dispostas nesse 
 										dataset, realizarei Insights acerca dos tripulantes e das circunstâncias que envolveram 
 										a tragédia. Vale lembrar que tal conjunto de dados não abriga informações de todos os 
-										passIdadeiros, mas sim de apenas 891.</p>
+										passageiros, mas sim de apenas 891.</p>
 
 									<p>Iremos utilizar a função <code>read.csv()</code>.Abaixo demonstraremos como carregar um conjunto de dados,
 										lembrando que é preciso determinar alguns parâmetros, file ou <b>path</b>, caminho do diretório do arquivo 
@@ -266,8 +266,8 @@
 										<li><b>Embarque.:</b> Local onde o passageiro embarcou</li></p>
 									<hr/>
 									
-									<p> A função abaixo mostra a quantidade de linhas (Observações), quantidade de colunas (variáveis) o nome, o type que foi 
-										classificado pelo r STudio cada variável e a composição das variáveis. </p>
+									<p> A função abaixo mostra a quantidade de linhas (Observações), quantidade de colunas (variáveis) o nome, o tipo da variável que foi 
+										classificado pelo RStudio cada variável e a composição das variáveis. </p>
 										<pre><code>str(df)</code></pre>
 										<p><img src="images/str_titanic.jpg" alt=""  width=100% /></p>
 
@@ -334,9 +334,9 @@
 										<hr />
 
 										Abaixo eremos mostrar um Dashboard  das variáveis categóricas e numéricas. 
-										Sege também a cração da função. O gráficos com as as retas azuis e vermelha, iremos 
+										Segue também a função. O gráficos com as as retas azuis e vermelha, iremos 
 										estudar com maiores detalhes no próximo artigo. Iremos construir apenas alguns gráficos 
-										para começarmos a nos familializar com a imencidão de possibilidades.    
+										para começarmos a nos familializar regressão linear e a variação de gráficos.    
 										<pre><code>my_fn <- <span style="color: #63264e;">function</span>(data, mapping, ...){<br>  p <- ggplot(data = data, mapping = mapping) +<br>  geom_point(size = 2.48, colour = <span style="color: #ff0000;">"#A9A9A9"</span>) +<br>  geom_smooth(method=loess, fill = <span style="color: #ff0000;">"red"</span>, color=<span style="color: #ff0000;">"red"</span>, ...)+<br>  geom_smooth(method=lm, fill = <span style="color: #ff0000;">"blue"</span>, color = <span style="color: #ff0000;">"blue"</span>, ...)<br>  p<br>}<br><br># Gráfico ggpairs<br>ggpairs(df[,c(1,2,4:9)], lower = list(continuous = my_fn)) +<br>  labs(title = <span style="color: #ff0000;">"Correlação entre as variáveis"</span>)</code></pre>
 										<p><img src="images/ggally_titanic.jpg" alt=""  width=100% /></p>
 
@@ -377,7 +377,7 @@
 
 										<p><img src="images/graf3_titanic.jpg" alt=""  width=60% /></p>
 
-										<p>E abaixo um Gráfico de barra da quantidade de pessoas por sexo e por Embargação.</p>
+										<p>E abaixo um Gráfico de barra da quantidade de pessoas por sexo e por Embarcação.</p>
 										<pre><code>ggplot(df) +<br>  geom_bar(aes(y = Embarque, fill = Sexo, alphe = 0.5)) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Quantidade de pessoas por Embarcação e Gênero"</span>,<br>      y = <span style="color: #ff0000;">""</span>,<br>      x = <span style="color: #ff0000;">"Quantidade"</span>,<br>      fill = <span style="color: #ff0000;">"Sexo"</span>) +<br>  theme(axis.text.y = element_text(angle = 45, hjust = 1))</code></pre>
 										<p><img src="images/graf4_titanic.jpg" alt=""  width=60% /></p>
 
@@ -389,7 +389,7 @@
 										<pre><code>subset(df,df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%<br>  ggplot(aes(Idade, Sexo)) +<br>  geom_boxplot(aes(fill = as.factor(Sexo)), alpha = 0.4, show.legend = FALSE) +<br>  theme_classic() +<br>  labs(title =  <span style="color: #ff0000;">"BoxPlot dos Sobreviventes por Sexo x Idade"</span>,<br>      y = <span style="color: #ff0000;">"Sobrevivente"</span>,<br>      x = <span style="color: #ff0000;">"Idade"</span>) +<br>  theme(axis.text.y = element_text(angle = 45, hjust = 1)) </code></pre>
 										<p><img src="images/box_idade_titanic.png" alt=""  width=80% /></p>
 										<p> Já sabendo a média da faixa etária dos sobreviventes podemos fazer um outro gráfico, histograma, para conseguirmos
-											visualiar quais as proporções por idade dos sobrevivente e a diferença entre mulher e home. </p>
+											visualizar quais as proporções por idade dos sobrevivente e a diferença entre mulher e home. </p>
 										<pre><code>tmp_male <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Masculino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>b <- hist(tmp_male, 20, plot=FALSE)<br>tmp_female <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Feminino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>a <- hist(tmp_female, breaks = b$breaks, plot=FALSE)<br><br>df_density <- data.frame(Age=c(a$mids,b$mids),Density=c(a$density,b$density),Sex=c(rep(<span style="color: #ff0000;">"Feminino"</span>,length(a$mids)),rep(<span style="color: #ff0000;">"Maculino"</span>,length(b$mids))))<br><br>highchart() %>%<br>  hc_xAxis(categories = df_density$Age) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">"Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(255, 192, 203, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(68, 170, 255, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#44AAFF"</span>) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#FFC0Cb"</span>) %>%<br>  hc_tooltip(pointFormat = "<span style=\"color:{series.color}\">{series.name}</span><br>			 {point.y:.3f}",<br>			 shared = FALSE) %>%<br>  hc_yAxis(title=list(text=<span style="color: #ff0000;">'Densidade'</span>)) %>%<br>  hc_xAxis(title=list(text=<span style="color: #ff0000;">'Idade'</span>))  %>%<br>  hc_title(text=<span style="color: #ff0000;">'Gráfico dos Sobreviventes por Idade'</span>)</code></pre>	
 										<p><img src="images/hist_idade_titanic.png" alt=""  width=100% /></p>
 										<pre><code>CrossTable(x = df$Sexo, y = df$Sobrevivente)</code></pre>
@@ -398,7 +398,7 @@
 										e naufragados, <b>tabela cruzada </b>. O nosso conjunto de dados, possui 891. sendo 314 mulheres, ou 35.20% e 577 homens ou 64.80%. A table
 										também mostre a quantidade de mulheres sobreviventes, 233 (74,2% do grupo de mulheres) e 81 mulheres naufragadas (25.80% do grupo de mulheres).
 										O mesmo análise temos na categoria dos homens, sendo 109 homens sobreviventes (18.90% do grupo de homens) e 468 homens 
-										naufgragados (81.10% do grupo de homens. 
+										naufragados (81.10% do grupo de homens. 
 										Abaixo temos também a quantidade de naufragados, 549 pessoas (61.60%) e de sobreviventes 342 pessoas (38.40%).Abaixo vamos mostrar mais um gráfico
 									em relação ao sexo, e sobrevivente e naufragados</p>
 									<pre><code>female_rate <- nrow(df[df$Sexo == <span style="color: #ff0000;">"Feminino"</span> & df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>,]) / nrow(df[df$Sexo == <span style="color: #ff0000;">"Feminino"</span>,]) * 100<br>male_rate <- nrow(df[df$Sexo != <span style="color: #ff0000;">"Feminino"</span> & df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>,]) / nrow(df[df$Sexo != <span style="color: #ff0000;">"Feminino"</span>,]) * 100<br><br>ggplot(df, aes(Sexo)) +<br>  geom_bar(aes(fill = Sexo, alpha = Sobrevivente), color=<span style="color: #ff0000;">"grey"</span>, show.legend = FALSE) +<br>  labs(x = <span style="color: #ff0000;">"Gênero"</span>,<br>      y = <span style="color: #ff0000;">"Quantidade"</span>,<br>      title=<span style="color: #ff0000;">"Sobrevivente por Gênero"</span>) +<br>  theme_bw(base_size = 18) +<br>  scale_fill_manual(name=<span style="color: #ff0000;">""</span>, values=c(<span style="color: #ff0000;">"E57373"</span>, <span style="color: #ff0000;">"#42A5F5"</span>)) +<br>  annotate(<span style="color: #ff0000;">"text"</span>, label=paste(round(female_rate,digits=3), <span style="color: #ff0000;">"%"</span>), x = 1, y = 250) +<br>  annotate(<span style="color: #ff0000;">"text"</span>, label=paste(round(male_rate,digits=3), <span style="color: #ff0000;">"%"</span>), x = 2, y = 125)</code></pre>
