@@ -17,6 +17,11 @@ Economista, pós graduado em direito processual do trabalho e cientista de dados
 
 Desenvolver material gratuito de linguagem R e linguagem Python, com o foco em ciência de Dados. O Trabalho é afim de aumentar o mercado Open Source, afim que nossas pessoas possam se interessar pelo meio da tecnologia sem inicialmente utilizar recursos financeiros. O Propósito é desenvolver o skill de fazer com que as pessoas também busquem o conhecimento, não por intermédio de cursos, mas pelo desenolvimento. 
 
+
+# Mapa de Calor
+
+![mapa](https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/images/click.jpg)
+
 # Objetivo de médio prazo
 
 Tornar-se um site de grupo de pessoas desenvolvedoras e permitir que novos interessados também possa escrever artigos, até mesmo em outras linguagem de programação, como javo, java script, C++ Ruby, Julia, entre outras.
@@ -56,15 +61,6 @@ Novo artigo semanalmente, de preferência publicações as sexta feiras, pois te
 * 8ª Artigo - Teste de Hipótese - 09 / 04 / 2021
 
 * Outro....
-
-
-
-
-
-
-
-
-
 
 
 # Credits:
