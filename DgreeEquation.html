@@ -1,0 +1,590 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+
+<!-- Hotjar Tracking Code for https://rodolffoterra.github.io/DegreeEquation.html -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2255362,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<script type='text/javascript'>
+	window.smartlook||(function(d) {
+	  var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+	  var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+	  c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+	  })(document);
+	  smartlook('init', 'e174065ea1c92508fe441a2a29be0219950dacb0');
+  </script>
+  
+		<title>Rodolfo Terra | Ciência de Dados</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+					<!-- Main -->
+				<main>
+				<div class="principal">
+					<div class="container">
+							<h1>Package Splines</h1>
+					<h3 class="text">Linguagem R</h3>
+					</div>
+				</div>
+				</main>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">Próximo Artigo - Vetor</a></li>
+							<li><a target="_black" href="https://www.rodolfoterra.com/">Site</a></li>
+
+							<!-- Logo -->
+							<a target="_black" href="https://www.rodolfoterra.com/" class="logo">
+								<span class="bottum-rigth"><img src="images/logo.png" alt="" />
+								</a>
+						</ul>
+					</nav>
+
+				
+
+							<!-- Text -->
+								<section>
+								</br>
+								<div class='text'>
+									<hr />
+
+								<h2>Função Polinomial</h2>
+								<hr />
+
+								<p> As funções polinomiais podem ser classificadas quanto a seu grau. O grau de uma função 
+								polinomial corresponde ao valor do maior expoente da variável do polinômio, ou seja, é o 
+								valor de <em>n</em> da função. Em matemática, função polinomial é uma função 
+								<em>P</em> que pode ser expressa da forma:</p>
+								<p style="text-align: center;"><img src="images/polig.png" alt="" /><a target="_black" href="https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_polinomial">WikipédiA</a></p>
+								<p>O objetivo deste artigo não é a falarmos da matemática pura, mesmo porque a minha formação é Ciências Econômicas, peço 
+								desculpas as matemáticos, por esta introdução. O propósito desse artigo é dar uma introdução para o próximo Artigo, 
+								que falaremos de regressção linear simples e multipla. </p>
+								<hr />
+
+								<h2> Carregando Conjunto de Dados</h2>
+								<hr />
+
+								<p>Iremos utilizar a função <code>read.csv()</code>.Abaixo demonstraremos como carregar um conjunto de dados,
+									lembrando que é preciso determinar alguns parâmetros, file ou <b>path</b>, caminho do diretório do arquivo 
+									em seu computador, header indicar se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo.
+									csv temos que demonstrar qual é o separador, nesse dataset é a vírgula.</br>
+									Abaixo temos 02 exemplo, o primeiro, <a href="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/Data.csv">
+										baixar</a> o arquivo, e salva em seu computador. Ou Caso preferir pode
+									utilizar a segunda opção que pega o arquivo direto do repositório do GitHub.</p>
+								<pre><code># Primeira Opção<br>df <- read.csv(file = <span style="color: #ff0000;">'C:/Users/Downloads/Data.csv'</span>, header = TRUE, sep = <span style="color: #ff0000;">","</span>)<br>df</code></pre>
+								<p>Ou</p>
+								<pre><code># Segunda Opção<br>df <- read.csv(file = <span style="color: #ff0000;">'https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/pacientes.csv'</span>, header = TRUE, sep = <span style="color: #ff0000;">","</span>)<br>df</code></pre>
+								<table class="alt">
+									<thead>
+										<tr>
+											<th></th>
+											<th>y</th>
+											<th>x</th>
+											</tr>
+									</thead>
+									
+										<tr>
+											<td>1</td>
+											<td>172.010604</td>
+											<td>7.2940069</td>
+											</tr>
+										<tr>
+											<td>2</td>
+											<td>181.047184</td>
+											<td>7.75541205</td>
+											<tr>
+												<td>3</td>
+												<td>-4.948489</td>
+												<td>0.4429789</td>
+
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>169.053939/td>
+													<td>4.9272564</td>
+
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>139.063419</td>
+														<td>6.4762602</td>
+
+														</tr>		
+											</tbody>
+										</table>																
+									
+									<hr />
+
+									<p> Este artigo é um conhecimento teôrico, iremos trabalhar com esta teoria na prática, 
+										no próximo Artifo. Podemos observar que o nossa conjunto de dados, possui apenas 02 colunas,
+										que chamaremos de X e Y. Abaixo iremos plotar um gráfico de relação x e Y e observar como, a 
+										correlação dessas duas variáveis.Para a construção dos gráficos precisamos carregar um famosa biblioteca:
+										<img src="images/ggplot2.png" alt="" width=06%/>, e corrplot. 
+									</p>
+									<pre><code>library(ggplot2)<br>library(corrplot)</code></pre>
+
+									<pre><code>ggplot() +<br>geom_point(data=df, aes(x=x, y=y)) +<br>  labs(title = <span style="color: #ff0000;">"Relação entre a variável 'y' e a vriável 'x'"</span>,<br>      subtitle = <span style="color: #ff0000;">"Existe uma correlação positiva entre as duas variáveis"</span>) +<br>  theme_classic()</code></pre>
+									<p class ="img_logo" ><img src="images/plot.png" alt="" /></p>
+									<p> Ao observar a tabela não consiguimos observar uma relação entre as duas variáveis, mas quando
+										plotamos um grafico <b>scatterplot</b> podemos observar claramente que quando a variável <b>x</b>
+										aumente consequentemente a variável <b>y</b> também aumenta. Podemos dizer que as duas variáveis
+										possuem uma correlação positiva. <em>Jamais podemos afirmar que as duas variáveis possui uma relação
+										de causa e efeito</em>. No próximo artigo, veremos mais detalhes em relação a isto.</p>
+										Abaixo demonstramos uma planilha de correlação entre as variáveis. Na parte superior a esquerda e na parte inferior a direita, 
+										é a correlação da variávei com ela mesma, ou seja, y com y e x com x, respectivamente. Quando observamos a correlação da 
+										variável y com x, ou y com y, a ordem não interfere, temos um valor <b>positivo</b> de 0.94.</p>
+									<pre><code>corrplot(cor(df), method = "number")</code></pre>
+									<pre class ="img_logo" ><img src="images/cor.png" alt="" /></pre>
+									<p>A correlação nunca pode ser maior do que 1 ou menor do que menos 1. Uma correlação próxima a zero indica que as duas variáveis
+										não estão relacionadas. Uma correlação positiva indica que as duas variáveis movem juntas, e a relação é forte quanto mais a
+										correlação se aproxima de um. Uma correlação negativa indica que as duas variáveis movem-se em direções opostas, e que a 
+										relação também fica mais forte quanto mais próxima de menos 1 a correlção ficar. Duas variáveis que estão perfeitamente 
+										correlacionadas positivamente (r=1) movem-se essencialmente em perfeita proporção na mesma direção, enquanto dois conjuntos 
+										que estão perfeitamente correlacionados negativamente movem-se em perfeita proporção em direções opostas.<br>
+										Uma regressão simples é uma extensão do conceito correlação/covariância. Ela tenta explicar uma variável, a qual é chamada
+										variável dependente, usando a outra variável, chamada variável independente. Mantendo a tradição estatística, seja Y a 
+										variável dependente e X a variável independente. Se as duas variáveis são plotadas uma contra a outra num gráfico de 
+										espalhamento, com Y no eixo vertical e X no eixo horizontal, a regressão tenta ajustar uma linha reta através dos pontos de
+										tal modo que minimiza a soma dos desvios quadrados dos pontos da linha. Conseqüentemente, ela é chamada de regresssão 
+										ordinária dos mínimos quadrados (OLS). Quando tal linha é ajustada, dois parâmetros emergem - um é o ponto em que a linha 
+										corta o eixo Y, chamado de intercepção da regressão, e o outro é a inclinação da linha de regressão.</p>
+									<hr />
+									<h2>Funções polinomiais de grau um</h2>
+									<hr />
+									<p>Aqui, <em>n=1</em>. Por isso, os polinômios de grau 1 têm a forma <img src="images/pol1.svg" alt="" />.
+										As funções deste tipo são chamadas de função afim. Se <img src="images/pol1.svg" alt="" />, chamamos 
+										esta função afim de linear.
+										Por exemplo, <img src="images/pol3.svg" alt="" /> é uma função polinomial de grau um composta de
+										 dois monômios.</p>
+									<pre><code>lm(y~m, data = df)</code></pre>
+
+									<TABLE >
+										<TR>
+										<TD BGCOLOR=white>## &nbsp;&nbsp; <br>## &nbsp;&nbsp; Call: </br> ## &nbsp;&nbsp; lm(formula = y ~ x, data = df1)<br>## &nbsp;&nbsp;<br>## &nbsp;&nbsp; Coeficients:<br>## &nbsp;&nbsp; (Intercept)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x<br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-71.53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;35.25</TD>
+										</TR>
+										
+									</TABLE>
+							<p> Criando a função linear da reta</p>
+							
+							<pre><code>f <- function(x) {<br>return(35.25*x - 71.53)<br>}</code></pre>
+							
+							<p>Plotar o gráfico com a função de primeiro grau</p>
+							
+							<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(0,15)), aes(x=x), fun=f) +<br>  labs(title = <span style="color: #ff0000;">"Euqação de 1ª Grau"</span>) +<br>  theme_classic()</code></pre>
+							
+							<p class ="img_logo" ><img src="images/reta1.png" alt="" /></p>
+							
+							<p>Podemos chegar no mesmo gráfico sem criar a função polinomia. Apenas utilizando os recursos
+							que a biblioteca <b>ggplot2</b> utilizando a função <code>geom_smooth(method = lm)</code></p>
+							
+							<pre><code>ggplot(data=df, aes(x=x, y=y))+<br>  geom_point() +<br>  geom_smooth(method=lm, fill = <span style="color: #ff0000;">"blue"</span>, se = FALSE) +<br>  scale_x_continuous(breaks = seq(min(0), max(15), by = 5))+<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>) +<br>  theme_classic()</code></pre>
+							
+							<p class ="img_logo" ><img src="images/reta2.png" alt="" /></p>
+							
+							<p> Para conhecimento também podemos utilizar a suavidade da reta. Aumentar o grau de liberdade, como mostra no gráfico abaixo </p>
+							
+							<pre><code>ggplot(data=df, aes(x=x, y=y))+<br>  geom_point() +<br>  geom_smooth(method=lm, fill = <span style="color: #ff0000;">"Blue"</span>, color = <span style="color: #ff0000;">"blues"</span>) +<br>  scale_x_continuous(breaks = seq(min(0), max(15), by = 5)) +<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>,<br>      subtitle = <span style="color: #ff0000;">" Com suavidade"</span>) +<br>  theme_classic()</code></pre>
+							
+							<p class ="img_logo" ><img src="images/reta3.png" alt="" /></p>
+							
+							<P> O Gráfico abaixo irá identificar somente os pontos que estrão localizados acima de regressão linear 
+								que foi criada, para depois conseguimos medir a diferença da reta e dos pontos afastados da reta <b>MMQ</b>.
+							</P>
+							<pre><code>x <- df$x<br>y <- f(x)<br>means <- data.frame(x,y)<br><br>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"Red"</span>, size=1.5) +<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>,<br>      subtitle = <span style="color: #ff0000;">"Somente os pontos que fazem parte a regressão linear"</span>) +<br>  theme_classic()</code></pre>
+						
+							<p class ="img_logo" ><img src="images/reta4.png" alt="" /></p>
+							<div class="project">
+								<div class="project">
+							<p> <em>"O <b>Método dos Mínimos Quadrados (MMQ), ou Mínimos Quadrados Ordinários (MQO) ou OLS (do inglês 
+								Ordinary Least Squares)</b> é uma técnica de otimização matemática que procura encontrar o melhor
+								 ajuste para um conjunto de dados tentando minimizar a soma dos quadrados das diferenças entre o 
+								 valor estimado e os dados observados (tais diferenças são chamadas resíduos).<br><br>
+								É a forma de estimação mais amplamente utilizada na econometria. Consiste em um estimador que 
+								minimiza a soma dos quadrados dos resíduos da regressão, de forma a maximizar o grau de ajuste do
+								 modelo aos dados observados.								
+								Um requisito para o método dos mínimos quadrados é que o fator imprevisível (erro) seja 
+								distribuído aleatoriamente e essa distribuição seja normal. O Teorema Gauss-Markov garante 
+								(embora indiretamente) que o estimador de mínimos quadrados é o estimador não-enviesado de mínima
+								 variância linear na variável resposta.<br>						<br>		
+								Outro requisito é que o modelo é linear nos parâmetros, ou seja, as variáveis apresentam uma 
+								relação linear entre si. Caso contrário, deveria ser usado um modelo de regressão não-linear."</em>"
+							</p>
+							<p style="text-align: right;"><a target="_black" href="https://pt.wikipedia.org/wiki/M%C3%A9todo_dos_m%C3%ADnimos_quadrados#:~:text=O%20M%C3%A9todo%20dos%20M%C3%ADnimos%20Quadrados,estimado%20e%20os%20dados%20observados">WikipédiA</a></p>
+								</div>
+							</div>
+								
+								<pre><code>df$group <- 1:100<br>means$group <- 1:100<br><br># join<br>groups <- rbind(df, means)</code></pre>
+
+								<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;"></span>"red", size=1.5) + <br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>,<br>      subtitle = <span style="color: #ff0000;">"Método dos Mínimos Quadrados"</span>) +<br>  theme_classic()</code></pre>
+
+								<p class ="img_logo" ><img src="images/reta5.png" alt="" /></p>
+
+								<p> Para conseguirmos o valor do <b>MMQ = <code>sum((df$y-means$y)^2)</code> = 149.675,3</b>.</p>
+
+								<hr />
+									<h2>Funções polinomiais de grau dois</h2>
+									<hr />
+									<p>Em matemática, uma equação quadrática ou equação do segundo grau é uma equação polinomial 
+										de grau dois.A forma geral deste tipo de equação é:
+										 <img src="images/pol4.svg" alt="" />
+										 , em que x é uma variável, sendo a, b e c constantes, com a ≠ 0 (caso contrário, a 
+										 equação torna-se linear (equação de primeiro grau)). As constantes a, b e c, são 
+										 chamadas respectivamente de coeficiente quadrático, coeficiente linear e coeficiente 
+										 constante ou termo livre.<br>
+										 A variável x representa um valor a ser determinado, e também é chamada de incógnita. 
+										 O termo “quadrático” vem de quadratus, que em latim significa quadrado. Equações 
+										 quadráticas podem ser resolvidas por meio da fatoração, do completamento de quadrados,
+										  do uso de gráficos, da aplicação do método de Newton ou do uso de uma fórmula. Um uso 
+										  frequente das equações do segundo grau é em modelos simples de cálculo das trajetórias 
+										  de projéteis em movimento.</p>
+
+									<pre><code>lm(y ~ x + I(x^2),data=df)</code></pre>
+
+									<TABLE >
+										<TR>
+										<TD BGCOLOR=white>## &nbsp;&nbsp; <br>## &nbsp;&nbsp; Call: </br> ## &nbsp;&nbsp; lm(formula = y ~ x + I(x^2), data = df)<br>## &nbsp;&nbsp;<br>## &nbsp;&nbsp; Coeficients:<br>## &nbsp;&nbsp; (Intercept)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I(x^2)<br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3633&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-0.9543 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1977</TD>
+										</TR>
+										
+									</TABLE>
+							<p> Plotar o gráfico com a função de segundo grau.</p>
+
+							<pre><code>f1 <- function(x){<br>  return(3.1977*x^2 -0.9543*x + 4.3633)<br>}</code></pre>
+							
+							<p>Plotar o gráfico com a função de primeiro grau</p>
+							
+							<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1) +<br>  labs(title = <span style="color: #ff0000;">"Euqação de 2ª Grau"</span>) +<br>  theme_classic()</code></pre>
+							
+							<p class ="img_logo" ><img src="images/reta6.png" alt="" /></p>
+							<p>Podemos chegar no mesmo gráfico sem criar a função polinomia. Apenas utilizando os recursos que a
+								 biblioteca ggplot2 utilizando a função geom_smooth(method = loess)</p>
+								 <pre><code>ggplot(data=df, aes(x=x, y=y))+<br>  geom_point()+<br>  geom_smooth(method=loess, fill = <span style="color: #ff0000;">"red"</span>, color="red")+<br>  labs(title = <span style="color: #ff0000;">"Euqação de 2ª Grau"</span>,<br>      subtitle = <span style="color: #ff0000;">"Com suavidade"</span>) +<br>  theme_classic()</code></pre>
+								 <p class ="img_logo" ><img src="images/reta7.png" alt="" /></p>
+								 <p>Para consegui visualizar melhor a equação de segunda grau, vamos ampliar o zoom do gráfico:</p>
+								 <pre><code>ggplot()+<br>  Sgeom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-150,150)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  labs(title = <span style="color: #ff0000;">"Equação do 2ª Grau"</span>) +<br>  theme_classic()</code></pre>
+								 <p class ="img_logo" ><img src="images/reta17.jpeg" alt="" width=100%/></p>
+								 <p>O Gráfico abaixo irá identificar somente os pontos que estrão localizados acima de regressão 
+									 linear que foi criada, para depois conseguimos medir a diferença da reta e dos pontos 
+									 afastados da reta MMQ.</p>
+								<pre><code>means$y <- f1(means$x)</code></pre>
+								<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5)  +<br>      labs(title=<span style="color: #ff0000;">'Euqação do Segundo Grau'</span>) +<br>  theme_classic()</code></pre>
+									<p class ="img_logo" ><img src="images/reta8.png" alt="" width=90%/></p>
+								<p> A agora iremos demonstrar no gráfico o MMQ</p>
+								<pre><code>groups <- rbind(df1, means)</code></pre>
+								<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Equação do Segundo Grau'</span>,<br>      subtitle = <span style="color: #ff0000;">"Método dos Mínimos Quadrados"</span>) +<br>  theme_classic()</code></pre>
+								<p class ="img_logo" ><img src="images/reta9.png" alt="" width=100%/></p>
+								<p> Para conseguirmos o valor do <b>MMQ = <code>sum((df$y-means$y)^2)</code> = 376.656,5</b>.</p>
+
+								<hr />
+									
+								
+								<h2>Funções polinomiais de grau três</h2>
+								<p>Em matemática , uma função cúbica é uma função da forma
+								<img src="images/pol5.svg" alt="" />, onde os coeficientes a , b , c e d são números reais e
+								a variável x assume valores reais e a ≠ 0 . Em outras palavras, é uma função polinomial de 
+								grau três e uma função real . Em particular, o domínio e o codomínio são o conjunto dos 
+								números reais.
+								Definir f ( x ) = 0 produz uma equação cúbica da forma<img src="images/pol6.svg" alt="" />,
+								cujas soluções são chamadas de raízes da função. <br>Uma função cúbica tem uma ou três 
+								raízes reais (que podem não ser distintas); todos os polinômios de grau ímpar têm pelo menos 
+								uma raiz real.<br>
+								O gráfico de uma função cúbica sempre tem um único ponto de inflexão . Pode ter dois pontos 
+								críticos , um mínimo local e um máximo local. Caso contrário, uma função cúbica é monotônica.
+								gráfico de uma função cúbica é simétrico em relação ao seu ponto de inflexão; isto é, é 
+								invariante sob uma rotação de meia volta em torno deste ponto. Até uma transformação afim, 
+								existem apenas três gráficos possíveis para funções cúbicas.</p>
+
+								<pre><code>lm(y~x + I(x^2) + I(x^3), data=df)</code></pre>
+
+								<TABLE >
+									<TR>
+									<TD BGCOLOR=white>## &nbsp;&nbsp; <br>## &nbsp;&nbsp; Call: </br> ## &nbsp;&nbsp; lm(y~x + I(x^2) + I(x^3), data=df)<br>## &nbsp;&nbsp;<br>## &nbsp;&nbsp; Coeficients:<br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Intercept) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I(x^2) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I(x^3)<br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-4.24630&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.30177 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.90713 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.07108</TD>
+									</TR>
+									
+								</TABLE>
+
+						<p> Plotar o gráfico com a função de terceiro grau.</p>
+
+						<pre><code>f2 <- function(x){<br>  return(0.07108*x^3 + 1.90713*x^2 +5.30177*x -4.24630)<br>}</code></pre>
+						
+						<p>Plotar o gráfico com a função de primeiro grau</p>
+						
+						<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f2) +<br>  labs(title = <span style="color: #ff0000;">"Euqação de 3ª Grau"</span>) +<br>  theme_classic()</code></pre>
+						
+						<p class ="img_logo" ><img src="images/reta10.png" alt="" /></p>
+						
+							 <p>O Gráfico abaixo irá identificar somente os pontos que estrão localizados acima de regressão 
+								 linear que foi criada, para depois conseguimos medir a diferença da reta e dos pontos 
+								 afastados da reta MMQ.</p>
+							<pre><code>means$y <- f2(means$x)</code></pre>
+							<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5)  +<br>      labs(title=<span style="color: #ff0000;">'Euqação do terceiro Grau'</span>) +<br>  theme_classic()</code></pre>
+								<p class ="img_logo" ><img src="images/reta12.png" alt="" width=90%/></p>
+							<p> A agora iremos demonstrar no gráfico o MMQ</p>
+							<pre><code>groups <- rbind(df1, means)</code></pre>
+							<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Equação do Terceiro Grau'</span>,<br>      subtitle = <span style="color: #ff0000;">"Método dos Mínimos Quadrados"</span>) +<br>  theme_classic()</code></pre>
+							<p class ="img_logo" ><img src="images/reta18.png" alt="" width=100%/></p>
+
+
+							<p> Para conseguirmos o valor do <b>MMQ = <code>sum((df$y-means$y)^2)</code> = 376.656,5</b>.</p>
+
+							<p>Mudando a Escala do Gráfico para conseguirmos visualizar a equação de terceiro grau:</p>
+							<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-150,150)), aes(x=x), fun=f2)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Equação do 3ª Grau'</span>) +<br>  theme_classic()</code></pre>
+
+							<pre class ="img_logo" ><img src="images/reta13.png" alt="" width=100%/></pre>
+
+							<hr />
+							<h2>Ajustando do o Package Spline</h2>
+							<hr />
+							<p>As bibliotecas são conjuntos de funções já desenvolvida que irá facilitar o nosso trabalho com algum 
+								determinado assunto. Este artigo irá trabalhar expecificamente com o pacote spline, um fremework que nos 
+								permite criar um modelo que aprende com as tendências do conjunto de dados, precisar criarmos equaçõess do primeiro segundo ou n graus. 
+								Ao mexer nos subparâmetros da biblioteca, conseguimos ajustar mais ou menos o modelo preditivo. 
+								Precisamos tomar cuidade que que não deixamos com que o modelo aprenda demais, pois poderá ocorrer um <b>Overfitting</b>.
+								<code>install.packages(“splines”)</code></p>
+								<pre><code>library(splines)</code></pre>
+
+							<p>Este comendo é realizado apenas uma vez, após ter instalado em sua máquina você nas próximas vezes só 
+								precisar carrega-lo.</p>
+								<p> Para iniciar precisamos excluir algumas colunas em nosso modelo:</p>
+								<pre><code>df1$group <- NULL<br>means$y <- NULL<br>means$group <- NULL</code></pre>
+
+								<p>Primeiramente iremos criar um modelo para que ele aprenda a correlação entra as variáveis X e ydo nosso 
+									cojunto de dado. e como subparêmetro <code>df = 10</code>.</p> 
+								<pre><code>fit <- smooth.spline(df$x, df1$y, df=10)<br>means$y <- predict(fit,means$x)$Y<br>sum((df$y - means$y)^2)</code></pre>
+								<TABLE >
+									<TR>
+									<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; 32613,69</TD>
+									</TR>
+									
+								</TABLE>
+								<p>Este valor acima é o MMQ do nosso modelo. Quando utilizamos a euqação de primeiro grau, obtivemos um <b>MMQ_Equação_1<sup>a</sup> = 
+									149.675,3</b> e com a equação de segunda grau ela aumentou para <b>MMQ_Equação_2<sup>a</sup> = 
+										376.656,5</b>. Já com o nosso modelo, o MMQ foi reduzido
+								para <b>MMQ_<sub>spline_10</sub> = 32.613,89</b>. </p>
+								<pre><code>f3 <-function(x){<br>  return(predict(fit,x)$y)<br>}</code></pre>
+								<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-2,14)), aes(x=x), fun=f3, color = <span style="color: #ff0000;">"red"</span>, size = 0.8) +<br>  labs(title=<span style="color: #ff0000;">'Equação utilizando o Package Spline'</span>,    subtitle = <span style="color: #ff0000;">"Ajustada em 10"</span>) +<br>  theme_classic()</code></pre>
+
+									<pre class ="img_logo" ><img src="images/reta14.png" alt="" width=100%/></pre>
+								<hr />
+								<h3>Overfitting</h3>
+								<hr />
+								<p> 
+									Sobre-ajuste ou sobreajuste é um termo usado em estatística para descrever quando um modelo estatístico se ajusta muito bem ao
+									 conjunto de dados anteriormente observado, mas se mostra ineficaz para prever novos resultados. É comum que a amostra
+									  apresente desvios causados por erros de medição ou fatores aleatórios. </p>
+
+								<p>Iremos criar um modelo que sofrerá um Overfitting, modelo que irá aprender de mais com o conjunto de dados,
+									e quando exister novos conjunto de dados, que tenha apenas os valores de y, ele não conseguirá prever os valores de x.
+									Obcerve o gráfio anterior as partes estremas, da esqueda e da direita, a linha consegui seguir uma tendência, 
+									mesmo não existindo pontos menores que 0 e maiores que 15 no eixo x. Diferente do modelo abaixo. que iremos utilizar como
+									subparâmetro <code>df = 40</code>.
+								</p>
+								<pre><code>fit <- smooth.spline(df$x, df1$y, df=40)<br>means$y <- predict(fit,means$x)$Y<br>sum((df$y - means$y)^2)</code></pre>
+								<TABLE >
+									<TR>
+									<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; 19.780,78</TD>
+									</TR>
+									
+								</TABLE>
+
+								<p> Conseguimos reduzir ainda mais o o MMQ para <b>MMQ_<sub>spline_40</sub> 
+									= 19.780,78</b>. </p>
+									<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  Sstat_function(data=data.frame(x=c(-2,14)), aes(x=x), fun=f3) +<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red</span>) +<br>  labs(title=<span style="color: #ff0000;">Equação utilizando o Package Spline</span>,<br>      subtitle = <span style="color: #ff0000;">"Ajustada em 40"</span>) +<br>  theme_classic()</code></pre>
+								<pre class ="img_logo" ><img src="images/reta16.png" alt="" width=100%/></pre>
+
+
+									<p> Temos que tomar cuidade que nessa modelo, podemos dizer que o modelo 
+										não consegui aprender a relação de X e Y, ele simplesmentente fez uma cópia.
+										Ao observar o último ponto a direita, a linha perde completamente o seu sentido,
+										indo em uma tendência de alta e quando não existe mais ponto, simplesmente ela 
+										vai para uma tendÊncia de baixa. O mesmo de dá ao lado esquerdo, podemos observar se ao
+										olho nú do centro do gráfico ir acompanhando a esquerda, notamos, que quando maio o valor
+										de x diminuo mais o valor de y acompanha também este movimento, como já havíamos mencionado 
+										na correlação, no começo do artigo. Mesmo não existindo maos ponto menores que o eixo 0, 
+										ao utilizar a imaginação soponhamos que os valores iriam diminuir, ou seja, os valores de y 
+										seriam negativos ao lado esquerdo, porém como o menor ponto de eixo (x,y) é um pouco acima da tendência
+										o modelo criou uma tendência para a orientação contrária. Vejamos o gráfico:</p>
+								<pre class ="img_logo" ><img src="images/reta15.png" alt="" width=100%/></pre>
+
+
+										
+							<!-- Image -->
+							<div class="project">
+								<hr />
+
+							<h3>Outros Artigos</h3>
+							<hr />
+
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">
+										<h2>Vetores</h2>
+										<div class="content">
+											<p>Um vetor em R é uma estrutura básica dentro da linguagem, que permite armazenar uma quantidade numérica ou string (letras ou caracteres), em um único objeto. O vetor possui apenas 01 única dimensão.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">
+										<h2>Matrix</h2>
+										<div class="content">
+											<p>Matrizes é caracterizado como uma coleção de vetores, sendo todos do mesmo tipo (numérico ou caracteres) armazenados entre linhas e colunas.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Data Frame</h2>
+										<div class="content">
+											<p> 05 / 03/ 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic05.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Análise Exploratória</h2>
+										<div class="content">
+											<p>12 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic12.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Regressão Linear</h2>
+										<div class="content">
+											<p>26 / 03 / 2021</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/pic07.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Clusterização</h2>
+										<div class="content">
+											<p>02 / 04 / 2021</p>
+										</div>
+									</a>
+								</article>															
+							</section></br>
+						</div>
+
+
+							<hr />
+									<h3>Projeto - Modelo Preditivo: Valor de Casa</h3>
+									<hr />
+
+									<p><span class="image left"><img src="images/casa.png" alt="" />
+									</span>O Kaggle é uma plataforma gratuita que tem como objetivo inicial promover desafios entre profissionais da área de 
+									análise, porém atualmente se tornou uma grande comunidade de Data Sciente. Para demonstrar o trabalho de modelagem de 
+									dados, foi coletado um dataset fornecido no campeonato “House Sales in King Country, USA” da plataforma Kaggle.
+									Temos como objetivo principal deste projeto, realizar Bussiness Analyst no conjunto de dados. E como segundo objetivo 
+									desenvolver um modelo de regressão que possa prever o valor de um imóvel com base nas variáveis apresentadas no banco de
+									dados.Primeiramente coletamos o dataset fornecido pelo Kaggles. Ao coletar tais informações percebemos que o conjunto de
+									 dados é composto por 21 variáveis (tamanho da casa, quantidade de quartos, banheiros, entre outros) e o valor vendido da
+									  casa entre o período de Maio de 2014 a Maio de 2015, variável dependendo, ou seja, a variável que queremos que o nosso
+									   modelo nos apresente.</p>
+									<p  class="bottum-rigth" ><a target="_black" href="https://rpubs.com/RodolfoTerra/modelo_preditivo_casa" class="button primary small">Projeto <i class="far fa-registered"></i></a></p>
+								</br>
+								
+									
+								</section>
+
+							</div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner text">
+						
+						<section>
+							<h2>Desenvolvimento</h2>
+							<ul class="icons">
+								<li><a target="_blank" href="https://github.com/rodolffoterra" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+								<li><a target="_blank" href="http://www.rodolfoterra.com" class="icon solid style2 fa-home"><span class="label">Site</span></a></li>
+								<li><a target="_blank" href="https://rpubs.com/RodolfoTerra" class="far fa-registered"><span class="label"> Rpub's</span></a></li>
+																	
+							</ul>
+							
+						</section>
+						<section>
+							<h2>Redes Sociais</h2>
+							<ul class="icons">
+							<li><a target="_blank" href="https://www.linkedin.com/in/rodolffoterra/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/rodolffo.terra/" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="mailto:consultoriaterra@hotmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="mailto:+5515981194753" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+							</ul>
+						</section>
+						<ul class="desenvolv">
+							&copy; Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> &nbsp;Rodolfo Terra | Cientista de Dados</a></li>
+						</ul>
+					</div>
+
+					<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+				</footer>
+
+		</div>
+
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>
