@@ -90,11 +90,11 @@
 								<p> As funções polinomiais podem ser classificadas quanto a seu grau. O grau de uma função 
 								polinomial corresponde ao valor do maior expoente da variável do polinômio, ou seja, é o 
 								valor de <em>n</em> da função. Em matemática, função polinomial é uma função 
-								<em>P</em> que pode ser expressa da forma:</p>
+								<b><em>P(x)</em>&nbsp;</b>, que pode ser expressa da forma:</p>
 								<p style="text-align: center;"><img src="images/polig.png" alt="" /><a target="_black" href="https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_polinomial">WikipédiA</a></p>
 								<p>O objetivo deste artigo não é a falarmos da matemática pura, mesmo porque a minha formação é Ciências Econômicas, peço 
-								desculpas as matemáticos, por esta introdução. O propósito desse artigo é dar uma introdução para o próximo Artigo, 
-								que falaremos de regressção linear simples e multipla. </p>
+								desculpas aos matemáticos, por esta introdução. O propósito desse artigo é dar uma introdução para o próximo Artigo, 
+								que falaremos de ão linear simples e multipla. </p>
 								<hr />
 
 								<h2> Carregando Conjunto de Dados</h2>
@@ -151,38 +151,40 @@
 									
 									<hr />
 
-									<p> Este artigo é um conhecimento teôrico, iremos trabalhar com esta teoria na prática, 
+									<p> Este artigo é um conhecimento teórico, iremos trabalhar com esta teoria na prática, 
 										no próximo Artifo. Podemos observar que o nossa conjunto de dados, possui apenas 02 colunas,
 										que chamaremos de X e Y. Abaixo iremos plotar um gráfico de relação x e Y e observar como, a 
-										correlação dessas duas variáveis.Para a construção dos gráficos precisamos carregar um famosa biblioteca:
-										<img src="images/ggplot2.png" alt="" width=06%/>, e corrplot. 
+										correlação dessas duas variáveis. Para a construção dos gráficos precisamos carregar uma biblioteca muito utilizada 
+										para a construção de gráficos:
+										<img src="images/ggplot2.png" alt="" width=06%/> e outro biblioteca para a construção da correlação entre
+										as variáveisa: corrplot. 
 									</p>
 									<pre><code>library(ggplot2)<br>library(corrplot)</code></pre>
 
 									<pre><code>ggplot() +<br>geom_point(data=df, aes(x=x, y=y)) +<br>  labs(title = <span style="color: #ff0000;">"Relação entre a variável 'y' e a vriável 'x'"</span>,<br>      subtitle = <span style="color: #ff0000;">"Existe uma correlação positiva entre as duas variáveis"</span>) +<br>  theme_classic()</code></pre>
 									<p class ="img_logo" ><img src="images/plot.png" alt="" /></p>
 									<p> Ao observar a tabela não consiguimos observar uma relação entre as duas variáveis, mas quando
-										plotamos um grafico <b>scatterplot</b> podemos observar claramente que quando a variável <b>x</b>
+										plotamos um gráfico <b>scatterplot</b> podemos observar claramente que quando a variável <b>x</b>
 										aumente consequentemente a variável <b>y</b> também aumenta. Podemos dizer que as duas variáveis
 										possuem uma correlação positiva. <em>Jamais podemos afirmar que as duas variáveis possui uma relação
 										de causa e efeito</em>. No próximo artigo, veremos mais detalhes em relação a isto.</p>
 										Abaixo demonstramos uma planilha de correlação entre as variáveis. Na parte superior a esquerda e na parte inferior a direita, 
-										é a correlação da variávei com ela mesma, ou seja, y com y e x com x, respectivamente. Quando observamos a correlação da 
+										é a correlação da variável com ela mesma, ou seja, y com y e x com x, respectivamente. Quando observamos a correlação da 
 										variável y com x, ou y com y, a ordem não interfere, temos um valor <b>positivo</b> de 0.94.</p>
 									<pre><code>corrplot(cor(df), method = "number")</code></pre>
 									<pre class ="img_logo" ><img src="images/cor.png" alt="" /></pre>
 									<p>A correlação nunca pode ser maior do que 1 ou menor do que menos 1. Uma correlação próxima a zero indica que as duas variáveis
 										não estão relacionadas. Uma correlação positiva indica que as duas variáveis movem juntas, e a relação é forte quanto mais a
 										correlação se aproxima de um. Uma correlação negativa indica que as duas variáveis movem-se em direções opostas, e que a 
-										relação também fica mais forte quanto mais próxima de menos 1 a correlção ficar. Duas variáveis que estão perfeitamente 
+										relação também fica mais forte quanto mais próxima de menos 1 a correlação ficar. Duas variáveis que estão perfeitamente 
 										correlacionadas positivamente (r=1) movem-se essencialmente em perfeita proporção na mesma direção, enquanto dois conjuntos 
 										que estão perfeitamente correlacionados negativamente movem-se em perfeita proporção em direções opostas.<br>
 										Uma regressão simples é uma extensão do conceito correlação/covariância. Ela tenta explicar uma variável, a qual é chamada
 										variável dependente, usando a outra variável, chamada variável independente. Mantendo a tradição estatística, seja Y a 
 										variável dependente e X a variável independente. Se as duas variáveis são plotadas uma contra a outra num gráfico de 
 										espalhamento, com Y no eixo vertical e X no eixo horizontal, a regressão tenta ajustar uma linha reta através dos pontos de
-										tal modo que minimiza a soma dos desvios quadrados dos pontos da linha. Conseqüentemente, ela é chamada de regresssão 
-										ordinária dos mínimos quadrados (OLS). Quando tal linha é ajustada, dois parâmetros emergem - um é o ponto em que a linha 
+										tal modo que minimiza a soma dos desvios quadrados dos pontos da linha. Consequentemente, ela é chamada de regresssão 
+										ordinária dos mínimos quadrados (OLS). Quando tal linha é ajustada, dois parâmetros emergem, um é o ponto em que a linha 
 										corta o eixo Y, chamado de intercepção da regressão, e o outro é a inclinação da linha de regressão.</p>
 									<hr />
 									<h2>Funções polinomiais de grau um</h2>
@@ -196,7 +198,7 @@
 
 									<TABLE >
 										<TR>
-										<TD BGCOLOR=white>## &nbsp;&nbsp; <br>## &nbsp;&nbsp; Call: </br> ## &nbsp;&nbsp; lm(formula = y ~ x, data = df1)<br>## &nbsp;&nbsp;<br>## &nbsp;&nbsp; Coeficients:<br>## &nbsp;&nbsp; (Intercept)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x<br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-71.53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;35.25</TD>
+										<TD BGCOLOR=white>## &nbsp;&nbsp; <br>## &nbsp;&nbsp; Call: </br> ## &nbsp;&nbsp; lm(formula = y ~ x, data = df)<br>## &nbsp;&nbsp;<br>## &nbsp;&nbsp; Coeficients:<br>## &nbsp;&nbsp; (Intercept)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x<br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-71.53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;35.25</TD>
 										</TR>
 										
 									</TABLE>
@@ -206,7 +208,7 @@
 							
 							<p>Plotar o gráfico com a função de primeiro grau</p>
 							
-							<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(0,15)), aes(x=x), fun=f) +<br>  labs(title = <span style="color: #ff0000;">"Euqação de 1ª Grau"</span>) +<br>  theme_classic()</code></pre>
+							<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(0,15)), aes(x=x), fun=f) +<br>  labs(title = <span style="color: #ff0000;">"Euqação de 1ª Grau"</span>) +<br>  theme_classic()</code></pre>
 							
 							<p class ="img_logo" ><img src="images/reta1.png" alt="" /></p>
 							
@@ -217,13 +219,13 @@
 							
 							<p class ="img_logo" ><img src="images/reta2.png" alt="" /></p>
 							
-							<p> Para conhecimento também podemos utilizar a suavidade da reta. Aumentar o grau de liberdade, como mostra no gráfico abaixo </p>
+							<p> Para conhecimento, podemos utilizar a suavidade da reta. Aumentar o grau de liberdade, como mostra no gráfico abaixo </p>
 							
 							<pre><code>ggplot(data=df, aes(x=x, y=y))+<br>  geom_point() +<br>  geom_smooth(method=lm, fill = <span style="color: #ff0000;">"Blue"</span>, color = <span style="color: #ff0000;">"blues"</span>) +<br>  scale_x_continuous(breaks = seq(min(0), max(15), by = 5)) +<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>,<br>      subtitle = <span style="color: #ff0000;">" Com suavidade"</span>) +<br>  theme_classic()</code></pre>
 							
 							<p class ="img_logo" ><img src="images/reta3.png" alt="" /></p>
 							
-							<P> O Gráfico abaixo irá identificar somente os pontos que estrão localizados acima de regressão linear 
+							<P> O Gráfico abaixo irá identificar somente os pontos que estão localizados em acima da regressão linear 
 								que foi criada, para depois conseguimos medir a diferença da reta e dos pontos afastados da reta <b>MMQ</b>.
 							</P>
 							<pre><code>x <- df$x<br>y <- f(x)<br>means <- data.frame(x,y)<br><br>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"Red"</span>, size=1.5) +<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>,<br>      subtitle = <span style="color: #ff0000;">"Somente os pontos que fazem parte a regressão linear"</span>) +<br>  theme_classic()</code></pre>
@@ -251,7 +253,7 @@
 								
 								<pre><code>df$group <- 1:100<br>means$group <- 1:100<br><br># join<br>groups <- rbind(df, means)</code></pre>
 
-								<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;"></span>"red", size=1.5) + <br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>,<br>      subtitle = <span style="color: #ff0000;">"Método dos Mínimos Quadrados"</span>) +<br>  theme_classic()</code></pre>
+								<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;"></span>"red", size=1.5) + <br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Regressão Linear simples'</span>,<br>      subtitle = <span style="color: #ff0000;">"Método dos Mínimos Quadrados"</span>) +<br>  theme_classic()</code></pre>
 
 								<p class ="img_logo" ><img src="images/reta5.png" alt="" /></p>
 
@@ -295,17 +297,17 @@
 								 biblioteca ggplot2 utilizando a função geom_smooth(method = loess)</p>
 								 <pre><code>ggplot(data=df, aes(x=x, y=y))+<br>  geom_point()+<br>  geom_smooth(method=loess, fill = <span style="color: #ff0000;">"red"</span>, color="red")+<br>  labs(title = <span style="color: #ff0000;">"Euqação de 2ª Grau"</span>,<br>      subtitle = <span style="color: #ff0000;">"Com suavidade"</span>) +<br>  theme_classic()</code></pre>
 								 <p class ="img_logo" ><img src="images/reta7.png" alt="" /></p>
-								 <p>Para consegui visualizar melhor a equação de segunda grau, vamos ampliar o zoom do gráfico:</p>
+								 <p>Para consegui visualizar melhor a equação de segundo grau, vamos ampliar o zoom do gráfico:</p>
 								 <pre><code>ggplot()+<br>  Sgeom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-150,150)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  labs(title = <span style="color: #ff0000;">"Equação do 2ª Grau"</span>) +<br>  theme_classic()</code></pre>
 								 <p class ="img_logo" ><img src="images/reta17.jpeg" alt="" width=100%/></p>
-								 <p>O Gráfico abaixo irá identificar somente os pontos que estrão localizados acima de regressão 
+								 <p>O Gráfico abaixo irá identificar somente os pontos que estão localizados em acima da regressão 
 									 linear que foi criada, para depois conseguimos medir a diferença da reta e dos pontos 
 									 afastados da reta MMQ.</p>
 								<pre><code>means$y <- f1(means$x)</code></pre>
-								<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5)  +<br>      labs(title=<span style="color: #ff0000;">'Euqação do Segundo Grau'</span>) +<br>  theme_classic()</code></pre>
+								<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5)  +<br>      labs(title=<span style="color: #ff0000;">'Euqação do Segundo Grau'</span>) +<br>  theme_classic()</code></pre>
 									<p class ="img_logo" ><img src="images/reta8.png" alt="" width=90%/></p>
 								<p> A agora iremos demonstrar no gráfico o MMQ</p>
-								<pre><code>groups <- rbind(df1, means)</code></pre>
+								<pre><code>groups <- rbind(df, means)</code></pre>
 								<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Equação do Segundo Grau'</span>,<br>      subtitle = <span style="color: #ff0000;">"Método dos Mínimos Quadrados"</span>) +<br>  theme_classic()</code></pre>
 								<p class ="img_logo" ><img src="images/reta9.png" alt="" width=100%/></p>
 								<p> Para conseguirmos o valor do <b>MMQ = <code>sum((df$y-means$y)^2)</code> = 376.656,5</b>.</p>
@@ -348,14 +350,14 @@
 						
 						<p class ="img_logo" ><img src="images/reta10.png" alt="" /></p>
 						
-							 <p>O Gráfico abaixo irá identificar somente os pontos que estrão localizados acima de regressão 
+							 <p>O Gráfico abaixo irá identificar somente os pontos que estão localizados em acima da regressão 
 								 linear que foi criada, para depois conseguimos medir a diferença da reta e dos pontos 
 								 afastados da reta MMQ.</p>
 							<pre><code>means$y <- f2(means$x)</code></pre>
 							<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5)  +<br>      labs(title=<span style="color: #ff0000;">'Euqação do terceiro Grau'</span>) +<br>  theme_classic()</code></pre>
 								<p class ="img_logo" ><img src="images/reta12.png" alt="" width=90%/></p>
 							<p> A agora iremos demonstrar no gráfico o MMQ</p>
-							<pre><code>groups <- rbind(df1, means)</code></pre>
+							<pre><code>groups <- rbind(df, means)</code></pre>
 							<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-5,15)), aes(x=x), fun=f1)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Equação do Terceiro Grau'</span>,<br>      subtitle = <span style="color: #ff0000;">"Método dos Mínimos Quadrados"</span>) +<br>  theme_classic()</code></pre>
 							<p class ="img_logo" ><img src="images/reta18.png" alt="" width=100%/></p>
 
@@ -363,7 +365,7 @@
 							<p> Para conseguirmos o valor do <b>MMQ = <code>sum((df$y-means$y)^2)</code> = 376.656,5</b>.</p>
 
 							<p>Mudando a Escala do Gráfico para conseguirmos visualizar a equação de terceiro grau:</p>
-							<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-150,150)), aes(x=x), fun=f2)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Equação do 3ª Grau'</span>) +<br>  theme_classic()</code></pre>
+							<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-150,150)), aes(x=x), fun=f2)+<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red"</span>, size=1.5) +<br>  geom_line(data=groups, aes(x=x, y=y, group=group)) +<br>  labs(title=<span style="color: #ff0000;">'Equação do 3ª Grau'</span>) +<br>  theme_classic()</code></pre>
 
 							<pre class ="img_logo" ><img src="images/reta13.png" alt="" width=100%/></pre>
 
@@ -372,30 +374,31 @@
 							<hr />
 							<p>As bibliotecas são conjuntos de funções já desenvolvida que irá facilitar o nosso trabalho com algum 
 								determinado assunto. Este artigo irá trabalhar expecificamente com o pacote spline, um fremework que nos 
-								permite criar um modelo que aprende com as tendências do conjunto de dados, precisar criarmos equaçõess do primeiro segundo ou n graus. 
+								permite criar um modelo que aprende com as tendências do conjunto de dados, se ser necessários criarmos equações do primeiro, segundo ou n graus. 
 								Ao mexer nos subparâmetros da biblioteca, conseguimos ajustar mais ou menos o modelo preditivo. 
-								Precisamos tomar cuidade que que não deixamos com que o modelo aprenda demais, pois poderá ocorrer um <b>Overfitting</b>.
+								É preciso que se tome cuidado ao construir um modelo que se aprenda demais, para não ocorrer um <b>Overfitting</b> do modelo.
 								<code>install.packages(“splines”)</code></p>
 								<pre><code>library(splines)</code></pre>
 
-							<p>Este comendo é realizado apenas uma vez, após ter instalado em sua máquina você nas próximas vezes só 
+							<p>Este comando é realizado apenas uma vez, após ter instalado em sua máquina você nas próximas vezes só 
 								precisar carrega-lo.</p>
 								<p> Para iniciar precisamos excluir algumas colunas em nosso modelo:</p>
-								<pre><code>df1$group <- NULL<br>means$y <- NULL<br>means$group <- NULL</code></pre>
+								<pre><code>df$group <- NULL<br>means$y <- NULL<br>means$group <- NULL</code></pre>
 
-								<p>Primeiramente iremos criar um modelo para que ele aprenda a correlação entra as variáveis X e ydo nosso 
+								<p>Primeiramente iremos criar um modelo para que ele aprenda a correlação entra as variáveis <b>X</b> e 
+									<b>Y</b> do nosso 
 									cojunto de dado. e como subparêmetro <code>df = 10</code>.</p> 
-								<pre><code>fit <- smooth.spline(df$x, df1$y, df=10)<br>means$y <- predict(fit,means$x)$Y<br>sum((df$y - means$y)^2)</code></pre>
+								<pre><code>fit <- smooth.spline(df$x, df$y, df=10)<br>means$y <- predict(fit,means$x)$Y<br>sum((df$y - means$y)^2)</code></pre>
 								<TABLE >
 									<TR>
 									<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; 32613,69</TD>
 									</TR>
 									
 								</TABLE>
-								<p>Este valor acima é o MMQ do nosso modelo. Quando utilizamos a euqação de primeiro grau, obtivemos um <b>MMQ_Equação_1<sup>a</sup> = 
-									149.675,3</b> e com a equação de segunda grau ela aumentou para <b>MMQ_Equação_2<sup>a</sup> = 
-										376.656,5</b>. Já com o nosso modelo, o MMQ foi reduzido
-								para <b>MMQ_<sub>spline_10</sub> = 32.613,89</b>. </p>
+								<p>Este valor acima é o MMQ do nosso modelo. Quando utilizamos a equação de primeiro grau, obtivemos um <b>MMQ<sub>Equação_1<sup>a</sup></sub> = 
+									149.675,3</b> e com a equação de segundo grau ela aumentou para <b>MMQ<sub>Equação_2<sup>a</sup></sub> = 
+										376.656,5</b>. <br>Já com o nosso modelo, o MMQ foi reduzido
+								para <b>MMQ<sub>spline_10</sub> = 32.613,89</b>. </p>
 								<pre><code>f3 <-function(x){<br>  return(predict(fit,x)$y)<br>}</code></pre>
 								<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  stat_function(data=data.frame(x=c(-2,14)), aes(x=x), fun=f3, color = <span style="color: #ff0000;">"red"</span>, size = 0.8) +<br>  labs(title=<span style="color: #ff0000;">'Equação utilizando o Package Spline'</span>,    subtitle = <span style="color: #ff0000;">"Ajustada em 10"</span>) +<br>  theme_classic()</code></pre>
 
@@ -410,11 +413,11 @@
 
 								<p>Iremos criar um modelo que sofrerá um Overfitting, modelo que irá aprender de mais com o conjunto de dados,
 									e quando exister novos conjunto de dados, que tenha apenas os valores de y, ele não conseguirá prever os valores de x.
-									Obcerve o gráfio anterior as partes estremas, da esqueda e da direita, a linha consegui seguir uma tendência, 
+									Observe o gráfio anterior as partes extremas, da esqueda e da direita, a linha consegui seguir uma tendência, 
 									mesmo não existindo pontos menores que 0 e maiores que 15 no eixo x. Diferente do modelo abaixo. que iremos utilizar como
 									subparâmetro <code>df = 40</code>.
 								</p>
-								<pre><code>fit <- smooth.spline(df$x, df1$y, df=40)<br>means$y <- predict(fit,means$x)$Y<br>sum((df$y - means$y)^2)</code></pre>
+								<pre><code>fit <- smooth.spline(df$x, $y, df=40)<br>means$y <- predict(fit,means$x)$Y<br>sum((df$y - means$y)^2)</code></pre>
 								<TABLE >
 									<TR>
 									<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; 19.780,78</TD>
@@ -424,18 +427,18 @@
 
 								<p> Conseguimos reduzir ainda mais o o MMQ para <b>MMQ_<sub>spline_40</sub> 
 									= 19.780,78</b>. </p>
-									<pre><code>ggplot()+<br>  geom_point(data=df1, aes(x=x, y=y))+<br>  Sstat_function(data=data.frame(x=c(-2,14)), aes(x=x), fun=f3) +<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red</span>) +<br>  labs(title=<span style="color: #ff0000;">Equação utilizando o Package Spline</span>,<br>      subtitle = <span style="color: #ff0000;">"Ajustada em 40"</span>) +<br>  theme_classic()</code></pre>
+									<pre><code>ggplot()+<br>  geom_point(data=df, aes(x=x, y=y))+<br>  Sstat_function(data=data.frame(x=c(-2,14)), aes(x=x), fun=f3) +<br>  geom_point(data=means, aes(x=x, y=y), color=<span style="color: #ff0000;">"red</span>) +<br>  labs(title=<span style="color: #ff0000;">Equação utilizando o Package Spline</span>,<br>      subtitle = <span style="color: #ff0000;">"Ajustada em 40"</span>) +<br>  theme_classic()</code></pre>
 								<pre class ="img_logo" ><img src="images/reta16.png" alt="" width=100%/></pre>
 
 
-									<p> Temos que tomar cuidade que nessa modelo, podemos dizer que o modelo 
-										não consegui aprender a relação de X e Y, ele simplesmentente fez uma cópia.
+									<p> Temos que tomar cuidade com este modelo, pois podemos dizer que o modelo 
+										não conseguiu aprender a relação de X e Y, ele simplesmente fez uma cópia.
 										Ao observar o último ponto a direita, a linha perde completamente o seu sentido,
 										indo em uma tendência de alta e quando não existe mais ponto, simplesmente ela 
-										vai para uma tendÊncia de baixa. O mesmo de dá ao lado esquerdo, podemos observar se ao
-										olho nú do centro do gráfico ir acompanhando a esquerda, notamos, que quando maio o valor
-										de x diminuo mais o valor de y acompanha também este movimento, como já havíamos mencionado 
-										na correlação, no começo do artigo. Mesmo não existindo maos ponto menores que o eixo 0, 
+										vai para uma tendência de baixa. O mesmo se dá ao lado esquerdo, podemos observar ao
+										olho nú do centro do gráfico ir acompanhando a esquerda, notamos, que quando menor o valor
+										de <b>x</b> menor o valor de <b>y</b>, acompanhando também este movimento, como já havíamos mencionado 
+										na correlação, no começo do artigo. Mesmo não existindo mais ponto menores que o eixo 0, 
 										ao utilizar a imaginação soponhamos que os valores iriam diminuir, ou seja, os valores de y 
 										seriam negativos ao lado esquerdo, porém como o menor ponto de eixo (x,y) é um pouco acima da tendência
 										o modelo criou uma tendência para a orientação contrária. Vejamos o gráfico:</p>
@@ -553,8 +556,9 @@
 							<h2>Desenvolvimento</h2>
 							<ul class="icons">
 								<li><a target="_blank" href="https://github.com/rodolffoterra" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-								<li><a target="_blank" href="http://www.rodolfoterra.com" class="icon solid style2 fa-home"><span class="label">Site</span></a></li>
-								<li><a target="_blank" href="https://rpubs.com/RodolfoTerra" class="far fa-registered"><span class="label"> Rpub's</span></a></li>
+									<li><a target="_blank" href="http://www.rodolfoterra.com" class="icon solid style2 fa-home"><span class="label">Site</span></a></li>
+									<li><a target="_blank" href="https://www.youtube.com/channel/UCGs6ClQzcm74mtNBy-uTSSQ/featured" class="icon solid style2 fas fa-play"><span class="label">Site</span></a></li>
+									<li><a target="_blank" href="https://rpubs.com/RodolfoTerra" class="far fa-registered"><span class="label"> Rpub's</span></a></li>
 																	
 							</ul>
 							
@@ -569,7 +573,7 @@
 							</ul>
 						</section>
 						<ul class="desenvolv">
-							&copy; Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> &nbsp;Rodolfo Terra | Cientista de Dados</a></li>
+							&copy; 2021 Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> &nbsp;Rodolfo Terra | Ciência de Dados</a></li>
 						</ul>
 					</div>
 
