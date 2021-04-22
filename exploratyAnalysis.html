@@ -398,7 +398,7 @@
 										<p><img src="images/box_idade_titanic.png" alt=""  width=80% /></p>
 										<p> Já sabendo a média da faixa etária dos sobreviventes podemos fazer um outro gráfico, histograma, para conseguirmos
 											visualizar quais as proporções por idade dos sobrevivente e a diferença entre mulher e home. </p>
-										<pre><code>tmp_male <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Masculino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>b <- hist(tmp_male, 20, plot=FALSE)<br>tmp_female <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Feminino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>a <- hist(tmp_female, breaks = b$breaks, plot=FALSE)<br><br>df_density <- data.frame(Age=c(a$mids,b$mids),Density=c(a$density,b$density),Sex=c(rep(<span style="color: #ff0000;">"Feminino"</span>,length(a$mids)),rep(<span style="color: #ff0000;">"Maculino"</span>,length(b$mids))))<br><br>highchart() %>%<br>  hc_xAxis(categories = df_density$Age) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">"Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(255, 192, 203, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(68, 170, 255, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#44AAFF"</span>) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#FFC0Cb"</span>) %>%<br>  hc_tooltip(pointFormat = "<span style=\"color:{series.color}\">{series.name}</span><br>			 {point.y:.3f}",<br>			 shared = FALSE) %>%<br>  hc_yAxis(title=list(text=<span style="color: #ff0000;">'Densidade'</span>)) %>%<br>  hc_xAxis(title=list(text=<span style="color: #ff0000;">'Idade'</span>))  %>%<br>  hc_title(text=<span style="color: #ff0000;">'Gráfico dos Sobreviventes por Idade'</span>)</code></pre>	
+										<pre><code>tmp_male <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Masculino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>b <- hist(tmp_male, 20, plot=FALSE)<br>tmp_female <- subset(df, df$Sobrevivente == <span style="color: #ff0000;">"Sobrevivente"</span>) %>%  filter(Sexo==<span style="color: #ff0000;">"Feminino"</span>, !is.na(Idade)) %>% select(Idade) %>% .[[1]]<br>a <- hist(tmp_female, breaks = b$breaks, plot=FALSE)<br><br>df_density <- data.frame(Age=c(a$mids,b$mids),Density=c(a$density,b$density),Sex=c(rep(<span style="color: #ff0000;">"Feminino"</span>,length(a$mids)),rep(<span style="color: #ff0000;">"Maculino"</span>,length(b$mids))))<br><br>highchart() %>%<br>  hc_xAxis(categories = df_density$Age) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">"Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(255, 192, 203, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"column"</span>, color=<span style="color: #ff0000;">'rgba(68, 170, 255, 0.30)'</span>, showInLegend=FALSE) %>%<br>  hc_add_series(name="Masculine", select(filter(df_density,Sex==<span style="color: #ff0000;">"Masculine"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#44AAFF"</span>) %>%<br>  hc_add_series(name="Feminino", select(filter(df_density,Sex==<span style="color: #ff0000;">"Feminino"</span>),Density)[[1]], type=<span style="color: #ff0000;">"spline"</span>, color=<span style="color: #ff0000;">"#FFC0Cb"</span>) %>%<br>  hc_tooltip(pointFormat = <span style="color: #ff0000;">"{series.name}"</span><br>			 {point.y:.3f}",<br>			 shared = FALSE) %>%<br>  hc_yAxis(title=list(text=<span style="color: #ff0000;">'Densidade'</span>)) %>%<br>  hc_xAxis(title=list(text=<span style="color: #ff0000;">'Idade'</span>))  %>%<br>  hc_title(text=<span style="color: #ff0000;">'Gráfico dos Sobreviventes por Idade'</span>)</code></pre>	
 										<p><img src="images/hist_idade_titanic.png" alt=""  width=100% /></p>
 										<pre><code>CrossTable(x = df$Sexo, y = df$Sobrevivente)</code></pre>
 										<p><img src="images/crossTable_titanic.png" alt=""  width=100% /></p>
@@ -482,12 +482,15 @@
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
+										<img src="images/pic06.png" alt="" />
 									</span>
-									<a href="#">
-										<h2>Regressão Linear</h2>
+									<a href="DgreeEquation.html">
+										<h2>Função Polinomial</h2>
 										<div class="content">
-											<p>19 / 03 / 2021</p>
+											<p>Uma equação polinomial é caracterizada por ter um polinômio igual a zero. Ela 
+												pode ser caracterizada pelo grau do polinômio, e, quanto maior esse grau, maior
+												 será o grau de dificuldade para encontrar-se sua solução ou raiz.</p>
+										
 										</div>
 									</a>
 								</article>
@@ -498,7 +501,7 @@
 									<a href="#">
 										<h2>Clusterização</h2>
 										<div class="content">
-											<p>26 / 03 / 2021</p>
+											<p>Em Breve</p>
 										</div>
 									</a>
 								</article>															

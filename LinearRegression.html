@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+
+<!-- Hotjar Tracking Code for https://rodolffoterra.github.io/DegreeEquation.html -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2255362,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<script type='text/javascript'>
+	window.smartlook||(function(d) {
+	  var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+	  var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+	  c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+	  })(document);
+	  smartlook('init', 'e174065ea1c92508fe441a2a29be0219950dacb0');
+  </script>
+  
+		<title>Rodolfo Terra | Ciência de Dados</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+					<!-- Main -->
+				<main>
+				<div class="principal">
+					<div class="container">
+							<h1>Regressão Linear</h1>
+					<h3 class="text">Linguagem R</h3>
+					</div>
+				</div>
+				</main>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a target="_black" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">Próximo Artigo - Vetor</a></li>
+							<li><a target="_black" href="https://www.rodolfoterra.com/">Site</a></li>
+
+							<!-- Logo -->
+							<a target="_black" href="https://www.rodolfoterra.com/" class="logo">
+								<span class="bottum-rigth"><img src="images/logo.png" alt="" />
+								</a>
+						</ul>
+					</nav>
+
+				
+
+							<!-- Text -->
+								<section>
+								</br>
+								<div class='text'>
+									<hr />
+
+								<h2>Regressão Linear</h2>
+								<hr />
+
+								<br>Em estatística ou econometria, **regressão linear** é uma equação para se estimar a condicional 
+								(valor esperado) de uma variável y, dados os valores de algumas outras variáveis x. </br>
+								A regressão linear é chamada "linear" porque se considera que a relação da resposta às variáveis é uma 
+								função linear de alguns parâmetros. Os modelos de regressão que não são uma função linear dos parâmetros 
+								se chamam modelos de regressão não-linear. Sendo uma das primeiras formas de análise regressiva a ser 
+								estudada rigorosamente, é usada extensamente em aplicações práticas. Isso acontece porque modelos que
+								 dependem de forma linear dos seus parâmetros desconhecidos, são mais fáceis de ajustar que os modelos 
+								 não-lineares aos seus parâmetros, e porque as propriedades estatísticas dos estimadores resultantes 
+								 são fáceis de determinar.</br>
+
+								Modelos de regressão linear são frequentemente ajustados usando a abordagem dos mínimos quadrados, 
+								mas que também pode ser montada de outras maneiras, tal como minimizando a "falta de ajuste" em alguma
+								 outra norma (com menos desvios absolutos de regressão), ou através da minimização de uma penalização da 
+								 versão dos mínimos quadrados. Por outro lado, a abordagem de mínimos quadrados pode ser utilizado para 
+								 ajustar a modelos que não são modelos lineares. Assim, embora os termos "mínimos quadrados" e "modelo 
+								 linear" estejam intimamente ligados, eles não são sinônimos.</p>
+							
+								<hr />
+
+								<h2> Carregando Conjunto de Dados</h2>
+								<hr />
+
+								<p>Vamos utilizar um conjunto de dados, conhecido, para conseguirmos demonstrar 
+									na prática o que seria uma regreção linear. 
+									Iremos utilizar a função <code>read.csv()</code>, para carregar nosso conjutno de dados.
+									Abaixo demonstraremos como carregar um conjunto de dados,
+									lembrando que é preciso determinar alguns parâmetros, file ou <b>path</b>, caminho do diretório do arquivo 
+									em seu computador, header indicar se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo.
+									csv temos que demonstrar qual é o separador, nesse dataset é a vírgula.</br>
+									Abaixo temos 02 exemplo, o primeiro, <a href="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/kc_house_data.csv">
+										baixar</a> o arquivo, e salva em seu computador. Ou Caso preferir pode
+									utilizar a segunda opção que pega o arquivo direto do repositório do GitHub.</p>
+								<pre><code># Primeira Opção<br>df <- read.csv(file = <span style="color: #ff0000;">'C:/Users/Downloads/dados/kc_house_data.csv'</span>, header = TRUE, sep = <span style="color: #ff0000;">","</span>)<br>df</code></pre>
+								<p>Ou</p>
+								<pre><code># Segunda Opção<br>df <- read.csv(file = <span style="color: #ff0000;">'https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/kc_house_data.csv'</span>, header = TRUE, sep = <span style="color: #ff0000;">","</span>)<br>df</code></pre>
+								
+									<hr />
+
+									<p> O nosso conjunto de dados é composto por 21 variáveis (tamanho da casa, quantidade de quartos, 
+										banheiros, entre outros) e o valor vendido da casa entre o período de Maio de 2014 a Maio de 2015, 
+										variável dependendo, ou seja, a variável que queremos que o nosso modelo nos apresente.</p>
+									<br> Ao se pensar no valor de uma casa, a primeira variável que podemos imaginar que irá influenciar 
+										principalmenteno valor do imóvel seria a área da construção. Antes de criarmos uma regressão linear
+									 para identificar o valor da casa em relação a área construida, iremos construir um gráfico para visualisarmos a 
+									correlaçãop entre estas duas variáveis.</br>
+								Primeiramente precisamos carregar a biblioteca que irá construir nossos gráficos</p>
+								<pre><code>library(ggplot2)<br>library(corrplot)<br>library(tidyverse)</code></pre>
+								
+								<p><b>Construindo o gráfico de correlação entre o valor da casa e a áre construida.</b></p>
+								<pre><code>ggplot(df, aes(x= sqft_living, y =price/100000)) +<br>  geom_point(color = <span style="color: #ff0000;">'lightblue'</span>) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Correlação entre o Preço X Área de casa"</span>,<br>      x = <span style="color: #ff0000;">'Área (sqfl)'</span>,<br>      y = <span style="color: #ff0000;">'Preço'</span>)</code></pre>
+								<p style="text-align: center;"><img src="images/corr_casa.png" alt="" /></p>
+								<p> Conforme podemos observar no eixo x, <b>Área (sqfl)</b>o aumenta o preço também tende a aumenta. 
+									Quanto usamos apenas uma úniva variável (Área da casa) para chegarmos no valor da variável dependende, ou seja o preço da casa, 
+									podemos criar uma regressão Linear Simples.</p>
+								<hr />
+
+								<h2>Regressão Linear Simples</h2>
+								<hr />
+
+								<p>Toda Regressão linear simples a variável X, ou seja uma única variável, tentará explicar
+									a variação de y.
+								</p>
+								<p style="text-align: center;"><img src="images/reg_simples.png" alt="" /></p>
+								<p>Então ao voltarmos para o nosso exemplo. é possível saber o valor a (chamado intercepto) e 
+									também o valor de b (que representa a inclinação da reta).</p>
+								<pre><code>lm(price/100000 ~ sqft_living, data = df)</code></pre>
+								<TABLE >
+									<TR>
+									<TD BGCOLOR=white>## &nbsp;&nbsp; <br>## &nbsp;&nbsp; Call: </br> ## &nbsp;&nbsp; lm(formula = price/1e+05 ~ sqft_living, data = df)<br>## &nbsp;&nbsp;<br>## &nbsp;&nbsp; Coeficients:<br>## &nbsp;&nbsp; (Intercept)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sqft_living<br>## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-0.436034 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.002806</TD>
+									</TR>
+									
+								</TABLE>
+
+								<p> conforme demonstrado em nosso conjunto de dados podemos afirmar que:</p>
+								<pre><code>f(y) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ &nbsp;&nbsp;&nbsp;&nbsp;b<br>Valor_da_casa = -0.002806 x sqft_living - 0.436034</code></pre>
+								<p> Lembramos que o rpeço da casa está divido por 10<sup>5</sup>, como exemplo uma casa que tenha 5000 sqft custará 
+								um valor de <b>R$ 135.996,60</b>. Vejamos o nosso código <code>f(y) = 0.002806 * 5000 - 0.46034</code>.
+								Podemos demonstrar a regressão linear simples no gráfico para ficar mais fácil a compreensão.</p>
+								<pre><code>ggplot(df, aes(x= sqft_living, y =price/100000)) +<br>  geom_point(color = <span style="color: #ff0000;">'lightblue'</span>) +<br>  geom_smooth(method = lm, size=0.5, se = FALSE,color = <span style="color: #ff0000;">"red"</span>) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Regressão linear Simples entre Preço e Área da Casa"</span>,<br>      x = <span style="color: #ff0000;">"Área (sqfl)"</span>,<br>      y = <span style="color: #ff0000;">"Preço"</span>)</code></pre>
+								<P> Conforme podemos observar a equação acima, e o gráfico abaixo, esta equação representa exatamente 
+									a linha reta demonstrada em vermelho no gráfico abaixo. 
+								</P>
+								<p style="text-align: center;"><img src="images/reg_linea_simples.png" alt="" /></p>
+								<P> Ao observar este pequeno exemplo, todos mundo sabe que o valor de uma casa não está somente 
+									relacionado a sua área de construção. Existe outras variáveis, que agregam valor no preço da casa. 
+									É o que passaremos a estudar nesse exata momento. Porém antes de acrescentarmos mais variáveis em 
+									nosso modelo gostaria de apresentar um outra gráfico, de correção entre as variávies.</P>
+									<p style="text-align: center;"><img src="images/correlation.png" alt="" /></p>
+									<p>Nesse gráfico temos diversas variáveis tais como:</p>
+									<li><b>Price:</b> Preço da Casa</li>
+									<li><b>Bedrooms:</b> Quantidade de quarta que a casa possui;</li>
+									<li><b>Bathrooms:</b> Quantidade de banheiros que a casa possui;</li>
+									<li><b>sqft_living:</b> Metragem quadrados da casa;</li>
+									<li><b>sqlt_lot:</b> Metragem quadrada do lote;</li>
+									<li><b>floors:</b> Quantidade de andares que a casa possui;</li>
+									<li><b>Waterfront:</b> Se a casa possui vista para o mar;</li>
+									<li><b>View:</b> Visualização da casa;</li>
+									<li><b>Condition:</b> Condição geral da casa;</li>
+									<li><b>Grade:</b> Classificação geral de atributos de unidade residual;</li>
+									<li><b>sqft_above:</b> Metragem quadrada além do porão;</li>
+									<li><b>sqft_basement:</b> metragem quadrada do basamento;</li>
+									<li><b>Construction_Time:</b> Quantidade de Anos que a casa possui na data de venda</li>
+									<br>
+									<p> Todas as variáveis acima, exeto a <b>Construction_Time</b> estão representados com um circulo
+									azul no gráfico. O motivo de estar com a coloração azul, significa que todas estas variáveis possui Umacorrelação
+									positiva com o valor da casa, ou seja, quanto maior a área da casa, maios a quantidade de banheiros, maiores a quantidade de quartas, etc,
+									correspende respectivamente um tendencia de aomento no valor da casa.<br>
+									Porém ai se falar em quantidade de anos que esta casa possui, quanto mais velha for a casa esperamos que tal variável,
+									denter a reduzir o valor de venda da casa.</p>
+									<p> Para conseguirmos demonstrar uma correlação negativa, podemos pegar duas variáveis,
+										Quantidade de Banheiros em relação a quantidade de anos que a casa foi construida.</p>
+									<pre><code>ggplot(df_data, aes(x= Construction_Time, y =bathrooms)) +<br>  geom_point(color = <span style="color: #ff0000;">'lightblue'</span>) +<br>  theme_classic() +<br>  geom_smooth(method = lm, size=0.5, se = FALSE,color = <span style="color: #ff0000;"></span>"red") +<br>  labs(title = <span style="color: #ff0000;">"Correlação entre o Qunatidade de Banheiros X Quantidade de Anos que a casa foi construida"</span>,<br>      x = <span style="color: #ff0000;">'Qta de Anos'</span>,<br>      y = <span style="color: #ff0000;">'Quantidade de Banheiros'</span>)</code></pre>
+									<p style="text-align: center;"><img src="images/banheiro_ano.png" alt="" /></p>
+									<p> Esse gráfico nos mostra que as casa mais recentes possui uma <b>tendência</b>
+									de ter mais banheiro comparado com as casa mais velhas. </p>
+
+								<hr />
+
+								<h2>Regressão Linear Múltipla</h2>
+								<hr />
+
+								<p> Acima demostramos o que seria uma regressão linear simples, 
+									a variável X, ou seja uma única variável, tentará explicar a variação de y.
+									A regressão linear múltipla,  mais do que uma variável tenta explicar a variável y.
+									Ou seja, em nosso modelo para conseguirmos chegar mais próximo ao valor real da casa, 
+									não basta apenas, basiarmos, na metragem da área, mas também na quantidade de quartos, 
+									quantidade de banheiros, tempo da casa, quantidade de andares, entre outras.</p>
+									<p style="text-align: center;"><img src="images/function_house.png" width=90% alt="" /></p>
+								<p>Iremos agora testar o modelo, ou seja, o quanto é a variável explicativo de uma regressão linear 
+									simples apenas da área da casa em relação ao valor da casa?</p>
+								<pre><code>library(randomForest)<br>model1 <- randomForest(price ~ sqft_living15,<br>                      data = df_data,<br>                      ntree = 40,<br>                      nodesize = 5)<br>print(model1)</code></pre>
+								<p style="text-align: center;"><img src="images/rf_house_1.png" width=100% alt="" /></p>
+								<p>Ao criarmos uma regressão linear simples, utilizando apenas a área da casa para conseguirmos prever 
+									o valor da casa, o código acima está mostrando que somente a área consegue explicar 33,14% o valor da casa.
+								Nesse artigo, não entraremos mais em detalhes no tema <b>randomForest</b>, falaremos um artigo somente desta ferramena. 
+								O que é importante para este momento é saber que temos que usar mais variáveis para conseguirmos prever com o menor erro 
+								possível o valor da casa. Então utilimaremos 04 variáveis, e veremos a sua variável explicativa.</p>
+								<pre><code>model2 <- randomForest(price ~ sqft_living15 + yr_built + grade + bathrooms,<br>                      data = df_data,<br>                      ntree = 40,<br>                      nodesize = 5)<br>print(model2)</code></pre>
+								<p style="text-align: center;"><img src="images/rf_house_2.png" width=100% alt="" /></p>
+								<p> Ao utilizar a área construida, ano de contsrução, classificação geral e quantidade de 
+									banheiros, a variável explicativa do modelo dobrou, para 66,42%.</p>
+								<p>Abaixo mostraremo a equação de uma regressão linear múltipla</p>
+								<pre><code>lm(price/100000 ~ sqft_living15 + yr_built + grade + bathrooms, data = df_data)</code></pre>
+								<p style="text-align: center;"><img src="images/regre_linear_multipla.png" width=100% alt="" /></p>
+								<p> A Equação fica dessa seguinte forma:<br>
+								<i><b>f(valor_casa) = 1.2182280(bathrooms) + 1.6780753(grade) -0.0467126(yr_built) + 0.0009584(sqft_living15) + 80.1427967</b></i></p>
+
+								<p> Para finalizar construiremos um modelo com todas as variáveis em nosso conjunto de dados, 
+									para demonstrarmos que queremos todas as variáveis utilizaremos no modelo a variável
+									dependente a esquerda e um <code>price ~ .</code> a direita, o acento serve para seprara as 
+									variáveis dependente das idependente. 
+								</p>
+								<pre><code>model3 <- randomForest(price ~ .,<br>                      data = df_data,<br>                      ntree = 40,<br>                      nodesize = 5)<br>print(model3)</code></pre>
+								<p style="text-align: center;"><img src="images/rf_house_3.png" width=100% alt="" /></p>
+								<p> Podemos observar que o nosso terceiro modelo, usando todas as variáveis de nosso conjunto de dados,
+								foi o modelo que mais conseguiu explicar a variação do preço das casa. O tema desse artigo 
+								é regressão linear, e teve como objetivo explicar a diferença entre a regressão linear simples e a 
+								regressão linear múltipla. Porém quero deixar aqui bem claro que <b>nem sempre o melhor modelo 
+								é aquele que possui todas as variávels</b>. 
+								Abaixo mostrarei uma técnica que trabalhamos em ciência de dados que se chama Feature Selection, irei entrar em detalhes em um outro artigo, 
+								</p>
+								<h3>Feature Selection</h3>
+								<p>A seleção de Atributos, ou o Feature Selection tem como objetivo a simpleficação do modelo, para 
+									facilitar sua interpretação, dredução do tempo de treinamento do modelo e melhoria da generalização do
+									 modelo, evitando overfitting. Utilizaremos a tecnicas de feaure selection para automitizar a seleção
+									  de variáveis com maior potencial para variáveis preditoras. Sendo uma espécia de filtro, que remove
+									  do seu dataset as variáveis qwue não serão úteis para a criação do modelo preditivo. Tem como 
+									  principal objetivo a criação de um modelo preditoco com a maior precisão possível e que seja 
+									  generalizável. As técnicas de Feaure Selection basicamente calculam o nível de signifiância de cada
+									  variável e eliminam aquelas com significância mais baixa.</p>
+									  <pre><code>Modelo <- randomForest(price ~ .,<br>                      - id<br>                      - Hora<br>                      - zipcode<br>                      - lat<br>                      - long,<br>                      data = df_data,<br>                      ntree = 100,<br>                      nodesize = 10,<br>                      importance = TRUE)<br><br> # Demonstrando o Modelo<br>varImpPlot(Modelo)</code></pre>
+									  <p style="text-align: center;"><img src="images/randomflorest.png" alt="" /></p>
+									  <P> Acima o gráfico mostra as variveias que mais são significativas para a criação 
+										  do modelo por dois métodos diferente. As variáveis que possui seu ponto mais a direira
+										  são as que mais explica o valor da casa. Como podemos observar pelo método IncNodePurity
+										  a variável <b>grade</b> e a variável <b>sqft_living</b> são as mais improtantes. Já com a 
+										  metodologia %IncMSE, existe 06 variáveis com maior importante para a explicação do rpeço da casa,
+										  que são: <b>sqft_lot15, yr_built, sqft_living15,sqft_lot,Construction_Time e grade</b>.</P>
+
+										<p> Como apenas para completar o entendimento do artigo, utilizaremos o modelo3 ,
+											o modelo que utilizamos todas as variáveis, para demonstrar rapidamente o valor real do preço
+											da casa com o valor preditivo, criado pelo modelo.<br> Como ciêntista de dados, é preciso ainda
+											realizarmos outras etapas que não foram mencionadas neste artigo, que serão explicada com maiores detalhes.
+											 
+										</p>
+										<pre><code>scores <- data.frame(actual = df_data$price,<br>                     prediction = predict(model4, newdata = df_data))<br><br>inFrame <- scores[, c(<span style="color: #ff0000;">"actual"</span>, <span style="color: #ff0000;">"prediction"</span>)]<br>refFrame <- df_data<br><br>df_error <- rbind(head(scores), tail(scores))<br><br>df_error <- df_error %>%<br>  mutate(df_error = ifelse(df_error$actual > df_error$prediction,<br>                           (df_error$actual - df_error$prediction) ,<br>                           (df_error$prediction - df_error$actual)))<br><br>rbind(head(df_error), tail(df_error))</code></pre>
+										<p style="text-align: center;"><img src="images/error.png" width=100% alt="" /></p>
+										<pre><code>round(sum(df_error$df_error)/nrow(df_error), digits = 2)</code></pre>
+										<TABLE >
+											<TR>
+											<TD BGCOLOR=white>## &nbsp;&nbsp; [1] &nbsp;&nbsp; 26276.04</TD>
+											</TR>
+										</TABLE>
+											<p>Podemos ver o valor real em nosso conjunto de dado, na primeira coluna, e na segunda coluna o
+												valor estimado em nosso modelo, e a variação do valor, na terceira coluna, ou seja o erro.
+												Em média, temos um variação de erro do valor da casa em modelo de R$  26.276,04. Ou seja 
+												nosso modelo modelo poderá errar esse valor tanto para cima, quando para baixo.</p>
+											
+										
+
+										<li>Existe possibilidades de melhorar ainda mais o modelo?</li>
+										<li>Qual o percentual de acurácio que devo atingir para terminar meu projeto?</li>
+										<li>Qual é a acurácia mínima que eu devo atingir?</li>
+										<li>Quantos modelos eu devo criar?</li>
+										<li>Só existe randomFlorest?</li>
+										<br>
+										<p> Todas estas perguntas serão respondida, conforme os artigos forem progredindo. 
+											Existe estas e muitas outras perguntas a serem respondidas. Mas uma coisa precisamos
+											ter certeza, quanto mais simples for o seu modelo, melhor será. 
+										</p>
+
+										
+							<!-- Image -->
+							<div class="project">
+								<hr />
+
+							<h3>Outros Artigos</h3>
+							<hr />
+
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/vetores-linguagem-r">
+										<h2>Vetores</h2>
+										<div class="content">
+											<p>Um vetor em R é uma estrutura básica dentro da linguagem, que permite armazenar 
+												uma quantidade numérica ou string (letras ou caracteres), em um único objeto. O 
+												vetor possui apenas 01 única dimensão.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<a target="blank" href="https://dataupemail.wixsite.com/website/post/matriz-linguagem-r">
+										<h2>Matrix</h2>
+										<div class="content">
+											<p>Matrizes é caracterizado como uma coleção de vetores, sendo todos do mesmo tipo
+												 (numérico ou caracteres) armazenados entre linhas e colunas.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Data Frame</h2>
+										<div class="content">
+											<p>Um data frame é semelhante a uma matriz mas as suas colunas têm 
+												nomes e podem conter dados de tipo diferente. Um data frame pode
+												er visto como uma tabela de uma base de dados, em que cada linha 
+												corresponde a um registo (linha) da tabela.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic05.jpg" alt="" />
+									</span>
+									<a href="exploratyAnalysis.html">
+										<h2>Análise Exploratória</h2>
+										<div class="content">
+											<p>Em estatística, a análise exploratória de dados é uma abordagem 
+												à análise de conjuntos de dados de modo a resumir suas 
+												características principais, frequentemente com métodos visuais.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic12.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Regressão Linear</h2>
+										<div class="content">
+											<p>Em estatística ou econometria, regressão linear é uma equação para se estimar a 
+												condicional de uma variável y, dados os valores de algumas outras variáveis x.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/pic07.jpg" alt="" />
+									</span>
+									<a href="#">
+										<h2>Clusterização</h2>
+										<div class="content">
+											<p>02 / 04 / 2021</p>
+										</div>
+									</a>
+								</article>															
+							</section></br>
+						</div>
+
+
+							<hr />
+									<h3>Projeto - Modelo Preditivo: Valor de Casa</h3>
+									<hr />
+
+									<p><span class="image left"><img src="images/casa.png" alt="" />
+									</span>O Kaggle é uma plataforma gratuita que tem como objetivo inicial promover desafios entre profissionais da área de 
+									análise, porém atualmente se tornou uma grande comunidade de Data Sciente. Para demonstrar o trabalho de modelagem de 
+									dados, foi coletado um dataset fornecido no campeonato “House Sales in King Country, USA” da plataforma Kaggle.
+									Temos como objetivo principal deste projeto, realizar Bussiness Analyst no conjunto de dados. E como segundo objetivo 
+									desenvolver um modelo de regressão que possa prever o valor de um imóvel com base nas variáveis apresentadas no banco de
+									dados.Primeiramente coletamos o dataset fornecido pelo Kaggles. Ao coletar tais informações percebemos que o conjunto de
+									 dados é composto por 21 variáveis (tamanho da casa, quantidade de quartos, banheiros, entre outros) e o valor vendido da
+									  casa entre o período de Maio de 2014 a Maio de 2015, variável dependendo, ou seja, a variável que queremos que o nosso
+									   modelo nos apresente.</p>
+									<p  class="bottum-rigth" ><a target="_black" href="https://rpubs.com/RodolfoTerra/modelo_preditivo_casa" class="button primary small">Projeto <i class="far fa-registered"></i></a></p>
+								</br>
+								
+									
+								</section>
+
+							</div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner text">
+						
+						<section>
+							<h2>Desenvolvimento</h2>
+							<ul class="icons">
+								<li><a target="_blank" href="https://github.com/rodolffoterra" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a target="_blank" href="http://www.rodolfoterra.com" class="icon solid style2 fa-home"><span class="label">Site</span></a></li>
+									<li><a target="_blank" href="https://www.youtube.com/channel/UCGs6ClQzcm74mtNBy-uTSSQ/featured" class="icon solid style2 fas fa-play"><span class="label">Site</span></a></li>
+									<li><a target="_blank" href="https://rpubs.com/RodolfoTerra" class="far fa-registered"><span class="label"> Rpub's</span></a></li>
+																	
+							</ul>
+							
+						</section>
+						<section>
+							<h2>Redes Sociais</h2>
+							<ul class="icons">
+							<li><a target="_blank" href="https://www.linkedin.com/in/rodolffoterra/" class="icon brands style2 fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/rodolffo.terra/" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="mailto:consultoriaterra@hotmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="mailto:+5515981194753" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+							</ul>
+						</section>
+						<ul class="desenvolv">
+							&copy; 2021 Untitled. All rights reserved | Design: <a href="http://www.rodolfoterra.com"> &nbsp;Rodolfo Terra | Ciência de Dados</a></li>
+						</ul>
+					</div>
+
+					<p class ="img_logo" style="text-align: right;"><img src="images/logo.png" alt="" /></p>
+
+				</footer>
+
+		</div>
+
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>
