@@ -54,11 +54,11 @@ Novo artigo semanalmente, de preferência publicações as sexta feiras, pois te
 
 <img src="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/images/pic05.jpg" width="10%"> 5ª Artigo - Análise Exploratória - 12 / 03 / 2021
 
-* 6ª Artigo - Regressão Linear - 19 / 03 / 2021
+<img src="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/images/pic06.jpg" width="10%"> 6ª Artigo  - Regressão Linear - 19 / 03 / 2021
 
-* 7ª Artigo - Clusterização - 26 / 03 / 2021
+* 7ª Artigo - Clusterização - Em construção
 
-* 8ª Artigo - Teste de Hipótese - 09 / 04 / 2021
+* 8ª Artigo - Teste de Hipótese - Em construção
 
 * Outro....
 
