@@ -27,7 +27,7 @@
   <meta  http-equiv="X-UA-Compatible"    content="IE=edge,chrome=1">
   <meta   property="og:locale"           content="pt-BR" />
   <meta   property="og:type"             content="website" />
-  <meta   property="og:description"      content="Regressão linear é uma equação para se estimar acondicional de uma variável y, dados os valores de algumas outras variáveis x." />                                             
+  <meta   property="og:description"      content="Regressão linear é uma equação para se estimar acondicional de uma variável y, dado os valores de algumas outras variáveis x." />                                             
   <meta   property="og:url"              content="https://www.rodolfoterra.com" />
   <meta   property="og:site_name"        content="Rodolfo Terra | Linguagem R (Regressão Linear)" />
   <meta   property="og:image"            content="https://raw.githubusercontent.com/rodolffoterra/rodolffoterra.github.io/main/images/pic05.jpg" />
@@ -100,8 +100,8 @@
 								<hr />
 
 								<br>Em estatística ou econometria, **regressão linear** é uma equação para se estimar a condicional 
-								(valor esperado) de uma variável y, dados os valores de algumas outras variáveis x. </br>
-								A regressão linear é chamada "linear" porque se considera que a relação da resposta às variáveis é uma 
+								(valor esperado) de uma variável y, dado os valores de algumas outras variáveis x. </br>
+								A regressão linear é chamada "linear" porque a relação da resposta às variáveis é uma 
 								função linear de alguns parâmetros. Os modelos de regressão que não são uma função linear dos parâmetros 
 								se chamam modelos de regressão não-linear. Sendo uma das primeiras formas de análise regressiva a ser 
 								estudada rigorosamente, é usada extensamente em aplicações práticas. Isso acontece porque modelos que
@@ -113,7 +113,7 @@
 								mas que também pode ser montada de outras maneiras, tal como minimizando a "falta de ajuste" em alguma
 								 outra norma (com menos desvios absolutos de regressão), ou através da minimização de uma penalização da 
 								 versão dos mínimos quadrados. Por outro lado, a abordagem de mínimos quadrados pode ser utilizado para 
-								 ajustar a modelos que não são modelos lineares. Assim, embora os termos "mínimos quadrados" e "modelo 
+								 ajustar o modelos que não são modelos lineares. Assim, embora os termos "mínimos quadrados" e "modelo 
 								 linear" estejam intimamente ligados, eles não são sinônimos.</p>
 							
 								<hr />
@@ -123,10 +123,10 @@
 
 								<p>Vamos utilizar um conjunto de dados, conhecido, para conseguirmos demonstrar 
 									na prática o que seria uma regreção linear. 
-									Iremos utilizar a função <code>read.csv()</code>, para carregar nosso conjutno de dados.
+									Iremos utilizar a função <code>read.csv()</code>, para carregar nosso conjunto de dados.
 									Abaixo demonstraremos como carregar um conjunto de dados,
 									lembrando que é preciso determinar alguns parâmetros, file ou <b>path</b>, caminho do diretório do arquivo 
-									em seu computador, header indicar se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo.
+									em seu computador, header indica se o conjunto de dados tem ou não o nome das variáveis e como é um arquivo
 									csv temos que demonstrar qual é o separador, nesse dataset é a vírgula.</br>
 									Abaixo temos 02 exemplo, o primeiro, <a href="https://github.com/rodolffoterra/rodolffoterra.github.io/blob/main/dados/kc_house_data.csv">
 										baixar</a> o arquivo, e salva em seu computador. Ou Caso preferir pode
@@ -140,18 +140,18 @@
 									<p> O nosso conjunto de dados é composto por 21 variáveis (tamanho da casa, quantidade de quartos, 
 										banheiros, entre outros) e o valor vendido da casa entre o período de Maio de 2014 a Maio de 2015, 
 										variável dependendo, ou seja, a variável que queremos que o nosso modelo nos apresente.</p>
-									<br> Ao se pensar no valor de uma casa, a primeira variável que podemos imaginar que irá influenciar 
+									<br> Ao se pensar no valor de uma casa, a primeira variável que podemos imaginar irá influenciar 
 										principalmenteno valor do imóvel seria a área da construção. Antes de criarmos uma regressão linear
 									 para identificar o valor da casa em relação a área construida, iremos construir um gráfico para visualisarmos a 
-									correlaçãop entre estas duas variáveis.</br>
+									correlação entre estas duas variáveis.</br>
 								Primeiramente precisamos carregar a biblioteca que irá construir nossos gráficos</p>
 								<pre><code>library(ggplot2)<br>library(corrplot)<br>library(tidyverse)</code></pre>
 								
 								<p><b>Construindo o gráfico de correlação entre o valor da casa e a áre construida.</b></p>
 								<pre><code>ggplot(df, aes(x= sqft_living, y =price/100000)) +<br>  geom_point(color = <span style="color: #ff0000;">'lightblue'</span>) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Correlação entre o Preço X Área de casa"</span>,<br>      x = <span style="color: #ff0000;">'Área (sqfl)'</span>,<br>      y = <span style="color: #ff0000;">'Preço'</span>)</code></pre>
 								<p style="text-align: center;"><img src="images/corr_casa.png" alt="" /></p>
-								<p> Conforme podemos observar no eixo x, <b>Área (sqfl)</b>o aumenta o preço também tende a aumenta. 
-									Quanto usamos apenas uma úniva variável (Área da casa) para chegarmos no valor da variável dependende, ou seja o preço da casa, 
+								<p> Conforme podemos observar no eixo x, <b>Área (sqfl)</b> aumenta, o preço também tende a aumenta. 
+									Quanto usamos apenas uma única variável (Área da casa) para chegarmos no valor da variável dependente, ou seja o preço da casa, 
 									podemos criar uma regressão Linear Simples.</p>
 								<hr />
 
@@ -162,8 +162,8 @@
 									a variação de y.
 								</p>
 								<p style="text-align: center;"><img src="images/reg_simples.png" alt="" /></p>
-								<p>Então ao voltarmos para o nosso exemplo. é possível saber o valor a (chamado intercepto) e 
-									também o valor de b (que representa a inclinação da reta).</p>
+								<p>Então ao voltarmos para o nosso exemplo, é possível saber o valor de "<b>a</b>" (chamado intercepto) e 
+									também o valor de "<b>b</b>"" (que representa a inclinação da reta).</p>
 								<pre><code>lm(price/100000 ~ sqft_living, data = df)</code></pre>
 								<TABLE >
 									<TR>
@@ -174,7 +174,7 @@
 
 								<p> conforme demonstrado em nosso conjunto de dados podemos afirmar que:</p>
 								<pre><code>f(y) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ &nbsp;&nbsp;&nbsp;&nbsp;b<br>Valor_da_casa = -0.002806 x sqft_living - 0.436034</code></pre>
-								<p> Lembramos que o rpeço da casa está divido por 10<sup>5</sup>, como exemplo uma casa que tenha 5000 sqft custará 
+								<p> Lembramos que o peço da casa está divido por 10<sup>5</sup>, como exemplo uma casa que tenha 5000 sqft custará 
 								um valor de <b>R$ 135.996,60</b>. Vejamos o nosso código <code>f(y) = 0.002806 * 5000 - 0.46034</code>.
 								Podemos demonstrar a regressão linear simples no gráfico para ficar mais fácil a compreensão.</p>
 								<pre><code>ggplot(df, aes(x= sqft_living, y =price/100000)) +<br>  geom_point(color = <span style="color: #ff0000;">'lightblue'</span>) +<br>  geom_smooth(method = lm, size=0.5, se = FALSE,color = <span style="color: #ff0000;">"red"</span>) +<br>  theme_classic() +<br>  labs(title = <span style="color: #ff0000;">"Regressão linear Simples entre Preço e Área da Casa"</span>,<br>      x = <span style="color: #ff0000;">"Área (sqfl)"</span>,<br>      y = <span style="color: #ff0000;">"Preço"</span>)</code></pre>
@@ -185,7 +185,7 @@
 								<P> Ao observar este pequeno exemplo, todos mundo sabe que o valor de uma casa não está somente 
 									relacionado a sua área de construção. Existe outras variáveis, que agregam valor no preço da casa. 
 									É o que passaremos a estudar nesse exata momento. Porém antes de acrescentarmos mais variáveis em 
-									nosso modelo gostaria de apresentar um outra gráfico, de correção entre as variávies.</P>
+									nosso modelo gostaria de apresentar um outro gráfico, de correção entre as variávies.</P>
 									<p style="text-align: center;"><img src="images/correlation.png" alt="" /></p>
 									<p>Nesse gráfico temos diversas variáveis tais como:</p>
 									<li><b>Price:</b> Preço da Casa</li>
@@ -202,8 +202,8 @@
 									<li><b>sqft_basement:</b> metragem quadrada do basamento;</li>
 									<li><b>Construction_Time:</b> Quantidade de Anos que a casa possui na data de venda</li>
 									<br>
-									<p> Todas as variáveis acima, exeto a <b>Construction_Time</b> estão representados com um circulo
-									azul no gráfico. O motivo de estar com a coloração azul, significa que todas estas variáveis possui Umacorrelação
+									<p> Todas as variáveis acima, exceto a <b>Construction_Time</b> estão representados com um circulo
+									azul no gráfico. O motivo de estar com a coloração azul, significa que todas estas variáveis possui uma correlação
 									positiva com o valor da casa, ou seja, quanto maior a área da casa, maios a quantidade de banheiros, maiores a quantidade de quartas, etc,
 									correspende respectivamente um tendencia de aomento no valor da casa.<br>
 									Porém ai se falar em quantidade de anos que esta casa possui, quanto mais velha for a casa esperamos que tal variável,
@@ -233,22 +233,22 @@
 								<p style="text-align: center;"><img src="images/rf_house_1.png" width=100% alt="" /></p>
 								<p>Ao criarmos uma regressão linear simples, utilizando apenas a área da casa para conseguirmos prever 
 									o valor da casa, o código acima está mostrando que somente a área consegue explicar 33,14% o valor da casa.
-								Nesse artigo, não entraremos mais em detalhes no tema <b>randomForest</b>, falaremos um artigo somente desta ferramena. 
+								Nesse artigo, não entraremos mais em detalhes no tema <b>randomForest</b>, falaremos um artigo somente desta ferrameta. 
 								O que é importante para este momento é saber que temos que usar mais variáveis para conseguirmos prever com o menor erro 
 								possível o valor da casa. Então utilimaremos 04 variáveis, e veremos a sua variável explicativa.</p>
 								<pre><code>model2 <- randomForest(price ~ sqft_living15 + yr_built + grade + bathrooms,<br>                      data = df_data,<br>                      ntree = 40,<br>                      nodesize = 5)<br>print(model2)</code></pre>
 								<p style="text-align: center;"><img src="images/rf_house_2.png" width=100% alt="" /></p>
 								<p> Ao utilizar a área construida, ano de contsrução, classificação geral e quantidade de 
 									banheiros, a variável explicativa do modelo dobrou, para 66,42%.</p>
-								<p>Abaixo mostraremo a equação de uma regressão linear múltipla</p>
+								<p>Abaixo teremos a equação de uma regressão linear múltipla</p>
 								<pre><code>lm(price/100000 ~ sqft_living15 + yr_built + grade + bathrooms, data = df_data)</code></pre>
 								<p style="text-align: center;"><img src="images/regre_linear_multipla.png" width=100% alt="" /></p>
 								<p> A Equação fica dessa seguinte forma:<br>
 								<i><b>f(valor_casa) = 1.2182280(bathrooms) + 1.6780753(grade) -0.0467126(yr_built) + 0.0009584(sqft_living15) + 80.1427967</b></i></p>
 
 								<p> Para finalizar construiremos um modelo com todas as variáveis em nosso conjunto de dados, 
-									para demonstrarmos que queremos todas as variáveis utilizaremos no modelo a variável
-									dependente a esquerda e um <code>price ~ .</code> a direita, o acento serve para seprara as 
+									para demonstrarmos que queremos todas as variáveis, utilizaremos no modelo a variável
+									dependente a esquerda e um <code>price ~ .</code> a direita, o acento serve para seprarar as 
 									variáveis dependente das idependente. 
 								</p>
 								<pre><code>model3 <- randomForest(price ~ .,<br>                      data = df_data,<br>                      ntree = 40,<br>                      nodesize = 5)<br>print(model3)</code></pre>
@@ -262,23 +262,23 @@
 								</p>
 								<h3>Feature Selection</h3>
 								<p>A seleção de Atributos, ou o Feature Selection tem como objetivo a simpleficação do modelo, para 
-									facilitar sua interpretação, dredução do tempo de treinamento do modelo e melhoria da generalização do
+									facilitar sua interpretação, dedução do tempo de treinamento do modelo e melhoria da generalização do
 									 modelo, evitando overfitting. Utilizaremos a tecnicas de feaure selection para automitizar a seleção
-									  de variáveis com maior potencial para variáveis preditoras. Sendo uma espécia de filtro, que remove
-									  do seu dataset as variáveis qwue não serão úteis para a criação do modelo preditivo. Tem como 
-									  principal objetivo a criação de um modelo preditoco com a maior precisão possível e que seja 
+									  de variáveis com maior potencial para variáveis preditoras. Sendo uma espécie de filtro, que remove
+									  do seu dataset as variáveis que não serão úteis para a criação do modelo preditivo. Tem como 
+									  principal objetivo a criação de um modelo preditivo com a maior precisão possível e que seja 
 									  generalizável. As técnicas de Feaure Selection basicamente calculam o nível de signifiância de cada
 									  variável e eliminam aquelas com significância mais baixa.</p>
 									  <pre><code>Modelo <- randomForest(price ~ .,<br>                      - id<br>                      - Hora<br>                      - zipcode<br>                      - lat<br>                      - long,<br>                      data = df_data,<br>                      ntree = 100,<br>                      nodesize = 10,<br>                      importance = TRUE)<br><br> # Demonstrando o Modelo<br>varImpPlot(Modelo)</code></pre>
 									  <p style="text-align: center;"><img src="images/randomflorest.png" alt="" /></p>
 									  <P> Acima o gráfico mostra as variveias que mais são significativas para a criação 
-										  do modelo por dois métodos diferente. As variáveis que possui seu ponto mais a direira
+										  do modelo por dois métodos diferente. As variáveis que possui seu ponto mais a direita
 										  são as que mais explica o valor da casa. Como podemos observar pelo método IncNodePurity
-										  a variável <b>grade</b> e a variável <b>sqft_living</b> são as mais improtantes. Já com a 
-										  metodologia %IncMSE, existe 06 variáveis com maior importante para a explicação do rpeço da casa,
+										  a variável <b>grade</b> e a variável <b>sqft_living</b> são as mais importantes. Já com a 
+										  metodologia %IncMSE, existe 06 variáveis com maior importância para a explicação do peço da casa,
 										  que são: <b>sqft_lot15, yr_built, sqft_living15,sqft_lot,Construction_Time e grade</b>.</P>
 
-										<p> Como apenas para completar o entendimento do artigo, utilizaremos o modelo3 ,
+										<p> Apenas para completar o entendimento do artigo, utilizaremos o modelo3 ,
 											o modelo que utilizamos todas as variáveis, para demonstrar rapidamente o valor real do preço
 											da casa com o valor preditivo, criado pelo modelo.<br> Como ciêntista de dados, é preciso ainda
 											realizarmos outras etapas que não foram mencionadas neste artigo, que serão explicada com maiores detalhes.
@@ -300,7 +300,7 @@
 										
 
 										<li>Existe possibilidades de melhorar ainda mais o modelo?</li>
-										<li>Qual o percentual de acurácio que devo atingir para terminar meu projeto?</li>
+										<li>Qual o percentual de acurácia que devo atingir para terminar meu projeto?</li>
 										<li>Qual é a acurácia mínima que eu devo atingir?</li>
 										<li>Quantos modelos eu devo criar?</li>
 										<li>Só existe randomFlorest?</li>
@@ -379,7 +379,7 @@
 										<h2>Regressão Linear</h2>
 										<div class="content">
 											<p>Em estatística ou econometria, regressão linear é uma equação para se estimar a 
-												condicional de uma variável y, dados os valores de algumas outras variáveis x.</p>
+												condicional de uma variável y, dado os valores de algumas outras variáveis x.</p>
 										</div>
 									</a>
 								</article>
